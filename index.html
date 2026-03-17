@@ -39,32 +39,31 @@
        1. VARIABLES CSS — Identiques au dashboard pour cohérence visuelle
     ================================================================ */
     :root {
-      --bg:           #100820;
-      --surface:      #1A1035;
-      --surface-2:    #221545;
-      --surface-3:    #2C1C56;
-      --purple:       #7C3AED;
-      --purple-light: #A78BFA;
-      --purple-dim:   rgba(124,58,237,0.15);
-      --gold:         #D4AF37;
-      --gold-light:   #EDD064;
-      --gold-pale:    #F8EDB8;
-      --gold-dim:     rgba(212,175,55,0.15);
-      --crimson:      #991B1B;
-      --crimson-light:#F87171;
-      --crimson-dim:  rgba(153,27,27,0.15);
-      --emerald:      #059669;
-      --emerald-light:#34D399;
-      --txt:          #EDE8D8;
-      --txt-muted:    #8878A8;
-      --txt-light:    #C4B8E0;
-      --border:       rgba(212,175,55,0.2);
-      --border-light: rgba(255,255,255,0.06);
-      --radius:       14px;
-      --radius-sm:    8px;
-      --shadow:       0 24px 64px rgba(0,0,0,0.6);
-      --glow-gold:    0 0 32px rgba(212,175,55,0.2);
-      --glow-purple:  0 0 48px rgba(124,58,237,0.2);
+      /* Palette liturgique catholique — thème clair, reposant */
+      --bg:           #f8f2e8;   /* Fond : parchemin chaud */
+      --surface:      #ffffff;   /* Carte blanche */
+      --surface-2:    #f0e8d8;   /* Champs : crème */
+      --surface-3:    #e5dac5;   /* Focus : parchemin */
+      --gold:         #c8941a;   /* Or liturgique */
+      --gold-light:   #dba82a;   /* Or lumineux */
+      --gold-pale:    #fdf3d7;   /* Or très pâle */
+      --gold-dim:     rgba(200,148,26,0.12);
+      --crimson:      #8b1a1a;   /* Rouge cardinal */
+      --crimson-light:#b03030;
+      --crimson-dim:  rgba(139,26,26,0.12);
+      --emerald:      #2d6a4f;   /* Vert sacré */
+      --emerald-light:#40916c;
+      --purple:       #5c2d91;
+      --purple-light: #7b4ab8;
+      --txt:          #3a2010;   /* Texte brun encre */
+      --txt-muted:    #8a7060;   /* Brun moyen */
+      --border:       rgba(200,148,26,0.22);
+      --border-light: rgba(58,32,16,0.10);
+      --radius:       10px;
+      --radius-sm:    7px;
+      --shadow:       0 8px 40px rgba(58,32,16,0.15);
+      --glow-gold:    0 0 16px rgba(200,148,26,0.20);
+      --sidebar-brown:#4a2f1a;   /* Brun sidebar */
     }
 
     /* ================================================================
@@ -76,6 +75,10 @@
     body {
       font-family: 'EB Garamond', serif;
       background: var(--bg);
+      /* Texture subtile parchemin */
+      background-image:
+        radial-gradient(ellipse 70% 50% at 30% 40%, rgba(200,148,26,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 70% at 75% 65%, rgba(58,32,16,0.05) 0%, transparent 55%);
       color: var(--txt);
       min-height: 100vh;
       display: flex;
@@ -97,10 +100,9 @@
       z-index: 0;
       /* Plusieurs orbes de couleur superposées */
       background:
-        radial-gradient(ellipse 80% 60% at 20% 30%, rgba(124,58,237,0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 80% at 80% 70%, rgba(212,175,55,0.07) 0%, transparent 55%),
-        radial-gradient(ellipse 40% 40% at 50% 10%, rgba(153,27,27,0.08) 0%, transparent 50%);
-      animation: bgShift 12s ease-in-out infinite alternate;
+        radial-gradient(ellipse 60% 50% at 15% 30%, rgba(200,148,26,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 60% at 80% 70%, rgba(58,32,16,0.06) 0%, transparent 50%);
+      animation: bgShift 14s ease-in-out infinite alternate;
     }
     @keyframes bgShift {
       0%   { opacity: 0.7; transform: scale(1) rotate(0deg); }
@@ -115,8 +117,8 @@
       z-index: 0;
       /* Grille en SVG data URI */
       background-image:
-        linear-gradient(rgba(212,175,55,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(212,175,55,0.04) 1px, transparent 1px);
+        linear-gradient(rgba(200,148,26,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,148,26,0.05) 1px, transparent 1px);
       background-size: 60px 60px;
       mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 75%);
     }
@@ -153,13 +155,13 @@
       width: 600px;
       height: 600px;
       z-index: 0;
-      opacity: 0.025;
+      opacity: 0.06;
       /* Croix faite en CSS */
       background:
         /* Barre verticale */
-        linear-gradient(transparent 30%, rgba(212,175,55,1) 30%, rgba(212,175,55,1) 70%, transparent 70%) center / 8px 100%,
+        linear-gradient(transparent 30%, rgba(200,148,26,1) 30%, rgba(200,148,26,1) 70%, transparent 70%) center / 6px 100%,
         /* Barre horizontale */
-        linear-gradient(transparent 35%, rgba(212,175,55,1) 35%, rgba(212,175,55,1) 55%, transparent 55%) center / 100% 8px;
+        linear-gradient(transparent 35%, rgba(200,148,26,1) 35%, rgba(200,148,26,1) 55%, transparent 55%) center / 100% 6px;
       background-repeat: no-repeat;
       animation: crossPulse 6s ease-in-out infinite;
     }
@@ -183,9 +185,11 @@
     .login-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 20px;
+      border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: var(--shadow), var(--glow-purple);
+      box-shadow: var(--shadow);
+      /* Filet doré sur le côté gauche, comme un livre liturgique */
+      border-left: 3px solid var(--gold);
       /* Animation d'entrée au chargement */
       animation: cardEntrance 0.8s cubic-bezier(0.16,1,0.3,1) forwards;
     }
@@ -200,9 +204,8 @@
       text-align: center;
       /* Dégradé ornemental */
       background: linear-gradient(180deg,
-        rgba(212,175,55,0.07) 0%,
-        rgba(124,58,237,0.04) 60%,
-        transparent 100%
+        #4a2f1a 0%,
+        #4a2f1a 100%
       );
       border-bottom: 1px solid var(--border);
       position: relative;
@@ -241,20 +244,20 @@
       font-family: 'Cinzel', serif;
       font-size: 22px;
       font-weight: 700;
-      color: var(--gold-pale);
+      color: #f8f2e8;
       letter-spacing: 3px;
       text-transform: uppercase;
     }
     .login-header .subtitle {
       font-size: 13px;
-      color: var(--txt-muted);
+      color: rgba(248,244,238,0.65);
       margin-top: 5px;
       font-style: italic;
     }
     /* Petit ornement sous le titre */
     .header-orn {
       font-size: 11px;
-      color: var(--border);
+      color: rgba(200,148,26,0.7);
       letter-spacing: 8px;
       margin-top: 12px;
     }
@@ -283,7 +286,7 @@
       font-family: 'Cinzel', serif;
       font-size: 15px;
       font-weight: 600;
-      color: var(--gold-pale);
+      color: var(--txt);
       letter-spacing: 0.8px;
       margin-bottom: 6px;
     }
@@ -331,7 +334,7 @@
       width: 100%;
       padding: 12px 14px 12px 44px;
       background: var(--surface-2);
-      border: 1px solid var(--border);
+      border: 1px solid rgba(200,148,26,0.3);
       border-radius: var(--radius-sm);
       color: var(--txt);
       font-family: 'EB Garamond', serif;
@@ -343,7 +346,7 @@
     input[type="password"]:focus {
       border-color: var(--gold);
       background: var(--surface-3);
-      box-shadow: 0 0 0 3px rgba(212,175,55,0.08);
+      box-shadow: 0 0 0 3px rgba(200,148,26,0.10);
     }
     input::placeholder { color: var(--txt-muted); font-style: italic; }
 
@@ -496,7 +499,7 @@
       width: 54px;
       height: 62px;
       background: var(--surface-2);
-      border: 1px solid var(--border);
+      border: 1px solid rgba(200,148,26,0.3);
       border-radius: var(--radius-sm);
       display: flex;
       align-items: center;
@@ -550,7 +553,7 @@
     .pin-key {
       padding: 14px;
       background: var(--surface-2);
-      border: 1px solid var(--border-light);
+      border: 1px solid rgba(58,32,16,0.12);
       border-radius: var(--radius-sm);
       color: var(--txt);
       font-family: 'Cinzel', serif;
@@ -565,8 +568,8 @@
     }
     .pin-key:hover {
       background: var(--surface-3);
-      border-color: rgba(212,175,55,0.3);
-      color: var(--gold-light);
+      border-color: var(--gold);
+      color: var(--gold);
       transform: translateY(-1px);
     }
     .pin-key:active { transform: scale(0.95); }
@@ -692,7 +695,7 @@
     ================================================================ */
     .login-footer {
       padding: 14px 36px 18px;
-      border-top: 1px solid var(--border-light);
+      border-top: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -703,6 +706,7 @@
       color: var(--txt-muted);
       font-style: italic;
     }
+    .login-footer { background: var(--surface-2); }
     /* Indicateur de sécurité (cadenas) */
     .security-badge {
       display: flex;
@@ -729,8 +733,8 @@
     ================================================================ */
     .test-accounts {
       margin-top: 16px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--border-light);
+      background: rgba(255,255,255,0.7);
+      border: 1px solid var(--border);
       border-radius: var(--radius-sm);
       padding: 14px 16px;
       animation: cardEntrance 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s both;
@@ -753,8 +757,8 @@
       transition: background 0.15s;
       font-size: 13px;
     }
-    .test-row:hover { background: rgba(212,175,55,0.06); }
-    .test-row .tr-user { color: var(--gold-light); font-weight: 500; min-width: 100px; font-family: monospace; font-size: 12px; }
+    .test-row:hover { background: var(--gold-pale); }
+    .test-row .tr-user { color: var(--gold); font-weight: 500; min-width: 100px; font-family: monospace; font-size: 12px; }
     .test-row .tr-role { color: var(--txt-muted); flex: 1; font-style: italic; }
     .test-row .tr-fill { font-size: 11px; color: var(--txt-muted); opacity: 0; transition: opacity 0.2s; }
     .test-row:hover .tr-fill { opacity: 1; color: var(--gold-light); }
@@ -762,13 +766,69 @@
     /* ================================================================
        10. RESPONSIVE
     ================================================================ */
-    @media (max-width: 480px) {
-      .login-wrap { padding: 16px; }
-      .login-body { padding: 24px 22px 28px; }
-      .login-header { padding: 28px 22px 22px; }
-      .login-footer { padding: 12px 22px 16px; flex-direction: column; align-items: flex-start; gap: 6px; }
-      .pin-key { padding: 12px; font-size: 16px; }
+    /* ── Tablette ── */
+    @media (max-width: 600px) {
+      .login-wrap { padding: 12px; }
+      .login-card { border-radius: var(--radius); }
+      .login-header { padding: 28px 24px 22px; }
+      .login-body   { padding: 24px 24px 28px; }
+      .login-footer { padding: 12px 24px 16px; flex-direction: column; align-items: flex-start; gap: 5px; }
     }
+
+    /* ── Smartphone ── */
+    @media (max-width: 480px) {
+      /* Carte occupe tout l'écran en bas */
+      body { align-items: flex-end; }
+      .login-wrap {
+        padding: 0;
+        max-width: 100%;
+      }
+      .login-card {
+        border-radius: 16px 16px 0 0;
+        border-bottom: none;
+        border-left: none;
+        border-right: none;
+        border-top: 3px solid var(--gold);
+      }
+      .login-header { padding: 24px 20px 18px; }
+      .logo-cross   { width: 44px; height: 44px; font-size: 20px; margin-bottom: 12px; }
+      .login-header h1 { font-size: 18px; letter-spacing: 2px; }
+      .login-header .subtitle { font-size: 12px; }
+      .login-body   { padding: 20px 20px 24px; }
+      .login-footer { padding: 10px 20px 14px; flex-direction: row; justify-content: space-between; }
+
+      /* PIN keyboard : touches plus grandes pour les doigts */
+      .pin-key {
+        padding: 14px 10px;
+        font-size: 18px;
+        min-height: 52px;
+      }
+      .pin-keyboard { gap: 8px; }
+
+      /* PIN display : cases plus larges */
+      .pin-digit { width: 58px; height: 64px; font-size: 24px; }
+      .pin-display { gap: 10px; }
+
+      /* Champs de saisie plus grands pour le toucher */
+      input[type='text'],
+      input[type='password'] { padding: 14px 14px 14px 46px; font-size: 16px; }
+
+      /* Bouton connexion plus grand */
+      .btn-login { padding: 16px; font-size: 12px; }
+
+      /* Comptes de test masqués sur très petit écran */
+      .test-accounts { display: none; }
+    }
+
+    /* ── Touch : cibles minimum 44px ── */
+    @media (hover: none) and (pointer: coarse) {
+      .pin-key  { min-height: 52px; }
+      .btn-login { min-height: 48px; }
+      .btn-back  { min-height: 40px; }
+      .forgot-link a { padding: 8px 0; display: inline-block; }
+    }
+
+    
 
     /* Scrollbar */
     ::-webkit-scrollbar { width: 4px; }
@@ -983,7 +1043,7 @@
           </p>
 
           <!-- Info contact -->
-          <div style="background:var(--gold-dim);border:1px solid rgba(212,175,55,0.25);border-radius:var(--radius-sm);padding:16px;margin-bottom:20px">
+          <div style="background:var(--gold-pale);border:1px solid rgba(200,148,26,0.25);border-radius:var(--radius-sm);padding:16px;margin-bottom:20px">
             <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold-light);letter-spacing:1px;margin-bottom:10px">CONTACT ADMINISTRATEUR</div>
             <div style="font-size:13.5px;margin-bottom:6px">👤 Jean-Paul Admin</div>
             <div style="font-size:13px;color:var(--txt-muted)">📞 Secrétariat paroissial · Salle St-Augustin</div>
@@ -1508,10 +1568,10 @@
 
         /* Couleur : alternance or/violet */
         p.style.background = i % 3 === 0
-          ? 'var(--gold)'
+          ? 'rgba(200,148,26,0.6)'
           : i % 3 === 1
-            ? 'var(--purple-light)'
-            : 'rgba(255,255,255,0.4)';
+            ? 'rgba(58,32,16,0.3)'
+            : 'rgba(200,148,26,0.3)';
 
         container.appendChild(p);
       }

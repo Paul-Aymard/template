@@ -40,57 +40,65 @@
        Pour changer une couleur → modifier ici, ça se répercute partout.
     ================================================================ */
     :root {
-      /* --- Couleurs principales : inspiration liturgique catholique --- */
-      --bg:           #100820;   /* Fond principal : violet très sombre (cathédrale la nuit) */
-      --surface:      #1A1035;   /* Surface des cartes/sidebar */
-      --surface-2:    #221545;   /* Surface des éléments interactifs */
-      --surface-3:    #2C1C56;   /* Hover / focus states */
+      /*
+        PALETTE LITURGIQUE CATHOLIQUE — Thème Clair
+        ─────────────────────────────────────────────
+        Inspirée du parchemin des manuscrits enluminés,
+        de l'or des autels, et du brun des stalles en bois.
+        Reposante pour les yeux, élégante et solennelle.
+      */
 
-      /* Violet épiscopal — couleur de l'Avent et du Carême */
-      --purple:       #7C3AED;
-      --purple-light: #A78BFA;
-      --purple-dim:   rgba(124, 58, 237, 0.15);
+      /* Fonds — tons crème et parchemin */
+      --bg:           #f8f2e8;   /* Fond principal : crème chaude */
+      --surface:      #ffffff;   /* Cartes / panneaux blancs */
+      --surface-2:    #f0e8d8;   /* Fond alternatif : parchemin */
+      --surface-3:    #e5dac5;   /* Hover : parchemin foncé */
 
-      /* Or byzantin — les vases sacrés, les icônes, les enluminures */
-      --gold:         #D4AF37;
-      --gold-light:   #EDD064;
-      --gold-pale:    #F8EDB8;
-      --gold-dim:     rgba(212, 175, 55, 0.15);
+      /* Or liturgique — autels, chandeliers, croix */
+      --gold:         #c8941a;   /* Or profond */
+      --gold-light:   #dba82a;   /* Or lumineux */
+      --gold-pale:    #fdf3d7;   /* Or très pâle (badges) */
+      --gold-dim:     rgba(200,148,26,0.12);
 
-      /* Cramoisi cardinal — rouge vif des cardinaux */
-      --crimson:      #991B1B;
-      --crimson-light:#F87171;
-      --crimson-dim:  rgba(153, 27, 27, 0.15);
+      /* Cramoisi ecclésiastique — rouge cardinal */
+      --crimson:      #8b1a1a;
+      --crimson-light:#b03030;
+      --crimson-dim:  rgba(139,26,26,0.10);
 
-      /* Vert émeraude — temps ordinaire */
-      --emerald:      #059669;
-      --emerald-light:#34D399;
-      --emerald-dim:  rgba(5, 150, 105, 0.15);
+      /* Vert sacré — temps ordinaire, espérance */
+      --emerald:      #2d6a4f;
+      --emerald-light:#40916c;
+      --emerald-dim:  rgba(45,106,79,0.12);
 
-      /* Bleu saphir — Vierge Marie */
-      --sapphire:     #1D4ED8;
-      --sapphire-light:#60A5FA;
-      --sapphire-dim: rgba(29, 78, 216, 0.15);
+      /* Bleu marial — Vierge Marie */
+      --sapphire:     #1b4f87;
+      --sapphire-light:#2d6fbd;
+      --sapphire-dim: rgba(27,79,135,0.12);
 
-      /* Textes */
-      --txt:          #EDE8D8;   /* Texte principal — ivoire chaleureux */
-      --txt-muted:    #8878A8;   /* Texte secondaire — violet grisé */
-      --txt-light:    #C4B8E0;   /* Texte clair */
+      /* Violet épiscopal — Avent, Carême */
+      --purple:       #5c2d91;
+      --purple-light: #7b4ab8;
+      --purple-dim:   rgba(92,45,145,0.12);
+
+      /* Textes — tons bois et encre */
+      --txt:          #3a2010;   /* Texte principal : brun encre */
+      --txt-muted:    #8a7060;   /* Texte secondaire : brun moyen */
+      --txt-light:    #6b4c35;   /* Texte intermédiaire */
 
       /* Bordures */
-      --border:       rgba(212, 175, 55, 0.18);  /* Bordure dorée subtile */
-      --border-light: rgba(255, 255, 255, 0.06);
+      --border:       rgba(200,148,26,0.22);  /* Dorée subtile */
+      --border-light: rgba(58,32,16,0.10);    /* Brun très léger */
 
-      /* Dimensions de layout */
-      --sidebar-width: 264px;   /* Largeur de la barre latérale */
-      --topbar-height:  62px;   /* Hauteur de la barre du haut */
-      --radius:          12px;  /* Arrondi des cartes */
-      --radius-sm:        8px;  /* Arrondi petit */
+      /* Layout */
+      --sidebar-width: 264px;
+      --topbar-height:  62px;
+      --radius:          8px;   /* Plus carré = plus sobre */
+      --radius-sm:        6px;
 
-      /* Ombres */
-      --shadow:    0 8px 32px rgba(0,0,0,0.5);
-      --shadow-sm: 0 4px 16px rgba(0,0,0,0.3);
-      --glow-gold: 0 0 20px rgba(212,175,55,0.25);
+      /* Ombres douces */
+      --shadow:    0 4px 16px rgba(58,32,16,0.12);
+      --shadow-sm: 0 2px 8px  rgba(58,32,16,0.08);
+      --glow-gold: 0 0 12px   rgba(200,148,26,0.20);
     }
 
     /* ================================================================
@@ -113,8 +121,7 @@
       min-height: 100vh;
       overflow-x: hidden;
       /* Subtile texture de grain pour rappeler le parchemin */
-      background-image: radial-gradient(ellipse at 20% 50%, rgba(124,58,237,0.08) 0%, transparent 60%),
-                        radial-gradient(ellipse at 80% 20%, rgba(212,175,55,0.05) 0%, transparent 50%);
+      /* Fond sobre sans dégradés lourds */
     }
 
     /* ================================================================
@@ -128,15 +135,13 @@
       left: 0;
       width: var(--sidebar-width);
       height: 100vh;
-      background: var(--surface);
-      /* Bordure dorée sur la droite, comme un cadre d'autel */
-      border-right: 1px solid var(--border);
+      background: #4a2f1a;   /* Brun profond — boiseries de cathédrale */
+      border-right: 2px solid var(--gold);
       display: flex;
       flex-direction: column;
       z-index: 200;
-      transition: transform 0.3s ease; /* Animation d'ouverture/fermeture */
-      /* Légère lueur violette à gauche */
-      box-shadow: 4px 0 24px rgba(124,58,237,0.1);
+      transition: transform 0.3s ease;
+      /* Ombre supprimée — bordure dorée suffit comme séparateur */
     }
 
     /* ── Logo / En-tête sidebar ── */
@@ -144,7 +149,7 @@
       padding: 22px 20px 16px;
       border-bottom: 1px solid var(--border);
       /* Dégradé de fond subtil */
-      background: linear-gradient(180deg, rgba(212,175,55,0.06) 0%, transparent 100%);
+      background: linear-gradient(180deg, rgba(200,148,26,0.15) 0%, transparent 100%);
     }
 
     /* Croix en haut du logo */
@@ -159,8 +164,7 @@
       justify-content: center;
       font-size: 18px;
       margin-bottom: 11px;
-      /* Lueur dorée */
-      box-shadow: var(--glow-gold);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
     /* Titre principal : police Cinzel (romaine/solennelle) */
@@ -174,7 +178,7 @@
     }
     .sb-logo p {
       font-size: 11px;
-      color: var(--txt-muted);
+      color: rgba(248,244,238,0.55);
       margin-top: 2px;
       font-style: italic;
     }
@@ -188,8 +192,8 @@
     .role-wrap select {
       width: 100%;
       padding: 9px 28px 9px 12px;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(200,148,26,0.4);
       border-radius: var(--radius-sm);
       color: var(--gold-light);
       font-family: 'Cinzel', serif;
@@ -197,12 +201,13 @@
       font-weight: 600;
       letter-spacing: 1px;
       text-transform: uppercase;
-      appearance: none; /* Cache la flèche native du navigateur */
+      appearance: none;
       cursor: pointer;
       outline: none;
       transition: border-color 0.2s;
     }
     .role-wrap select:focus { border-color: var(--gold); }
+    .role-wrap select option { background: #4a2f1a; color: #f8f2e8; }
     /* Flèche personnalisée */
     .role-wrap::after {
       content: '▾';
@@ -230,7 +235,7 @@
       font-weight: 600;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: var(--txt-muted);
+      color: rgba(248,244,238,0.4);
     }
 
     /* Item de navigation individuel */
@@ -248,12 +253,12 @@
       position: relative;
     }
     .ni:hover {
-      background: var(--surface-3);
-      color: var(--txt-light);
+      background: rgba(255,255,255,0.08);
+      color: #f8f2e8;
     }
     /* Item actif — l'écran actuellement affiché */
     .ni.active {
-      background: linear-gradient(90deg, var(--purple-dim), rgba(124,58,237,0.05));
+      background: rgba(200,148,26,0.18);
       color: var(--gold-light);
       font-weight: 500;
     }
@@ -283,10 +288,32 @@
       border-radius: 20px;
     }
 
-    /* ── Pied de sidebar : carte utilisateur ── */
+    /*
+      Style spécial pour la section "Actions Rapides" dans la sidebar admin.
+      Les items d'action ont un léger fond doré pour se distinguer
+      des items de navigation normaux.
+    */
+    .ni.action-item {
+      font-style: italic;
+      opacity: 0.88;
+    }
+    .ni.action-item:hover {
+      background: rgba(200,148,26,0.12);
+      color: var(--gold-light);
+      opacity: 1;
+    }
+    /* Label de section "Actions Rapides" : filet doré au-dessus */
+    .nav-sec.actions-sec {
+      border-top: 1px solid rgba(200,148,26,0.25);
+      margin-top: 6px;
+    }
+    .nav-sec.actions-sec .nav-sec-lbl {
+      color: var(--gold-light);
+      opacity: 0.9;
+    }
     .sb-foot {
       padding: 14px;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid rgba(255,255,255,0.1);
     }
     .usr-card {
       display: flex;
@@ -294,14 +321,14 @@
       gap: 10px;
       padding: 10px;
       border-radius: var(--radius-sm);
-      background: rgba(255,255,255,0.03);
+      background: rgba(255,255,255,0.06);
       cursor: pointer;
       transition: background 0.2s;
       border: 1px solid transparent;
     }
     .usr-card:hover {
-      background: var(--surface-2);
-      border-color: var(--border);
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(200,148,26,0.3);
     }
     /* Avatar avec initiales */
     .usr-av {
@@ -321,7 +348,7 @@
     .usr-info .nm {
       font-size: 12.5px;
       font-weight: 500;
-      color: var(--txt);
+      color: #f8f2e8;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -329,7 +356,7 @@
     }
     .usr-info .rl {
       font-size: 11px;
-      color: var(--txt-muted);
+      color: rgba(248,244,238,0.5);
       font-style: italic;
     }
 
@@ -352,9 +379,9 @@
       top: 0;
       z-index: 100;
       height: var(--topbar-height);
-      background: rgba(16, 8, 32, 0.88);
-      backdrop-filter: blur(14px);         /* Effet verre dépoli */
-      -webkit-backdrop-filter: blur(14px);
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
       padding: 0 24px;
       display: flex;
@@ -376,7 +403,7 @@
       font-family: 'Cinzel', serif;
       font-size: 18px;
       font-weight: 600;
-      color: var(--gold-pale);
+      color: var(--txt);
       letter-spacing: 1px;
     }
     /* Barre de recherche */
@@ -403,6 +430,7 @@
       flex: 1;
     }
     .tb-search input::placeholder { color: var(--txt-muted); }
+    /* --- Topbar icon buttons --- */
     /* Boutons icônes (calendrier, notifications) */
     .tb-actions { display: flex; align-items: center; gap: 7px; }
     .ico-btn {
@@ -420,7 +448,7 @@
       transition: all 0.2s;
       position: relative;
     }
-    .ico-btn:hover { color: var(--gold); border-color: var(--gold); background: var(--gold-dim); }
+    .ico-btn:hover { color: var(--gold); border-color: var(--gold); background: var(--gold-pale); }
     /* Point rouge sur la cloche de notification */
     .notif-dot {
       position: absolute;
@@ -460,7 +488,7 @@
       font-family: 'Cinzel', serif;
       font-size: 24px;
       font-weight: 700;
-      color: var(--gold-pale);
+      color: var(--txt);
       letter-spacing: 1.5px;
     }
     /* Ornement liturgique sous le titre */
@@ -492,10 +520,9 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      overflow: hidden; /* Le contenu ne dépasse pas l'arrondi */
+      overflow: hidden;
       margin-bottom: 20px;
-      /* Légère lueur violette derrière */
-      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+      box-shadow: var(--shadow);
     }
     /* En-tête de carte */
     .ch {
@@ -507,14 +534,14 @@
       gap: 10px;
       flex-wrap: wrap;
       /* Subtil dégradé en haut de la carte */
-      background: linear-gradient(180deg, rgba(212,175,55,0.04) 0%, transparent 100%);
+      background: linear-gradient(180deg, rgba(200,148,26,0.04) 0%, transparent 100%);
     }
     /* Titre de carte : Cinzel pour le côté solennel */
     .ct {
       font-family: 'Cinzel', serif;
       font-size: 13px;
       font-weight: 600;
-      color: var(--gold-pale);
+      color: var(--txt);
       letter-spacing: 0.8px;
       text-transform: uppercase;
     }
@@ -537,7 +564,7 @@
       white-space: nowrap;
     }
     td { padding: 11px 13px; color: var(--txt); border-bottom: 1px solid var(--border-light); }
-    tbody tr:hover { background: rgba(124,58,237,0.05); } /* Survol violet léger */
+    tbody tr:hover { background: var(--gold-pale); } /* Survol doré très léger */
     tbody tr:last-child td { border-bottom: none; }
 
     /* ── Badges (étiquettes de statut) ── */
@@ -633,18 +660,18 @@
     .fc {
       width: 100%;
       padding: 9px 13px;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
+      background: var(--surface);
+      border: 1px solid rgba(200,148,26,0.3);
       border-radius: var(--radius-sm);
       color: var(--txt);
       font-family: 'EB Garamond', serif;
       font-size: 14px;
       outline: none;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .fc:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212,175,55,0.08); }
+    .fc:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(200,148,26,0.10); }
     .fc::placeholder { color: var(--txt-muted); }
-    select.fc option { background: var(--surface); }
+    select.fc option { background: var(--surface); color: var(--txt); }
     textarea.fc { resize: vertical; }
     /* Grille 2 colonnes pour les formulaires */
     .fg2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
@@ -724,9 +751,9 @@
       position: relative;
       overflow: hidden;
       cursor: pointer;
-      transition: transform 0.2s, border-color 0.2s;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
     }
-    .kpi:hover { transform: translateY(-3px); border-color: rgba(212,175,55,0.4); }
+    .kpi:hover { transform: translateY(-2px); border-color: var(--gold); box-shadow: 0 6px 20px rgba(200,148,26,0.12); }
     /* Icône décorative en fond de la carte */
     .kpi-bg-ico {
       position: absolute;
@@ -762,9 +789,8 @@
       font-family: 'Cinzel', serif;
       font-size: 34px;
       font-weight: 700;
-      color: var(--gold-light);
+      color: var(--txt);
       line-height: 1;
-      /* data-target et data-val sont lus par JS pour l'animation */
     }
     .kpi-lbl { font-size: 12.5px; color: var(--txt-muted); margin-top: 4px; }
     /* Indicateur de tendance (↑ hausse, ↓ baisse) */
@@ -969,13 +995,13 @@
     .modal {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: var(--radius);
       width: 100%;
       max-width: 560px;
       max-height: 88vh;
       overflow-y: auto;
       animation: fdIn 0.25s ease;
-      box-shadow: var(--shadow), 0 0 40px rgba(124,58,237,0.15);
+      box-shadow: 0 8px 40px rgba(58,32,16,0.15);
     }
     .modal.wide { max-width: 780px; }
 
@@ -986,13 +1012,13 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: linear-gradient(180deg, rgba(212,175,55,0.04) 0%, transparent 100%);
+      background: linear-gradient(180deg, rgba(200,148,26,0.04) 0%, transparent 100%);
     }
     .mh-title {
       font-family: 'Cinzel', serif;
       font-size: 16px;
       font-weight: 600;
-      color: var(--gold-pale);
+      color: var(--txt);
       letter-spacing: 0.5px;
     }
     /* Bouton ✕ pour fermer */
@@ -1060,7 +1086,7 @@
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      box-shadow: -8px 0 32px rgba(0,0,0,0.4);
+      box-shadow: none;
     }
     .drawer.open { transform: none; } /* JS ajoute .open → visible */
     .dh {
@@ -1133,13 +1159,13 @@
       pointer-events: none;
     }
     .toast {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
+      background: #4a2f1a;
+      border: 1px solid var(--gold);
+      border-radius: var(--radius-sm);
       padding: 11px 16px;
       display: flex; align-items: center; gap: 9px;
       font-size: 13.5px;
-      color: var(--txt);
+      color: #f8f2e8;
       /* Animation : arrive depuis le bas, puis disparaît */
       animation: slideUp 0.28s ease, fadeOut 0.3s ease 2.7s forwards;
       min-width: 220px; max-width: 320px;
@@ -1163,32 +1189,200 @@
        12. RESPONSIVE (adaptation mobile)
        La sidebar se masque, le hamburger apparaît, les grilles s'adaptent.
     ================================================================ */
+    /*
+    ================================================================
+       12. RESPONSIVE — Mobile-first complet
+       Breakpoints :
+       • 1100px : tablette paysage (grilles se réduisent)
+       • 900px  : tablette portrait (1 colonne partout)
+       • 768px  : smartphone (sidebar cachée, topbar compacte)
+       • 480px  : très petit écran (simplifications maximales)
+    ================================================================ */
+
+    /* ── 1100px : Tablette paysage ── */
     @media (max-width: 1100px) {
-      .kpi-grid     { grid-template-columns: repeat(2, 1fr); }
-      .dash-row     { grid-template-columns: 1fr; }
-      .dash-row-3   { grid-template-columns: 1fr 1fr; }
+      .kpi-grid   { grid-template-columns: repeat(2, 1fr); }
+      .dash-row   { grid-template-columns: 1fr; }
+      .dash-row-3 { grid-template-columns: 1fr 1fr; }
+      .admin-ctrl-grid { grid-template-columns: repeat(2, 1fr); }
     }
+
+    /* ── 900px : Tablette portrait ── */
     @media (max-width: 900px) {
       .g2  { grid-template-columns: 1fr; }
       .g3  { grid-template-columns: 1fr; }
       .fg2 { grid-template-columns: 1fr; }
-      .drawer { width: 100%; }
-    }
-    @media (max-width: 768px) {
-      /* Sur mobile, la sidebar est cachée par défaut */
-      .sidebar { transform: translateX(-100%); }
-      .sidebar.open { transform: none; }
-      /* Le contenu occupe toute la largeur */
-      .main { margin-left: 0; }
-      .tb-burger { display: flex; }
-      .content { padding: 14px; }
-      .kpi-grid { grid-template-columns: 1fr 1fr; }
+      /* Drawers pleine largeur */
+      .drawer { width: 100%; border-left: none; border-top: 2px solid var(--border); }
       .dash-row-3 { grid-template-columns: 1fr; }
     }
-    @media (max-width: 480px) {
-      .kpi-grid   { grid-template-columns: 1fr; }
-      .tb-search  { display: none; }
+
+    /* ── 768px : Smartphone ── */
+    @media (max-width: 768px) {
+
+      /* Sidebar : cachée par défaut, slide depuis la gauche au clic hamburger */
+      .sidebar {
+        transform: translateX(-100%);
+        width: 280px;         /* Un peu plus large pour les doigts */
+        transition: transform 0.28s ease;
+      }
+      .sidebar.open { transform: translateX(0); }
+
+      /* Le contenu principal prend toute la largeur */
+      .main { margin-left: 0; }
+
+      /* Topbar : plus compacte */
+      .topbar { padding: 0 14px; height: 54px; }
+
+      /* Bouton hamburger : affiché */
+      .tb-burger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        background: var(--surface-2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        font-size: 17px;
+        color: var(--txt);
+      }
+
+      /* Topbar : titre plus petit */
+      .tb-title { font-size: 15px; letter-spacing: 0.5px; }
+
+      /* Barre de recherche : masquée pour gagner de la place */
+      .tb-search { display: none; }
+
+      /* Boutons topbar : un peu plus petits */
+      .ico-btn { width: 32px; height: 32px; font-size: 13px; }
+
+      /* Contenu : padding réduit */
+      .content { padding: 12px; }
+
+      /* KPIs : 2 par ligne */
+      .kpi-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+
+      /* KPI : plus compact sur mobile */
+      .kpi { padding: 14px; }
+      .kpi-val { font-size: 26px; }
+      .kpi-bg-ico { font-size: 48px; }
+
+      /* Grilles : toujours 1 colonne */
+      .g2, .g3 { grid-template-columns: 1fr; }
+      .admin-ctrl-grid { grid-template-columns: 1fr; }
+
+      /* Tableaux : scroll horizontal */
+      .tw { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+      /* Formulaires */
+      .fg2 { grid-template-columns: 1fr; }
+
+      /* Modales : pleine largeur sur mobile */
+      .modal, .modal.wide {
+        max-width: 100% !important;
+        max-height: 92vh;
+        border-radius: var(--radius) var(--radius) 0 0;
+        margin-bottom: 0;
+      }
+      /* Modales collées en bas de l'écran (bottom sheet) */
+      .overlay {
+        align-items: flex-end;
+        padding: 0;
+      }
+      .overlay .modal {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-left: none;
+        border-right: none;
+        border-bottom: none;
+        /* Ligne en haut pour indiquer le glissement */
+        border-top: 3px solid var(--gold);
+      }
+
+      /* Drawers : pleine hauteur depuis le bas */
+      .drawer {
+        width: 100%;
+        height: 82vh;
+        top: auto;
+        bottom: 0;
+        right: 0;
+        border-radius: var(--radius) var(--radius) 0 0;
+        border-left: none;
+        border-top: 3px solid var(--gold);
+        transform: translateY(100%);
+      }
+      .drawer.open { transform: translateY(0); }
+
+      /* Dashboard : espacement réduit */
+      .dash-row, .dash-row-3 { gap: 10px; }
+
+      /* Ring chart : plus petit */
+      .ring-svg { transform: scale(0.85); transform-origin: left center; }
+
+      /* Section header : plus compact */
+      .sh h2 { font-size: 20px; }
+      .sh p   { font-size: 12px; }
+
+      /* Card header : flex-wrap pour les boutons */
+      .ch { flex-wrap: wrap; gap: 8px; padding: 12px 14px; }
+      .ct { font-size: 11px; }
+      .cb { padding: 14px; }
+
+      /* Ctrl modules : affichage simplifié */
+      .ctrl-module { padding: 12px; }
+      .ctrl-ico    { width: 36px; height: 36px; font-size: 17px; }
+      .ctrl-desc   { display: none; } /* Masquer description, garder titre */
+
+      /* Quick actions : wrapping sur plusieurs lignes */
+      .quick-actions { gap: 6px; }
+      .qa-btn { font-size: 12px; padding: 6px 10px; }
+
+      /* Breadcrumb masqué */
+      .breadcrumb { display: none; }
+
+      /* Profile hero : plus compact */
+      .profile-av { width: 46px; height: 46px; font-size: 16px; }
+      .profile-info h3 { font-size: 16px; }
     }
+
+    /* ── 480px : Très petit écran ── */
+    @media (max-width: 480px) {
+      /* 1 KPI par ligne */
+      .kpi-grid { grid-template-columns: 1fr; gap: 8px; }
+
+      /* Topbar : juste le burger, titre et cloche */
+      .tb-title { font-size: 14px; }
+
+      /* Tableaux : taille de police réduite */
+      td, th { font-size: 11px; padding: 6px 7px; }
+
+      /* Boutons plus petits */
+      .btn    { padding: 6px 12px; font-size: 12px; }
+      .btn-sm { padding: 4px 8px;  font-size: 11px; }
+
+      /* Card : padding minimal */
+      .cb { padding: 10px; }
+      .ch { padding: 10px 12px; }
+
+      /* Retire les ornements sur petit écran */
+      .orn { display: none; }
+
+      /* Score big plus petit */
+      .score-big { font-size: 38px; }
+    }
+
+    /* ── Amélioration touch : zones cliquables plus grandes ── */
+    @media (hover: none) and (pointer: coarse) {
+      /* Appareils tactiles : cibles minimum 44px (Apple HIG) */
+      .ni   { min-height: 44px; }
+      .btn  { min-height: 40px; padding-top: 10px; padding-bottom: 10px; }
+      .pin-key { min-height: 52px; }
+      .ico-btn { width: 40px; height: 40px; }
+      .close-btn { width: 36px; height: 36px; }
+    }
+
+    
 
     /* ================================================================
        13. ALERTES INFORMATIONNELLES
@@ -1242,6 +1436,7 @@
       transition: all 0.2s ease;
       position: relative;
       overflow: hidden;
+      box-shadow: var(--shadow-sm);
     }
     .ctrl-module:hover {
       border-color: rgba(212,175,55,0.45);
@@ -1278,7 +1473,7 @@
       font-family: 'Cinzel', serif;
       font-size: 12px;
       font-weight: 600;
-      color: var(--gold-pale);
+      color: var(--txt);
       letter-spacing: 0.3px;
     }
     .ctrl-desc {
@@ -1321,8 +1516,8 @@
       padding: 7px 13px;
       background: var(--surface-2);
       border: 1px solid var(--border);
-      border-radius: 20px; /* Pill shape */
-      color: var(--txt-light);
+      border-radius: 20px;
+      color: var(--txt);
       font-family: 'EB Garamond', serif;
       font-size: 13px;
       cursor: pointer;
@@ -1330,9 +1525,9 @@
       white-space: nowrap;
     }
     .qa-btn:hover {
-      background: var(--gold-dim);
-      border-color: rgba(212,175,55,0.4);
-      color: var(--gold-light);
+      background: var(--gold-pale);
+      border-color: var(--gold);
+      color: var(--gold);
     }
     .qa-btn.qa-btn-danger:hover {
       background: var(--crimson-dim);
@@ -1348,6 +1543,118 @@
       .admin-ctrl-grid { grid-template-columns: 1fr; }
       .ctrl-desc { display: none; } /* Cache la description sur très petit écran */
     }
+
+    /* ================================================================
+       @MEDIA PRINT — Styles appliqués lors de l'impression / export PDF
+       Tout ce qui ne doit pas apparaître dans le PDF est masqué.
+       Le contenu à imprimer est mis en forme pour une lecture papier.
+    ================================================================ */
+    /*
+      ================================================================
+      SYSTÈME D'IMPRESSION PDF
+      ================================================================
+      Approche : la fonction printDoc() ajoute la classe "printing"
+      sur le <body>. Le CSS ci-dessous réagit à cette classe ET
+      au @media print natif pour masquer l'interface et n'afficher
+      que le document à imprimer.
+
+      body.printing = état pendant l'impression (masquage visuel)
+      @media print  = règles appliquées par le navigateur au moment
+                      de la génération du PDF
+    */
+
+    /* ── État d'impression : masquer l'interface ── */
+    body.printing .sidebar,
+    body.printing .main,
+    body.printing .overlay,
+    body.printing .drawer,
+    body.printing .tc,
+    body.printing #mobOv {
+      display: none !important;
+    }
+
+    /* ── La zone active devient le seul contenu visible ── */
+    body.printing .print-zone.active-print {
+      display: block !important;
+      position: fixed;
+      inset: 0;
+      background: #fff;
+      z-index: 9999;
+      overflow-y: auto;
+      padding: 20mm 20mm 20mm 20mm;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 11pt;
+      color: #000;
+    }
+
+    /* ── @media print : règles finales pour le PDF ── */
+    @media print {
+
+      /* Forcer les couleurs exactes */
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      /* Masquer tout l'interface */
+      .sidebar,
+      .main,
+      .overlay,
+      .drawer,
+      .tc,
+      #mobOv,
+      .topbar      { display: none !important; }
+
+      /* Fond blanc propre */
+      html, body   { background: #fff !important; margin: 0; padding: 0; }
+
+      /* Seul le document actif est visible */
+      .print-zone                       { display: none !important; }
+      .print-zone.active-print          { display: block !important; }
+
+      /* Mise en page du document */
+      .print-zone.active-print {
+        position: static !important;
+        padding: 0 !important;
+        overflow: visible !important;
+      }
+
+      /* En-tête du document */
+      .print-header {
+        display: flex !important;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid #c8941a;
+        page-break-after: avoid;
+      }
+      .print-header h1 { font-size: 16pt; color: #4a2f1a; margin: 0; }
+      .print-header p  { font-size: 10pt; color: #8a7060; margin: 0; }
+
+      /* Tableaux propres pour PDF */
+      table { width: 100%; border-collapse: collapse; }
+      th {
+        background: #f0e8d8 !important;
+        color: #4a2f1a !important;
+        border: 1px solid #c8941a !important;
+        padding: 6px 10px;
+        font-size: 9pt;
+        text-align: left;
+      }
+      td {
+        border: 1px solid #ddd !important;
+        padding: 6px 10px;
+        font-size: 10pt;
+      }
+
+      /* Saut de page */
+      .print-page-break { page-break-before: always; }
+    }
+
+    /* ── En mode écran normal : zones cachées ── */
+    .print-zone   { display: none; }
+    .print-header { display: none; }
 
   </style>
 </head>
@@ -1374,7 +1681,7 @@
     <div class="sb-logo">
       <div class="sb-cross">✝</div>
       <h1>SNGC</h1>
-      <p>Paroisse Saint-Laurent de Yopougon Kouté </p>
+      <p>Paroisse Saint-Augustin</p>
     </div>
 
     <!--
@@ -1467,10 +1774,9 @@
 
         <!-- ══ PANNEAU ADMIN ══ -->
         <div id="dash-admin">
-          Chaque carte a un compteur animé (data-target = valeur finale)
-          et une sparkline (mini graphique tendance).
-          Cliquer dessus ouvre une modale de détail.
-        -->
+        <!-- Chaque carte a un compteur animé (data-target = valeur finale) -->
+        <!-- et une sparkline (mini graphique tendance). -->
+        <!-- Cliquer dessus ouvre une modale de détail. -->
         <div class="kpi-grid">
 
           <!-- KPI 1 : Catéchumènes — ouvre le drawer de liste complète -->
@@ -1866,7 +2172,7 @@
               <div class="ctrl-body">
                 <div class="ctrl-title">Catéchumènes</div>
                 <div class="ctrl-desc">Inscrits, dossiers, affectation classes</div>
-                <div class="ctrl-count"><span style="color:var(--gold-light);font-weight:700">342</span> inscrits</div>
+                <div class="ctrl-count"><span style="color:var(--gold);font-weight:700">342</span> inscrits</div>
               </div>
               <div class="ctrl-arrow">→</div>
             </div>
@@ -1877,7 +2183,7 @@
               <div class="ctrl-body">
                 <div class="ctrl-title">Notes &amp; Classes</div>
                 <div class="ctrl-desc">Saisie, verrouillage, délibérations</div>
-                <div class="ctrl-count"><span style="color:var(--purple-light);font-weight:700">24</span> classes actives</div>
+                <div class="ctrl-count"><span style="color:var(--purple);font-weight:700">24</span> classes actives</div>
               </div>
               <div class="ctrl-arrow">→</div>
             </div>
@@ -1921,45 +2227,12 @@
               <div class="ctrl-body">
                 <div class="ctrl-title">Configuration</div>
                 <div class="ctrl-desc">Comptes, classes, archives, logs</div>
-                <div class="ctrl-count"><span style="color:var(--gold-light);font-weight:700">38</span> catéchistes</div>
+                <div class="ctrl-count"><span style="color:var(--gold);font-weight:700">38</span> catéchistes</div>
               </div>
               <div class="ctrl-arrow">→</div>
             </div>
 
           </div><!-- /admin-ctrl-grid -->
-
-          <!-- Barre d'actions rapides (accès 1-clic aux fonctions les plus fréquentes) -->
-          <div style="margin-top:16px">
-            <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:1px;color:var(--txt-muted);text-transform:uppercase;margin-bottom:10px">
-              Actions rapides
-            </div>
-            <div class="quick-actions">
-              <button class="qa-btn" onclick="openModal('modal-nouveau-catechumene')">
-                <span>➕</span> Inscrire un catéchumène
-              </button>
-              <button class="qa-btn" onclick="openModal('modal-new-classe')">
-                <span>📚</span> Créer une classe
-              </button>
-              <button class="qa-btn" onclick="openModal('modal-valider-recl')">
-                <span>✝</span> Valider une réclamation
-              </button>
-              <button class="qa-btn" onclick="openModal('modal-bulletins')">
-                <span>🖨️</span> Imprimer les bulletins
-              </button>
-              <button class="qa-btn" onclick="openModal('modal-compte-cree')">
-                <span>👤</span> Créer un compte
-              </button>
-              <button class="qa-btn" onclick="openModal('modal-new-event')">
-                <span>📅</span> Planifier un événement
-              </button>
-              <button class="qa-btn qa-btn-danger" onclick="openModal('modal-cloture')">
-                <span>🔒</span> Clôturer l'année
-              </button>
-              <button class="qa-btn" onclick="openModal('modal-logs')">
-                <span>📜</span> Journal d'activité
-              </button>
-            </div>
-          </div>
 
         </div><!-- /panneau contrôle -->
 
@@ -2227,7 +2500,7 @@
                     <div style="font-size:11px;color:var(--txt-muted)">Recalés prov.</div>
                   </div>
                   <div>
-                    <div style="font-family:'Cinzel',serif;font-size:32px;color:var(--gold-light);font-weight:700">86%</div>
+                    <div style="font-family:'Cinzel',serif;font-size:32px;color:var(--gold);font-weight:700">86%</div>
                     <div style="font-size:11px;color:var(--txt-muted)">Taux classe</div>
                   </div>
                 </div>
@@ -2241,7 +2514,7 @@
                     <tr><td>Histoire de l'Église</td><td>12.8</td><td>13.1</td><td style="color:var(--emerald-light)">↑ +0.3</td></tr>
                   </tbody>
                 </table>
-                <button class="btn btn-o btn-sm btn-w" style="margin-top:12px" onclick="printPDF('Bulletins Ado-B')">🖨️ Imprimer les bulletins PDF</button>
+                <button class="btn btn-o btn-sm btn-w" style="margin-top:12px" onclick="openModal('modal-bulletins')">🖨️ Imprimer les bulletins</button>
               </div>
             </div>
 
@@ -2284,7 +2557,7 @@
                   <thead><tr><th>Nom</th><th>Moy.</th><th>Statut</th></tr></thead>
                   <tbody>
                     <tr><td>Kouassi M-C.</td><td style="color:var(--emerald-light)">14.5</td><td><span class="b bg" style="font-size:10px">Admise</span></td></tr>
-                    <tr><td>Traoré E.</td><td style="color:var(--gold-light)">11.2</td><td><span class="b bo" style="font-size:10px">Attente</span></td></tr>
+                    <tr><td>Traoré E.</td><td style="color:var(--gold)">11.2</td><td><span class="b bo" style="font-size:10px">Attente</span></td></tr>
                     <tr><td>Bamba A.</td><td style="color:var(--emerald-light)">15.0</td><td><span class="b bg" style="font-size:10px">Admise</span></td></tr>
                     <tr><td>Coulibaly J-B.</td><td style="color:var(--crimson-light)">7.4</td><td><span class="b br" style="font-size:10px">Recalé</span></td></tr>
                     <tr><td colspan="3" style="color:var(--txt-muted);font-size:12px;font-style:italic">… 17 autres élèves</td></tr>
@@ -2325,22 +2598,24 @@
 
       <!-- ╔══════════════════════════════════════════════════════╗
            ║  PAGE 2 : CATÉCHUMÈNES                              ║
+           ║  Admin : liste globale avec filtres + actions        ║
+           ║  Catéchiste : uniquement sa classe Ado-B            ║
            ╚══════════════════════════════════════════════════════╝ -->
       <div class="page" id="page-catechumenes">
         <div class="sh">
-          <h2>Gestion des Catéchumènes</h2>
-          <p>342 inscrits · Suivi individuel et collectif</p>
+          <h2 id="cats-page-title">Gestion des Catéchumènes</h2>
+          <p id="cats-page-sub">342 inscrits · Suivi individuel et collectif</p>
         </div>
         <div class="card">
           <div class="ch">
-            <div class="ct">Liste Globale</div>
-            <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <div class="ct" id="cats-card-title">Liste Globale</div>
+            <div id="cats-admin-actions" style="display:flex;gap:8px;flex-wrap:wrap">
               <button class="btn btn-o btn-sm" onclick="openModal('modal-export')">📄 Exporter</button>
               <button class="btn btn-g btn-sm" onclick="openModal('modal-nouveau-catechumene')">+ Nouveau</button>
             </div>
           </div>
-          <!-- Filtres -->
-          <div style="padding:10px 16px;border-bottom:1px solid var(--border);display:flex;gap:8px;flex-wrap:wrap">
+          <!-- Filtres visibles seulement pour admin/aumônier -->
+          <div id="cats-filters" style="padding:10px 16px;border-bottom:1px solid var(--border);display:flex;gap:8px;flex-wrap:wrap">
             <select class="fc" style="width:auto">
               <option>Toutes sections</option><option>Enfants</option><option>Adolescents</option><option>Jeunes</option><option>Adultes</option>
             </select>
@@ -2351,17 +2626,36 @@
               <option>Tous statuts</option><option>Admis</option><option>Recalé</option><option>En cours</option>
             </select>
           </div>
-          <div class="tw">
+          <!-- Tableau global (admin/aumônier) -->
+          <div id="cats-table-admin" class="tw">
             <table>
               <thead>
                 <tr><th>#</th><th>Nom complet</th><th>Section</th><th>Niveau</th><th>Classe</th><th>Moyenne</th><th>Statut</th><th>Sacrement</th><th>Action</th></tr>
               </thead>
               <tbody>
-                <tr><td style="color:var(--txt-muted)">001</td><td><strong>Kouassi Marie-Claire</strong></td><td>Adolescents</td><td>2ème année</td><td>Ado-B</td><td style="color:var(--emerald-light);font-weight:600">14.5/20</td><td><span class="b bg">Admise</span></td><td><span class="b bb">Confirmation</span></td><td><button class="btn btn-o btn-sm" onclick="openDrawer('drawer-catechumene')">Dossier</button></td></tr>
-                <tr><td style="color:var(--txt-muted)">002</td><td><strong>Traoré Emmanuel</strong></td><td>Jeunes</td><td>1ère année</td><td>Jeunes-A</td><td style="color:var(--gold-light);font-weight:600">11.2/20</td><td><span class="b bo">En attente</span></td><td><span class="b bo">Baptême</span></td><td><button class="btn btn-o btn-sm" onclick="openDrawer('drawer-catechumene2')">Dossier</button></td></tr>
-                <tr><td style="color:var(--txt-muted)">003</td><td><strong>Diallo Fatou</strong></td><td>Enfants</td><td>3ème année</td><td>Enfants-C</td><td style="color:var(--emerald-light);font-weight:600">16.8/20</td><td><span class="b bg">Admise</span></td><td><span class="b bb">Confirmation</span></td><td><button class="btn btn-o btn-sm" onclick="openDrawer('drawer-catechumene')">Dossier</button></td></tr>
-                <tr><td style="color:var(--txt-muted)">004</td><td><strong>Coulibaly Jean-Baptiste</strong></td><td>Adultes</td><td>1ère année</td><td>Adultes-A</td><td style="color:var(--crimson-light);font-weight:600">7.4/20</td><td><span class="b br">Recalé</span></td><td><span class="b bo">Baptême</span></td><td><button class="btn btn-o btn-sm" onclick="openDrawer('drawer-catechumene2')">Dossier</button></td></tr>
-                <tr><td style="color:var(--txt-muted)">005</td><td><strong>Bamba Awa</strong></td><td>Adolescents</td><td>2ème année</td><td>Ado-A</td><td style="color:var(--emerald-light);font-weight:600">15.0/20</td><td><span class="b bg">Admise</span></td><td><span class="b bb">Confirmation</span></td><td><button class="btn btn-o btn-sm" onclick="openDrawer('drawer-catechumene')">Dossier</button></td></tr>
+                <tr><td style="color:var(--txt-muted)">001</td><td><strong>Kouassi Marie-Claire</strong></td><td>Adolescents</td><td>2ème année</td><td>Ado-B</td><td style="color:var(--emerald);font-weight:600">14.5/20</td><td><span class="b bg">Admise</span></td><td><span class="b bb">Confirmation</span></td><td><button class="btn btn-o btn-sm" onclick="openDrawer('drawer-catechumene')">Dossier</button></td></tr>
+                <tr><td style="color:var(--txt-muted)">002</td><td><strong>Traoré Emmanuel</strong></td><td>Jeunes</td><td>1ère année</td><td>Jeunes-A</td><td style="color:var(--gold);font-weight:600">11.2/20</td><td><span class="b bo">En attente</span></td><td><span class="b bo">Baptême</span></td><td><button class="btn btn-o btn-sm" onclick="openDrawer('drawer-catechumene2')">Dossier</button></td></tr>
+                <tr><td style="color:var(--txt-muted)">003</td><td><strong>Diallo Fatou</strong></td><td>Enfants</td><td>3ème année</td><td>Enfants-C</td><td style="color:var(--emerald);font-weight:600">16.8/20</td><td><span class="b bg">Admise</span></td><td><span class="b bb">Confirmation</span></td><td><button class="btn btn-o btn-sm" onclick="openDrawer('drawer-catechumene')">Dossier</button></td></tr>
+                <tr><td style="color:var(--txt-muted)">004</td><td><strong>Coulibaly Jean-Baptiste</strong></td><td>Adultes</td><td>1ère année</td><td>Adultes-A</td><td style="color:var(--crimson);font-weight:600">7.4/20</td><td><span class="b br">Recalé</span></td><td><span class="b bo">Baptême</span></td><td><button class="btn btn-o btn-sm" onclick="openDrawer('drawer-catechumene2')">Dossier</button></td></tr>
+                <tr><td style="color:var(--txt-muted)">005</td><td><strong>Bamba Awa</strong></td><td>Adolescents</td><td>2ème année</td><td>Ado-A</td><td style="color:var(--emerald);font-weight:600">15.0/20</td><td><span class="b bg">Admise</span></td><td><span class="b bb">Confirmation</span></td><td><button class="btn btn-o btn-sm" onclick="openDrawer('drawer-catechumene')">Dossier</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- Tableau Ado-B uniquement (catéchiste) -->
+          <div id="cats-table-catechiste" style="display:none" class="tw">
+            <div style="padding:10px 16px;background:var(--gold-pale);border-bottom:1px solid var(--border);font-size:12px;color:var(--gold);font-family:'Cinzel',serif;letter-spacing:0.5px">
+              📚 Affichage limité à votre classe : Ado-B · Adolescents · 2ème année
+            </div>
+            <table>
+              <thead>
+                <tr><th>#</th><th>Nom complet</th><th>Niveau</th><th>Moyenne T2</th><th>Statut</th><th>Sacrement cible</th><th>Action</th></tr>
+              </thead>
+              <tbody>
+                <tr><td style="color:var(--txt-muted)">001</td><td><strong>Kouassi Marie-Claire</strong></td><td>2ème année</td><td style="color:var(--emerald);font-weight:600">14.5/20</td><td><span class="b bg">Admise</span></td><td><span class="b bb">Confirmation</span></td><td><button class="btn btn-o btn-sm" onclick="openDrawer('drawer-catechumene')">Dossier</button></td></tr>
+                <tr><td style="color:var(--txt-muted)">002</td><td><strong>Traoré Emmanuel</strong></td><td>2ème année</td><td style="color:var(--gold);font-weight:600">11.2/20</td><td><span class="b bo">En attente</span></td><td><span class="b bo">Baptême</span></td><td><button class="btn btn-o btn-sm" onclick="openDrawer('drawer-catechumene2')">Dossier</button></td></tr>
+                <tr><td style="color:var(--txt-muted)">003</td><td><strong>Bamba Awa</strong></td><td>2ème année</td><td style="color:var(--emerald);font-weight:600">15.0/20</td><td><span class="b bg">Admise</span></td><td><span class="b bb">Confirmation</span></td><td><button class="btn btn-o btn-sm" onclick="openDrawer('drawer-catechumene')">Dossier</button></td></tr>
+                <tr><td style="color:var(--txt-muted)">004</td><td><strong>Coulibaly Jean-Baptiste</strong></td><td>2ème année</td><td style="color:var(--crimson);font-weight:600">7.4/20</td><td><span class="b br">Recalé</span></td><td><span class="b bo">Baptême</span></td><td><button class="btn btn-o btn-sm" onclick="openDrawer('drawer-catechumene2')">Dossier</button></td></tr>
+                <tr><td colspan="7" style="color:var(--txt-muted);font-size:12px;font-style:italic;text-align:center;padding:10px">… 17 autres élèves de la classe Ado-B</td></tr>
               </tbody>
             </table>
           </div>
@@ -2429,7 +2723,7 @@
                   <div style="font-size:11px;color:var(--txt-muted)">Recalés</div>
                 </div>
                 <div style="text-align:center">
-                  <div style="font-family:'Cinzel',serif;font-size:30px;color:var(--gold-light);font-weight:700">13.4</div>
+                  <div style="font-family:'Cinzel',serif;font-size:30px;color:var(--gold);font-weight:700">13.4</div>
                   <div style="font-size:11px;color:var(--txt-muted)">Moy. classe</div>
                 </div>
               </div>
@@ -2457,7 +2751,7 @@
                   <p>18 admis / 21 élèves<br>Moy. classe : 13.4/20</p>
                 </div>
               </div>
-              <button class="btn btn-o btn-sm btn-w" style="margin-top:14px" onclick="printPDF('Bulletins de notes')">🖨️ Générer les bulletins PDF</button>
+              <button class="btn btn-o btn-sm btn-w" style="margin-top:14px" onclick="openModal('modal-bulletins')">🖨️ Générer les bulletins</button>
             </div>
           </div>
         </div>
@@ -2592,7 +2886,7 @@
             <div class="cb">
               <p style="font-size:13.5px;color:var(--txt-muted);margin-bottom:14px;line-height:1.6;font-style:italic">La clôture verrouille toutes les données, génère une archive et prépare la transition vers la nouvelle année.</p>
               <div class="info-box info">
-                <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold-light);margin-bottom:4px">ÉTAT ACTUEL</div>
+                <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold);margin-bottom:4px">ÉTAT ACTUEL</div>
                 Année Pastorale <strong>2024–2025</strong><br>
                 <span style="font-size:12px;color:var(--txt-muted)">Délibérations : <span class="b bo">En cours</span></span>
               </div>
@@ -2611,20 +2905,20 @@
            ╚══════════════════════════════════════════════════════╝ -->
       <div class="page" id="page-profil">
         <div class="sh">
-          <h2>Mon Dossier Personnel</h2>
-          <p>Informations, sacrements reçus et suivi académique</p>
+          <h2>Mon Profil</h2>
+          <p>Informations personnelles et sacrements — consultation uniquement</p>
         </div>
         <div class="g2">
           <div class="card">
             <div class="ch">
               <div class="ct">Informations Personnelles</div>
-              <button class="btn btn-o btn-sm" onclick="openModal('modal-edit-profil')">✏️ Modifier</button>
+              <!-- Catéchumène : consultation uniquement, pas de modification -->
             </div>
             <div class="cb">
               <div class="profile-hero">
                 <div class="profile-av">MK</div>
                 <div class="profile-info">
-                  <h3>Marie-Claire Kouassi</h3>
+                  <h3 style="color:var(--blue)">Marie-Claire Kouassi</h3>
                   <p>Catéchumène · Ado-B · 2ème année</p>
                 </div>
               </div>
@@ -2646,34 +2940,280 @@
             </div>
           </div>
           <div class="card">
-            <div class="ch">
-              <div class="ct">Suivi Académique</div>
-              <button class="btn btn-o btn-sm" onclick="openModal('modal-historique-notes')">Historique</button>
-            </div>
+            <div class="ch"><div class="ct">Accès Rapide</div></div>
             <div class="cb">
-              <div style="text-align:center;margin-bottom:16px">
-                <div style="font-family:'Cinzel',serif;font-size:52px;color:var(--gold-light);font-weight:700;line-height:1;text-shadow:0 0 30px rgba(212,175,55,0.3)">14.5</div>
-                <div style="font-size:13px;color:var(--txt-muted);font-style:italic">/20 · Moyenne Générale 2ème Trimestre</div>
-                <span class="b bg" style="margin-top:8px;display:inline-block">✓ Admise en classe supérieure</span>
+              <p style="font-size:13.5px;color:var(--txt-muted);font-style:italic;margin-bottom:16px">
+                Consultez vos notes et résultats depuis le menu dédié.
+              </p>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <button class="btn btn-g btn-w" onclick="goTo('suivi-notes-eleve')">
+                  📊 Mon Suivi &amp; Notes →
+                </button>
+                <button class="btn btn-o btn-w" onclick="openModal('modal-historique-notes')">
+                  📚 Historique des années
+                </button>
+                <button class="btn btn-o btn-w" onclick="openModal('modal-bulletins')">
+                  🖨️ Mon bulletin
+                </button>
               </div>
-              <div class="orn">✦</div>
-              <table style="margin-top:12px">
-                <thead><tr><th>Matière</th><th>T1</th><th>T2</th><th>Moy.</th></tr></thead>
-                <tbody>
-                  <tr><td>Écriture Sainte</td><td>13</td><td>15</td><td><strong style="color:var(--emerald-light)">14.0</strong></td></tr>
-                  <tr><td>Liturgie</td><td>15</td><td>16</td><td><strong style="color:var(--emerald-light)">15.5</strong></td></tr>
-                  <tr><td>Morale Chrétienne</td><td>12</td><td>14</td><td><strong style="color:var(--gold-light)">13.0</strong></td></tr>
-                  <tr><td>Histoire de l'Église</td><td>14</td><td>15</td><td><strong style="color:var(--emerald-light)">14.5</strong></td></tr>
-                </tbody>
-              </table>
-              <div style="display:flex;gap:9px;margin-top:14px">
-                <button class="btn btn-o btn-sm" onclick="openModal('modal-reclamation-eleve')">📋 Réclamation</button>
-                <button class="btn btn-o btn-sm" onclick="printPDF('Mon bulletin de notes')">🖨️ Mon bulletin PDF</button>
+              <div style="margin-top:16px;padding:12px;background:var(--gold-pale);border:1px solid var(--border);border-radius:var(--radius-sm)">
+                <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold);margin-bottom:6px">STATUT ACTUEL</div>
+                <div style="font-size:13px;color:var(--txt)">Année : <strong>2024–2025</strong> · Niveau : <strong>2ème année</strong></div>
+                <div style="margin-top:5px"><span class="b bg">✓ Admise en classe supérieure</span></div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+
+      <!-- ╔══════════════════════════════════════════════════════╗
+           ║  PAGE : MON SUIVI & NOTES (Catéchumène)             ║
+           ║  Contient le Suivi Académique + demande réclamation  ║
+           ╚══════════════════════════════════════════════════════╝ -->
+      <div class="page" id="page-suivi-notes-eleve">
+        <div class="sh">
+          <h2>Mon Suivi &amp; Notes</h2>
+          <p>Consultation de vos résultats — Année Pastorale 2024–2025</p>
+        </div>
+
+        <!-- Moyenne générale (grande stat) -->
+        <div class="g2" style="margin-bottom:0">
+          <div class="card">
+            <div class="ch">
+              <div class="ct">Suivi Académique — 2ème Trimestre</div>
+              <button class="btn btn-o btn-sm" onclick="openModal('modal-historique-notes')">📚 Historique</button>
+            </div>
+            <div class="cb">
+              <!-- Grande moyenne -->
+              <div style="text-align:center;padding:16px 0 20px">
+                <div style="font-family:'Cinzel',serif;font-size:56px;color:var(--gold);font-weight:700;line-height:1">14.5</div>
+                <div style="font-size:13px;color:var(--txt-muted);font-style:italic;margin-top:4px">/20 — Moyenne Générale · 2ème Trimestre</div>
+                <span class="b bg" style="margin-top:10px;display:inline-block">✓ Admise en classe supérieure</span>
+              </div>
+              <div class="orn">✦ ✦ ✦</div>
+              <!-- Notes par matière -->
+              <table style="margin-top:14px">
+                <thead>
+                  <tr><th>Matière</th><th>T1</th><th>T2</th><th>Moyenne</th><th>Statut</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Écriture Sainte</td><td>13</td><td>15</td>
+                    <td><strong style="color:var(--emerald)">14.0</strong></td>
+                    <td><span class="b bg">Admis</span></td>
+                  </tr>
+                  <tr>
+                    <td>Liturgie</td><td>15</td><td>16</td>
+                    <td><strong style="color:var(--emerald)">15.5</strong></td>
+                    <td><span class="b bg">Admis</span></td>
+                  </tr>
+                  <tr>
+                    <td>Morale Chrétienne</td><td>12</td><td>14</td>
+                    <td><strong style="color:var(--gold)">13.0</strong></td>
+                    <td><span class="b bg">Admis</span></td>
+                  </tr>
+                  <tr>
+                    <td>Histoire de l'Église</td><td>14</td><td>15</td>
+                    <td><strong style="color:var(--emerald)">14.5</strong></td>
+                    <td><span class="b bg">Admis</span></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div style="margin-top:14px">
+                <button class="btn btn-o btn-sm" onclick="openModal('modal-bulletins')">🖨️ Télécharger mon bulletin</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Progression + Réclamation -->
+          <div style="display:flex;flex-direction:column;gap:18px">
+
+            <!-- Progression par matière -->
+            <div class="card">
+              <div class="ch"><div class="ct">Progression T1 → T2</div></div>
+              <div class="cb">
+                <div class="pr"><div class="pr-lbl">Écriture Sainte</div><div class="pr-bw"><div class="pr-b" style="width:70%"></div></div><div class="pr-pct">14.0</div></div>
+                <div class="pr"><div class="pr-lbl">Liturgie</div><div class="pr-bw"><div class="pr-b" style="width:77%"></div></div><div class="pr-pct">15.5</div></div>
+                <div class="pr"><div class="pr-lbl">Morale Chrétienne</div><div class="pr-bw"><div class="pr-b" style="width:65%"></div></div><div class="pr-pct">13.0</div></div>
+                <div class="pr"><div class="pr-lbl">Histoire de l'Église</div><div class="pr-bw"><div class="pr-b" style="width:72%"></div></div><div class="pr-pct">14.5</div></div>
+              </div>
+            </div>
+
+            <!-- Demande de réclamation (seule action autorisée) -->
+            <div class="card">
+              <div class="ch">
+                <div class="ct">Demande de Réclamation</div>
+              </div>
+              <div class="cb">
+                <p style="font-size:13px;color:var(--txt-muted);font-style:italic;margin-bottom:14px;line-height:1.5">
+                  Si vous pensez qu'une de vos notes est incorrecte, vous pouvez soumettre une demande de correction. Elle sera transmise à votre catéchiste.
+                </p>
+                <div class="fg">
+                  <label class="fl">Matière concernée</label>
+                  <select class="fc">
+                    <option>Écriture Sainte (14.0/20)</option>
+                    <option>Liturgie (15.5/20)</option>
+                    <option>Morale Chrétienne (13.0/20)</option>
+                    <option>Histoire de l'Église (14.5/20)</option>
+                  </select>
+                </div>
+                <div class="fg">
+                  <label class="fl">Note attendue selon vous</label>
+                  <input class="fc" type="number" placeholder="ex: 16" min="0" max="20">
+                </div>
+                <div class="fg">
+                  <label class="fl">Motif de la demande</label>
+                  <textarea class="fc" rows="3" placeholder="Expliquez pourquoi vous contestez cette note…"></textarea>
+                </div>
+                <button class="btn btn-g btn-w" onclick="openModal('modal-confirm-recl')">📬 Soumettre la demande</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div><!-- /page-suivi-notes-eleve -->
+
+
+      <!-- ╔══════════════════════════════════════════════════════╗
+           ║  PAGE : CATÉCHISTES & AFFECTATIONS (Aumônier)       ║
+           ╚══════════════════════════════════════════════════════╝ -->
+      <div class="page" id="page-catechistes-au">
+        <div class="sh">
+          <h2>Catéchistes &amp; Affectations</h2>
+          <p>Supervision des catéchistes · Gestion des affectations de classes</p>
+        </div>
+
+        <div class="g2">
+
+          <!-- Liste des catéchistes -->
+          <div class="card">
+            <div class="ch">
+              <div class="ct">Liste des Catéchistes</div>
+              <span class="b bg">38 actifs</span>
+            </div>
+            <div class="tw">
+              <table>
+                <thead>
+                  <tr><th>Nom</th><th>Section</th><th>Classe affectée</th><th>Effectif</th><th>Notes T2</th><th>Action</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Koffi Jean</strong></td>
+                    <td>Adolescents</td>
+                    <td><span class="b bo">Ado-A</span></td>
+                    <td>21</td>
+                    <td><span class="b bg">Saisies</span></td>
+                    <td><button class="btn btn-o btn-sm" onclick="openModal('modal-affecter-catechiste')">Réaffecter</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bamba Kader</strong></td>
+                    <td>Adolescents</td>
+                    <td><span class="b bo">Ado-B</span></td>
+                    <td>19</td>
+                    <td><span class="b bo">En cours</span></td>
+                    <td><button class="btn btn-o btn-sm" onclick="openModal('modal-affecter-catechiste')">Réaffecter</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>N'Goran Pierre</strong></td>
+                    <td>Jeunes</td>
+                    <td><span class="b bo">Jeunes-A</span></td>
+                    <td>17</td>
+                    <td><span class="b bg">Saisies</span></td>
+                    <td><button class="btn btn-o btn-sm" onclick="openModal('modal-affecter-catechiste')">Réaffecter</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Traoré Marie</strong></td>
+                    <td>Adultes</td>
+                    <td><span class="b bo">Adultes-A</span></td>
+                    <td>14</td>
+                    <td><span class="b br">Non saisies</span></td>
+                    <td><button class="btn btn-o btn-sm" onclick="openModal('modal-affecter-catechiste')">Réaffecter</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Koné Adjoua</strong></td>
+                    <td>Enfants</td>
+                    <td><span class="b bo">Enfants-A</span></td>
+                    <td>22</td>
+                    <td><span class="b bg">Saisies</span></td>
+                    <td><button class="btn btn-o btn-sm" onclick="openModal('modal-affecter-catechiste')">Réaffecter</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Diomandé Céline</strong></td>
+                    <td>Enfants</td>
+                    <td><span class="b bx">Non affectée</span></td>
+                    <td>—</td>
+                    <td><span class="b bx">—</span></td>
+                    <td><button class="btn btn-g btn-sm" onclick="openModal('modal-affecter-catechiste')">Affecter</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Panneau d'affectation rapide -->
+          <div style="display:flex;flex-direction:column;gap:18px">
+
+            <div class="card">
+              <div class="ch"><div class="ct">Affecter une Classe</div></div>
+              <div class="cb">
+                <p style="font-size:13px;color:var(--txt-muted);font-style:italic;margin-bottom:14px;line-height:1.5">
+                  Assigner un catéchiste à une classe ou modifier une affectation existante.
+                </p>
+                <div class="fg">
+                  <label class="fl">Catéchiste</label>
+                  <select class="fc">
+                    <option>Koffi Jean</option>
+                    <option>Bamba Kader</option>
+                    <option>N'Goran Pierre</option>
+                    <option>Traoré Marie</option>
+                    <option>Koné Adjoua</option>
+                    <option>Diomandé Céline</option>
+                  </select>
+                </div>
+                <div class="fg">
+                  <label class="fl">Classe à affecter</label>
+                  <select class="fc">
+                    <option>Ado-A — Adolescents 2ème année</option>
+                    <option>Ado-B — Adolescents 2ème année</option>
+                    <option>Jeunes-A — Jeunes 1ère année</option>
+                    <option>Adultes-A — Adultes 1ère année</option>
+                    <option>Enfants-A — Enfants 1ère année</option>
+                    <option>Enfants-B — Enfants 1ère année</option>
+                  </select>
+                </div>
+                <div class="fg">
+                  <label class="fl">Date de prise d'effet</label>
+                  <input class="fc" type="date">
+                </div>
+                <div class="fg">
+                  <label class="fl">Note / Motif (optionnel)</label>
+                  <input class="fc" type="text" placeholder="ex: Remplacement temporaire">
+                </div>
+                <button class="btn btn-g btn-w" onclick="toast('✅','Affectation enregistrée avec succès')">
+                  ✓ Valider l'affectation
+                </button>
+              </div>
+            </div>
+
+            <!-- Résumé classes sans catéchiste -->
+            <div class="card">
+              <div class="ch"><div class="ct">Classes sans Catéchiste</div><span class="b br">1 non couverte</span></div>
+              <div class="cb">
+                <div style="background:var(--crimson-dim);border:1px solid rgba(139,26,26,0.2);border-radius:var(--radius-sm);padding:12px;margin-bottom:10px">
+                  <div style="font-size:13px;font-weight:500;color:var(--crimson)">⚠ Enfants-B · 20 élèves</div>
+                  <div style="font-size:12px;color:var(--txt-muted);margin-top:3px">Aucun catéchiste assigné pour ce groupe</div>
+                  <button class="btn btn-d btn-sm" style="margin-top:8px" onclick="openModal('modal-affecter-catechiste')">Affecter maintenant</button>
+                </div>
+                <div style="background:var(--emerald-dim);border:1px solid rgba(45,106,79,0.2);border-radius:var(--radius-sm);padding:12px">
+                  <div style="font-size:12px;color:var(--emerald);font-weight:500">✓ 23 autres classes correctement couvertes</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div><!-- /page-catechistes-au -->
 
 
       <!-- ╔══════════════════════════════════════════════════════╗
@@ -2714,7 +3254,7 @@
               <div class="fg">
                 <label class="fl">Mot de passe généré</label>
                 <div style="display:flex;gap:7px">
-                  <input class="fc" id="pwInput" type="text" value="SNGC-2025-xK9m" readonly style="font-family:monospace;font-size:12px;color:var(--gold-light)">
+                  <input class="fc" id="pwInput" type="text" value="SNGC-2025-xK9m" readonly style="font-family:monospace;font-size:12px;color:var(--gold)">
                   <button class="btn btn-o" onclick="genPw()" style="white-space:nowrap">↺ Générer</button>
                 </div>
               </div>
@@ -2759,7 +3299,7 @@
     <div class="modal">
       <div class="mh"><div class="mh-title">Mon Compte</div><button class="close-btn" onclick="closeModal('modal-profil-user')">✕</button></div>
       <div class="mb-body">
-        <div class="profile-hero"><div class="profile-av">JP</div><div class="profile-info"><h3>Jean-Paul Admin</h3><p>Administrateur · Curé de la Paroisse Saint-Laurent de Yopougon Kouté </p></div></div>
+        <div class="profile-hero"><div class="profile-av">JP</div><div class="profile-info"><h3>Jean-Paul Admin</h3><p>Administrateur · Curé de la Paroisse Saint-Augustin</p></div></div>
         <div class="orn">✦ ✦ ✦</div>
         <div class="fg"><label class="fl">Identifiant de connexion</label><input class="fc" value="jeanpaul.admin" readonly></div>
         <div class="fg"><label class="fl">Nouveau mot de passe</label><input class="fc" type="password" placeholder="••••••••"></div>
@@ -2782,12 +3322,12 @@
           <tbody>
             <tr><td><strong>Enfants-A</strong></td><td>Enfants</td><td>1ère année</td><td>Koné A.</td><td>22</td><td style="color:var(--emerald-light)">14.1</td></tr>
             <tr><td><strong>Ado-A</strong></td><td>Adolescents</td><td>2ème année</td><td>Koffi J.</td><td>21</td><td style="color:var(--emerald-light)">14.6</td></tr>
-            <tr><td><strong>Ado-B</strong></td><td>Adolescents</td><td>2ème année</td><td>Bamba K.</td><td>19</td><td style="color:var(--gold-light)">13.4</td></tr>
-            <tr><td><strong>Jeunes-A</strong></td><td>Jeunes</td><td>1ère année</td><td>N'Goran P.</td><td>17</td><td style="color:var(--gold-light)">12.9</td></tr>
+            <tr><td><strong>Ado-B</strong></td><td>Adolescents</td><td>2ème année</td><td>Bamba K.</td><td>19</td><td style="color:var(--gold)">13.4</td></tr>
+            <tr><td><strong>Jeunes-A</strong></td><td>Jeunes</td><td>1ère année</td><td>N'Goran P.</td><td>17</td><td style="color:var(--gold)">12.9</td></tr>
             <tr><td><strong>Adultes-A</strong></td><td>Adultes</td><td>1ère année</td><td>Traoré M.</td><td>14</td><td style="color:var(--crimson-light)">10.2</td></tr>
           </tbody>
         </table></div>
-        <p style="font-size:12px;color:var(--txt-muted);margin-top:10px;font-style:italic">Affichage 5/24. <span style="color:var(--gold-light);cursor:pointer" onclick="goTo('config');closeModal('modal-classes')">Voir tout dans Configuration →</span></p>
+        <p style="font-size:12px;color:var(--txt-muted);margin-top:10px;font-style:italic">Affichage 5/24. <span style="color:var(--gold);cursor:pointer" onclick="goTo('config');closeModal('modal-classes')">Voir tout dans Configuration →</span></p>
       </div>
     </div>
   </div>
@@ -2821,13 +3361,13 @@
           <thead><tr><th>#</th><th>Nom complet</th><th>Section</th><th>Classe</th><th>Moyenne</th><th>Parrain/Marraine</th></tr></thead>
           <tbody>
             <tr><td style="color:var(--txt-muted)">001</td><td><strong>Traoré Emmanuel</strong></td><td>Jeunes</td><td>Jeunes-A</td><td style="color:var(--emerald-light)">11.2</td><td>M. Coulibaly R.</td></tr>
-            <tr><td style="color:var(--txt-muted)">002</td><td><strong>Coulibaly Jean-Baptiste</strong></td><td>Adultes</td><td>Adultes-A</td><td style="color:var(--gold-light)">—</td><td>Mme Koné A.</td></tr>
+            <tr><td style="color:var(--txt-muted)">002</td><td><strong>Coulibaly Jean-Baptiste</strong></td><td>Adultes</td><td>Adultes-A</td><td style="color:var(--gold)">—</td><td>Mme Koné A.</td></tr>
             <tr><td style="color:var(--txt-muted)">003</td><td><strong>Yao Célestine</strong></td><td>Jeunes</td><td>Jeunes-B</td><td style="color:var(--emerald-light)">13.5</td><td>M. Yao K.</td></tr>
           </tbody>
         </table></div>
         <p style="font-size:12px;color:var(--txt-muted);margin-top:8px;font-style:italic">… et 64 autres candidats</p>
         <div style="display:flex;gap:9px;margin-top:14px">
-          <button class="btn btn-g" onclick="printPDF('Liste des candidats au Baptême')">📄 Exporter PDF</button>
+          <button class="btn btn-g" onclick="closeModal('modal-bapteme');printDoc('print-bapteme')">📄 Imprimer / PDF</button>
           <button class="btn btn-o" onclick="closeModal('modal-bapteme')">Fermer</button>
         </div>
       </div>
@@ -2849,7 +3389,7 @@
           </tbody>
         </table></div>
         <div style="display:flex;gap:9px;margin-top:14px">
-          <button class="btn btn-g" onclick="printPDF('Liste des candidats à la Confirmation')">📄 Exporter PDF</button>
+          <button class="btn btn-g" onclick="closeModal('modal-confirmation');printDoc('print-confirmation')">📄 Imprimer / PDF</button>
           <button class="btn btn-o" onclick="closeModal('modal-confirmation')">Fermer</button>
         </div>
       </div>
@@ -2865,10 +3405,10 @@
           <thead><tr><th>Section</th><th>Inscrits</th><th>Admis</th><th>Recalés</th><th>Taux</th></tr></thead>
           <tbody>
             <tr><td>Enfants</td><td>98</td><td>71</td><td>27</td><td style="color:var(--emerald-light)">72%</td></tr>
-            <tr><td>Adolescents</td><td>112</td><td>65</td><td>47</td><td style="color:var(--gold-light)">58%</td></tr>
+            <tr><td>Adolescents</td><td>112</td><td>65</td><td>47</td><td style="color:var(--gold)">58%</td></tr>
             <tr><td>Jeunes</td><td>87</td><td>37</td><td>50</td><td style="color:var(--crimson-light)">43%</td></tr>
             <tr><td>Adultes</td><td>45</td><td>14</td><td>31</td><td style="color:var(--crimson-light)">31%</td></tr>
-            <tr style="border-top:1px solid var(--border)"><td><strong>Total</strong></td><td><strong>342</strong></td><td><strong>187</strong></td><td><strong>155</strong></td><td><strong style="color:var(--gold-light)">55%</strong></td></tr>
+            <tr style="border-top:1px solid var(--border)"><td><strong>Total</strong></td><td><strong>342</strong></td><td><strong>187</strong></td><td><strong>155</strong></td><td><strong style="color:var(--gold)">55%</strong></td></tr>
           </tbody>
         </table>
       </div>
@@ -2881,7 +3421,7 @@
       <div class="mh"><div class="mh-title">Détail de la Réclamation</div><button class="close-btn" onclick="closeModal('modal-claim-detail')">✕</button></div>
       <div class="mb-body">
         <div class="info-box info">
-          <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold-light);margin-bottom:8px">RÉCLAMATION #RC-2025-004</div>
+          <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold);margin-bottom:8px">RÉCLAMATION #RC-2025-004</div>
           <table style="font-size:13px">
             <tr><td style="color:var(--txt-muted);padding:3px 0;width:120px">Catéchumène</td><td><strong>Kouassi Marie-Claire</strong></td></tr>
             <tr><td style="color:var(--txt-muted);padding:3px 0">Matière</td><td>Écriture Sainte · T2</td></tr>
@@ -2950,7 +3490,7 @@
             <tr><td style="color:var(--txt-muted);padding:3px 0">Date</td><td>15 Mars 2025 · 14h32</td></tr>
           </table>
         </div>
-        <button class="btn btn-o btn-w" onclick="printPDF('Dossier archivé - Réclamation');closeModal('modal-archive')">📄 Imprimer le document PDF</button>
+        <button class="btn btn-o btn-w" onclick="closeModal('modal-archive');printDoc('print-bulletin')">📄 Imprimer le document / PDF</button>
       </div>
     </div>
   </div>
@@ -2997,7 +3537,7 @@
         <table>
           <thead><tr><th>Année</th><th>Niveau</th><th>Écriture</th><th>Liturgie</th><th>Morale</th><th>Moy.</th><th>Résultat</th></tr></thead>
           <tbody>
-            <tr><td>2022–2023</td><td>1ère année</td><td>12</td><td>13</td><td>11</td><td style="color:var(--gold-light)">12.0</td><td><span class="b bg">Admise</span></td></tr>
+            <tr><td>2022–2023</td><td>1ère année</td><td>12</td><td>13</td><td>11</td><td style="color:var(--gold)">12.0</td><td><span class="b bg">Admise</span></td></tr>
             <tr><td>2023–2024</td><td>2ème année</td><td>13</td><td>14</td><td>13</td><td style="color:var(--emerald-light)">13.3</td><td><span class="b bg">Admise</span></td></tr>
             <tr><td>2024–2025</td><td>3ème année</td><td>14.5</td><td>15.5</td><td>13.0</td><td style="color:var(--emerald-light)">14.5</td><td><span class="b bg">Admise</span></td></tr>
           </tbody>
@@ -3034,7 +3574,7 @@
         <div class="fg"><label class="fl">Trimestre</label><select class="fc"><option>1er Trimestre</option><option selected>2ème Trimestre</option><option>Bulletin annuel</option></select></div>
         <div class="fg"><label class="fl">Format</label><select class="fc"><option>PDF A4</option><option>PDF A5</option><option>Impression directe</option></select></div>
         <div class="info-box info" style="margin-bottom:14px">📄 <strong>342 bulletins</strong> seront générés · ~8.4 Mo</div>
-        <button class="btn btn-g btn-w" onclick="printPDF('Bulletins de notes SNGC');closeModal('modal-bulletins')">🖨️ Imprimer les bulletins PDF</button>
+        <button class="btn btn-g btn-w" onclick="closeModal('modal-bulletins');printDoc('print-bulletin')">🖨️ Imprimer / Enregistrer PDF</button>
       </div>
     </div>
   </div>
@@ -3046,7 +3586,7 @@
       <div class="mb-body">
         <div class="fg"><label class="fl">Type de liste</label><select class="fc"><option>Liste globale</option><option>Par section</option><option>Par classe</option><option>Admis</option><option>Recalés</option></select></div>
         <div class="fg"><label class="fl">Format</label><select class="fc"><option>PDF officiel (en-tête paroisse)</option><option>Excel (.xlsx)</option><option>CSV</option></select></div>
-        <button class="btn btn-g btn-w" onclick="printPDF('Export SNGC');closeModal('modal-export')">📥 Exporter en PDF</button>
+        <button class="btn btn-g btn-w" onclick="toast('📥','Export généré');closeModal('modal-export')">📥 Exporter</button>
       </div>
     </div>
   </div>
@@ -3093,18 +3633,18 @@
         <div class="g2" style="gap:12px;margin-bottom:14px">
           <div style="background:var(--gold-dim);border:1px solid rgba(212,175,55,0.25);border-radius:var(--radius-sm);padding:14px;text-align:center">
             <div style="font-size:22px;margin-bottom:6px">✝</div>
-            <div style="font-family:'Cinzel',serif;font-size:26px;color:var(--gold-light);font-weight:700">67</div>
+            <div style="font-family:'Cinzel',serif;font-size:26px;color:var(--gold);font-weight:700">67</div>
             <div style="font-size:12px;color:var(--txt-muted)">Baptêmes certifiés</div>
-            <button class="btn btn-o btn-sm btn-w" style="margin-top:10px" onclick="printPDF('Registre des Baptêmes')">Exporter en PDF</button>
+            <button class="btn btn-o btn-sm btn-w" style="margin-top:10px" onclick="toast('📄','Registre Baptême exporté')">Exporter</button>
           </div>
           <div style="background:var(--purple-dim);border:1px solid rgba(124,58,237,0.25);border-radius:var(--radius-sm);padding:14px;text-align:center">
             <div style="font-size:22px;margin-bottom:6px">🕊️</div>
-            <div style="font-family:'Cinzel',serif;font-size:26px;color:var(--purple-light);font-weight:700">89</div>
+            <div style="font-family:'Cinzel',serif;font-size:26px;color:var(--purple);font-weight:700">89</div>
             <div style="font-size:12px;color:var(--txt-muted)">Confirmations certifiées</div>
-            <button class="btn btn-o btn-sm btn-w" style="margin-top:10px" onclick="printPDF('Registre des Confirmations')">Exporter en PDF</button>
+            <button class="btn btn-o btn-sm btn-w" style="margin-top:10px" onclick="toast('📄','Registre Confirmation exporté')">Exporter</button>
           </div>
         </div>
-        <button class="btn btn-g btn-w" onclick="printPDF('Registres officiels SNGC');closeModal('modal-registres')">📚 Télécharger tous les registres PDF</button>
+        <button class="btn btn-g btn-w" onclick="closeModal('modal-registres');printDoc('print-bapteme')">📚 Imprimer les registres / PDF</button>
       </div>
     </div>
   </div>
@@ -3125,7 +3665,7 @@
             <tr><td>Adultes</td><td>Traoré Marie</td><td>Adultes-A</td><td>6 ans</td><td><span class="b bg">Actif</span></td></tr>
           </tbody>
         </table></div>
-        <button class="btn btn-g btn-sm" style="margin-top:14px" onclick="printPDF('Liste des catéchistes')">📄 Exporter PDF</button>
+        <button class="btn btn-g btn-sm" style="margin-top:14px" onclick="closeModal('modal-liste-catechistes');printDoc('print-liste-cats')">📄 Imprimer / PDF</button>
       </div>
     </div>
   </div>
@@ -3136,7 +3676,7 @@
       <div class="mb-body">
         <p style="font-size:13.5px;color:var(--txt-muted);margin-bottom:14px;font-style:italic">Document officiel · 342 catéchumènes · Année Pastorale 2024–2025</p>
         <div style="display:flex;flex-direction:column;gap:8px">
-          <button class="btn btn-g btn-w" onclick="printPDF('Liste globale des catéchumènes');closeModal('modal-liste-globale')">📄 Générer PDF officiel</button>
+          <button class="btn btn-g btn-w" onclick="closeModal('modal-liste-globale');printDoc('print-liste-cats')">📄 Imprimer / PDF officiel</button>
           <button class="btn btn-o btn-w" onclick="toast('📊','Export Excel');closeModal('modal-liste-globale')">📊 Export Excel</button>
         </div>
       </div>
@@ -3148,7 +3688,7 @@
       <div class="mh"><div class="mh-title">Liste par Section</div><button class="close-btn" onclick="closeModal('modal-liste-section')">✕</button></div>
       <div class="mb-body">
         <div class="fg"><label class="fl">Section</label><select class="fc"><option>Enfants (98)</option><option>Adolescents (112)</option><option>Jeunes (87)</option><option>Adultes (45)</option></select></div>
-        <button class="btn btn-g btn-w" onclick="printPDF('Liste par section');closeModal('modal-liste-section')">📄 Générer PDF</button>
+        <button class="btn btn-g btn-w" onclick="toast('📄','Liste générée');closeModal('modal-liste-section')">📄 Générer</button>
       </div>
     </div>
   </div>
@@ -3158,7 +3698,7 @@
       <div class="mh"><div class="mh-title">Liste Nominative par Classe</div><button class="close-btn" onclick="closeModal('modal-liste-classe')">✕</button></div>
       <div class="mb-body">
         <div class="fg"><label class="fl">Classe</label><select class="fc"><option>Ado-A (21)</option><option>Ado-B (19)</option><option>Jeunes-A (17)</option><option>Adultes-A (14)</option></select></div>
-        <button class="btn btn-g btn-w" onclick="printPDF('Liste par classe');closeModal('modal-liste-classe')">📄 Générer PDF</button>
+        <button class="btn btn-g btn-w" onclick="toast('📄','Liste générée');closeModal('modal-liste-classe')">📄 Générer</button>
       </div>
     </div>
   </div>
@@ -3176,7 +3716,7 @@
           </tbody>
         </table></div>
         <p style="font-size:12px;color:var(--txt-muted);margin-top:8px;font-style:italic">… et 184 autres admis</p>
-        <button class="btn btn-g btn-sm" style="margin-top:12px" onclick="printPDF('Liste des admis');closeModal('modal-liste-admis')">📄 Exporter PDF</button>
+        <button class="btn btn-g btn-sm" style="margin-top:12px" onclick="closeModal('modal-liste-admis');printDoc('print-liste-cats')">📄 Imprimer / PDF</button>
       </div>
     </div>
   </div>
@@ -3192,7 +3732,7 @@
             <tr><td>Sylla Ibrahima</td><td>Jeunes</td><td>Jeunes-B</td><td style="color:var(--crimson-light)">8.1</td><td>Absences répétées</td></tr>
           </tbody>
         </table></div>
-        <button class="btn btn-g btn-sm" style="margin-top:12px" onclick="printPDF('Liste des recalés');closeModal('modal-liste-recales')">📄 Exporter PDF</button>
+        <button class="btn btn-g btn-sm" style="margin-top:12px" onclick="closeModal('modal-liste-recales');printDoc('print-liste-cats')">📄 Imprimer / PDF</button>
       </div>
     </div>
   </div>
@@ -3203,7 +3743,7 @@
       <div class="mh"><div class="mh-title">Statistiques des Réclamations</div><button class="close-btn" onclick="closeModal('modal-stats-recl')">✕</button></div>
       <div class="mb-body">
         <div class="g2" style="gap:12px">
-          <div style="background:var(--gold-dim);border:1px solid rgba(212,175,55,0.2);border-radius:var(--radius-sm);padding:13px;text-align:center"><div style="font-family:'Cinzel',serif;font-size:26px;color:var(--gold-light);font-weight:700">12</div><div style="font-size:11px;color:var(--txt-muted)">Total</div></div>
+          <div style="background:var(--gold-dim);border:1px solid rgba(212,175,55,0.2);border-radius:var(--radius-sm);padding:13px;text-align:center"><div style="font-family:'Cinzel',serif;font-size:26px;color:var(--gold);font-weight:700">12</div><div style="font-size:11px;color:var(--txt-muted)">Total</div></div>
           <div style="background:var(--emerald-dim);border:1px solid rgba(5,150,105,0.2);border-radius:var(--radius-sm);padding:13px;text-align:center"><div style="font-family:'Cinzel',serif;font-size:26px;color:var(--emerald-light);font-weight:700">7</div><div style="font-size:11px;color:var(--txt-muted)">Validées</div></div>
           <div style="background:var(--crimson-dim);border:1px solid rgba(153,27,27,0.2);border-radius:var(--radius-sm);padding:13px;text-align:center"><div style="font-family:'Cinzel',serif;font-size:26px;color:var(--crimson-light);font-weight:700">2</div><div style="font-size:11px;color:var(--txt-muted)">Rejetées</div></div>
           <div style="background:var(--sapphire-dim);border:1px solid rgba(29,78,216,0.2);border-radius:var(--radius-sm);padding:13px;text-align:center"><div style="font-family:'Cinzel',serif;font-size:26px;color:var(--sapphire-light);font-weight:700">3</div><div style="font-size:11px;color:var(--txt-muted)">En cours</div></div>
@@ -3218,7 +3758,7 @@
       <div class="mh"><div class="mh-title">Événement Planifié</div><button class="close-btn" onclick="closeModal('modal-event-created')">✕</button></div>
       <div class="mb-body" style="text-align:center;padding:28px">
         <div style="font-size:40px;margin-bottom:14px">✅</div>
-        <div style="font-family:'Cinzel',serif;font-size:18px;color:var(--gold-pale);margin-bottom:8px">Événement créé avec succès</div>
+        <div style="font-family:'Cinzel',serif;font-size:18px;color:var(--txt);margin-bottom:8px">Événement créé avec succès</div>
         <p style="font-size:13.5px;color:var(--txt-muted);font-style:italic">Ajouté au calendrier paroissial. Les catéchumènes concernés ont été notifiés.</p>
         <button class="btn btn-g btn-sm" style="margin-top:18px" onclick="closeModal('modal-event-created')">Fermer</button>
       </div>
@@ -3231,7 +3771,7 @@
       <div class="mh"><div class="mh-title">Détail de l'Événement</div><button class="close-btn" onclick="closeModal('modal-event-detail')">✕</button></div>
       <div class="mb-body">
         <div class="info-box info">
-          <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold-light);margin-bottom:8px">RETRAITE · 22 MARS 2025</div>
+          <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold);margin-bottom:8px">RETRAITE · 22 MARS 2025</div>
           <table style="font-size:13px">
             <tr><td style="color:var(--txt-muted);padding:4px 0;width:120px">Intitulé</td><td><strong>Retraite de Carême — Adolescents</strong></td></tr>
             <tr><td style="color:var(--txt-muted);padding:4px 0">Date &amp; Heure</td><td>Samedi 22 Mars 2025 · 08h00</td></tr>
@@ -3380,15 +3920,15 @@
       <div class="mh"><div class="mh-title">Compte Créé</div><button class="close-btn" onclick="closeModal('modal-compte-cree')">✕</button></div>
       <div class="mb-body" style="text-align:center">
         <div style="font-size:38px;margin-bottom:14px">👤</div>
-        <div style="font-family:'Cinzel',serif;font-size:17px;color:var(--gold-pale);margin-bottom:8px">Compte créé avec succès</div>
+        <div style="font-family:'Cinzel',serif;font-size:17px;color:var(--txt);margin-bottom:8px">Compte créé avec succès</div>
         <p style="font-size:13px;color:var(--txt-muted);margin-bottom:16px;font-style:italic">Remettez les identifiants en main propre au bénéficiaire.</p>
         <div class="info-box info" style="text-align:left;margin-bottom:14px">
-          <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold-light);margin-bottom:6px">IDENTIFIANTS</div>
-          <div style="font-size:13px;margin-bottom:4px">Identifiant : <strong style="font-family:monospace;color:var(--gold-light)">jean.nouveau</strong></div>
-          <div style="font-size:13px">Mot de passe : <strong style="font-family:monospace;color:var(--gold-light)" id="pwCreated">SNGC-2025-xK9m</strong></div>
+          <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold);margin-bottom:6px">IDENTIFIANTS</div>
+          <div style="font-size:13px;margin-bottom:4px">Identifiant : <strong style="font-family:monospace;color:var(--gold)">jean.nouveau</strong></div>
+          <div style="font-size:13px">Mot de passe : <strong style="font-family:monospace;color:var(--gold)" id="pwCreated">SNGC-2025-xK9m</strong></div>
         </div>
         <div style="display:flex;gap:9px;justify-content:center">
-          <button class="btn btn-g" onclick="printPDF('Fiche de compte SNGC');closeModal('modal-compte-cree')">🖨️ Imprimer PDF</button>
+          <button class="btn btn-g" onclick="closeModal('modal-compte-cree');printDoc('print-fiche-acces',{nom:'Nouvel Utilisateur',role:'Catéchiste',id:'jean.nouveau',pw:document.getElementById('pwCreated').textContent})">🖨️ Imprimer la fiche / PDF</button>
           <button class="btn btn-o" onclick="closeModal('modal-compte-cree')">Fermer</button>
         </div>
       </div>
@@ -3403,7 +3943,7 @@
         <div class="fg"><label class="fl">Utilisateur</label><select class="fc"><option>Koffi Jean (catéchiste)</option><option>Kouassi Marie-Claire</option><option>Bamba Kader</option></select></div>
         <div class="fg"><label class="fl">Nouveau mot de passe</label>
           <div style="display:flex;gap:7px">
-            <input class="fc" id="pwReset" type="text" value="SNGC-2025-rT4x" readonly style="font-family:monospace;font-size:12px;color:var(--gold-light)">
+            <input class="fc" id="pwReset" type="text" value="SNGC-2025-rT4x" readonly style="font-family:monospace;font-size:12px;color:var(--gold)">
             <button class="btn btn-o" onclick="resetPw()">↺</button>
           </div>
         </div>
@@ -3440,7 +3980,7 @@
             <tr><td style="color:var(--txt-muted);font-size:11px">17/03 14:00</td><td>Admin/Curé</td><td><span class="b br">Rejet</span></td><td>Réclamation RC-002</td></tr>
           </tbody>
         </table></div>
-        <button class="btn btn-o btn-sm" style="margin-top:12px" onclick="toast('📄','Journal exporté');closeModal('modal-logs')">📄 Exporter</button>
+        <button class="btn btn-o btn-sm" style="margin-top:12px" onclick="closeModal('modal-logs');printDoc('print-journal')">📄 Imprimer le journal / PDF</button>
       </div>
     </div>
   </div>
@@ -3452,15 +3992,15 @@
       <div class="mb-body">
         <div style="display:flex;flex-direction:column;gap:9px">
           <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:13px;cursor:pointer;transition:border-color .2s" onclick="toast('📦','Archive 2023-2024 ouverte')">
-            <div style="font-family:'Cinzel',serif;font-size:13px;color:var(--gold-pale)">Année Pastorale 2023–2024</div>
+            <div style="font-family:'Cinzel',serif;font-size:13px;color:var(--txt)">Année Pastorale 2023–2024</div>
             <div style="font-size:12px;color:var(--txt-muted);margin-top:3px;font-style:italic">318 catéchumènes · 36 catéchistes · 22 classes</div>
           </div>
           <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:13px;cursor:pointer" onclick="toast('📦','Archive 2022-2023 ouverte')">
-            <div style="font-family:'Cinzel',serif;font-size:13px;color:var(--gold-pale)">Année Pastorale 2022–2023</div>
+            <div style="font-family:'Cinzel',serif;font-size:13px;color:var(--txt)">Année Pastorale 2022–2023</div>
             <div style="font-size:12px;color:var(--txt-muted);margin-top:3px;font-style:italic">295 catéchumènes · 34 catéchistes · 20 classes</div>
           </div>
           <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:13px;cursor:pointer" onclick="toast('📦','Archive 2021-2022 ouverte')">
-            <div style="font-family:'Cinzel',serif;font-size:13px;color:var(--gold-pale)">Année Pastorale 2021–2022</div>
+            <div style="font-family:'Cinzel',serif;font-size:13px;color:var(--txt)">Année Pastorale 2021–2022</div>
             <div style="font-size:12px;color:var(--txt-muted);margin-top:3px;font-style:italic">271 catéchumènes · 31 catéchistes · 18 classes</div>
           </div>
         </div>
@@ -3506,7 +4046,7 @@
       </table>
       <div style="margin:14px 0;padding:13px;background:var(--emerald-dim);border:1px solid rgba(5,150,105,0.25);border-radius:var(--radius-sm)">
         <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--emerald-light);margin-bottom:5px">RÉSULTAT ANNUEL</div>
-        <div style="font-family:'Cinzel',serif;font-size:28px;color:var(--gold-light);font-weight:700">14.5 / 20</div>
+        <div style="font-family:'Cinzel',serif;font-size:28px;color:var(--gold);font-weight:700">14.5 / 20</div>
         <span class="b bg" style="margin-top:4px;display:inline-block">✓ Admise</span>
       </div>
       <table style="font-size:13px;margin-bottom:14px">
@@ -3514,13 +4054,13 @@
         <tbody>
           <tr><td>Écriture Sainte</td><td>13</td><td>15</td><td style="color:var(--emerald-light)">14.0</td></tr>
           <tr><td>Liturgie</td><td>15</td><td>16</td><td style="color:var(--emerald-light)">15.5</td></tr>
-          <tr><td>Morale</td><td>12</td><td>14</td><td style="color:var(--gold-light)">13.0</td></tr>
+          <tr><td>Morale</td><td>12</td><td>14</td><td style="color:var(--gold)">13.0</td></tr>
           <tr><td>Histoire</td><td>14</td><td>15</td><td style="color:var(--emerald-light)">14.5</td></tr>
         </tbody>
       </table>
       <div style="display:flex;flex-direction:column;gap:8px">
         <button class="btn btn-o btn-w" onclick="openModal('modal-historique-notes');closeDrawer('drawer-catechumene')">📊 Historique complet</button>
-        <button class="btn btn-o btn-w" onclick="printPDF('Bulletin du catéchumène');closeDrawer('drawer-catechumene')">🖨️ Imprimer le bulletin PDF</button>
+        <button class="btn btn-o btn-w" onclick="closeDrawer('drawer-catechumene');printDoc('print-bulletin')">🖨️ Imprimer le bulletin / PDF</button>
         <button class="btn btn-d btn-w" onclick="openModal('modal-reclamation-eleve');closeDrawer('drawer-catechumene')">📋 Réclamation</button>
       </div>
     </div>
@@ -3541,14 +4081,14 @@
         <tr><td style="color:var(--txt-muted);padding:4px 0">Parrain</td><td>M. Coulibaly René</td></tr>
       </table>
       <div style="margin:14px 0;padding:13px;background:var(--gold-dim);border:1px solid rgba(212,175,55,0.25);border-radius:var(--radius-sm)">
-        <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold-light);margin-bottom:5px">RÉSULTAT PROVISOIRE</div>
-        <div style="font-family:'Cinzel',serif;font-size:28px;color:var(--gold-light);font-weight:700">11.2 / 20</div>
+        <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold);margin-bottom:5px">RÉSULTAT PROVISOIRE</div>
+        <div style="font-family:'Cinzel',serif;font-size:28px;color:var(--gold);font-weight:700">11.2 / 20</div>
         <span class="b bo" style="margin-top:4px;display:inline-block">En attente</span>
       </div>
       <table style="font-size:13px;margin-bottom:14px">
         <thead><tr><th>Matière</th><th>T1</th><th>T2</th><th>Moy.</th></tr></thead>
         <tbody>
-          <tr><td>Écriture Sainte</td><td>9</td><td>11</td><td style="color:var(--gold-light)">10.0</td></tr>
+          <tr><td>Écriture Sainte</td><td>9</td><td>11</td><td style="color:var(--gold)">10.0</td></tr>
           <tr><td>Liturgie</td><td>9</td><td>—</td><td style="color:var(--crimson-light)">En attente</td></tr>
           <tr><td>Morale</td><td>13</td><td>12</td><td style="color:var(--emerald-light)">12.5</td></tr>
         </tbody>
@@ -3624,7 +4164,7 @@
         <!-- Statistiques rapides en haut -->
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px">
           <div style="background:var(--gold-dim);border:1px solid rgba(212,175,55,0.2);border-radius:var(--radius-sm);padding:12px;text-align:center">
-            <div style="font-family:'Cinzel',serif;font-size:22px;color:var(--gold-light);font-weight:700">12</div>
+            <div style="font-family:'Cinzel',serif;font-size:22px;color:var(--gold);font-weight:700">12</div>
             <div style="font-size:10px;color:var(--txt-muted)">Total</div>
           </div>
           <div style="background:var(--emerald-dim);border:1px solid rgba(5,150,105,0.2);border-radius:var(--radius-sm);padding:12px;text-align:center">
@@ -3763,7 +4303,7 @@
                 <div style="font-size:11px;color:var(--txt-muted)">Recalés</div>
               </div>
               <div style="text-align:center">
-                <div style="font-family:'Cinzel',serif;font-size:26px;color:var(--gold-light);font-weight:700">74%</div>
+                <div style="font-family:'Cinzel',serif;font-size:26px;color:var(--gold);font-weight:700">74%</div>
                 <div style="font-size:11px;color:var(--txt-muted)">Taux global</div>
               </div>
             </div>
@@ -3776,8 +4316,8 @@
           <button class="btn btn-o btn-w" onclick="openModal('modal-deliberation');closeModal('modal-notes-admin')">
             📋 Lancer / consulter une délibération
           </button>
-          <button class="btn btn-o btn-w" onclick="printPDF('Bulletins de notes');closeModal('modal-notes-admin')">
-            🖨️ Imprimer les bulletins PDF
+          <button class="btn btn-o btn-w" onclick="openModal('modal-bulletins');closeModal('modal-notes-admin')">
+            🖨️ Imprimer les bulletins de notes
           </button>
           <button class="btn btn-o btn-w" onclick="openModal('modal-historique-notes');closeModal('modal-notes-admin')">
             📊 Consulter l'historique des notes
@@ -3812,7 +4352,7 @@
 
           <!-- Col gauche -->
           <div>
-            <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold-light);letter-spacing:1px;margin-bottom:10px">EFFECTIFS</div>
+            <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold);letter-spacing:1px;margin-bottom:10px">EFFECTIFS</div>
             <div style="display:flex;flex-direction:column;gap:8px">
               <button class="btn btn-o btn-w" onclick="openModal('modal-liste-catechistes');closeModal('modal-etats-admin')">👥 Liste des catéchistes</button>
               <button class="btn btn-o btn-w" onclick="openModal('modal-liste-globale');closeModal('modal-etats-admin')">📋 Liste globale catéchumènes</button>
@@ -3823,12 +4363,12 @@
 
           <!-- Col droite -->
           <div>
-            <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold-light);letter-spacing:1px;margin-bottom:10px">SACREMENTS &amp; PERFORMANCE</div>
+            <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold);letter-spacing:1px;margin-bottom:10px">SACREMENTS &amp; PERFORMANCE</div>
             <div style="display:flex;flex-direction:column;gap:8px">
               <button class="btn btn-o btn-w" onclick="openModal('modal-bapteme');closeModal('modal-etats-admin')">✝ Candidats au Baptême (67)</button>
               <button class="btn btn-o btn-w" onclick="openModal('modal-confirmation');closeModal('modal-etats-admin')">🕊️ Candidats Confirmation (89)</button>
               <button class="btn btn-g btn-w" onclick="openModal('modal-registres');closeModal('modal-etats-admin')">📚 Registres officiels (Curé)</button>
-              <button class="btn btn-o btn-w" onclick="printPDF('Bulletins de notes SNGC');closeModal('modal-etats-admin')">🖨️ Imprimer les bulletins PDF</button>
+              <button class="btn btn-o btn-w" onclick="openModal('modal-bulletins');closeModal('modal-etats-admin')">🖨️ Bulletins de notes</button>
             </div>
           </div>
 
@@ -3866,7 +4406,7 @@
 
           <!-- Comptes -->
           <div>
-            <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold-light);letter-spacing:1px;margin-bottom:10px">GESTION DES COMPTES</div>
+            <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold);letter-spacing:1px;margin-bottom:10px">GESTION DES COMPTES</div>
             <div style="display:flex;flex-direction:column;gap:8px">
               <button class="btn btn-o btn-w" onclick="openModal('modal-compte-cree');closeModal('modal-config-admin')">👤 Créer un compte</button>
               <button class="btn btn-o btn-w" onclick="openModal('modal-reset-pw');closeModal('modal-config-admin')">🔑 Réinitialiser un mot de passe</button>
@@ -3876,7 +4416,7 @@
 
           <!-- Classes -->
           <div>
-            <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold-light);letter-spacing:1px;margin-bottom:10px">GESTION DES CLASSES</div>
+            <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold);letter-spacing:1px;margin-bottom:10px">GESTION DES CLASSES</div>
             <div style="display:flex;flex-direction:column;gap:8px">
               <button class="btn btn-o btn-w" onclick="openModal('modal-classes');closeModal('modal-config-admin')">📚 Voir toutes les classes</button>
               <button class="btn btn-o btn-w" onclick="openModal('modal-new-classe');closeModal('modal-config-admin')">➕ Créer une classe</button>
@@ -3886,7 +4426,7 @@
 
           <!-- Système -->
           <div>
-            <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold-light);letter-spacing:1px;margin-bottom:10px">SYSTÈME &amp; TRAÇABILITÉ</div>
+            <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold);letter-spacing:1px;margin-bottom:10px">SYSTÈME &amp; TRAÇABILITÉ</div>
             <div style="display:flex;flex-direction:column;gap:8px">
               <button class="btn btn-v btn-w" onclick="openModal('modal-logs');closeModal('modal-config-admin')">📜 Journal d'activité</button>
               <button class="btn btn-o btn-w" onclick="openModal('modal-archives');closeModal('modal-config-admin')">📦 Consulter les archives</button>
@@ -3895,7 +4435,7 @@
 
           <!-- Année pastorale -->
           <div>
-            <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold-light);letter-spacing:1px;margin-bottom:10px">ANNÉE PASTORALE</div>
+            <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold);letter-spacing:1px;margin-bottom:10px">ANNÉE PASTORALE</div>
             <div style="display:flex;flex-direction:column;gap:8px">
               <button class="btn btn-o btn-w" onclick="openModal('modal-recherche-historique');closeModal('modal-config-admin')">🔍 Recherche historique</button>
               <button class="btn btn-g btn-w" onclick="openModal('modal-nouvelle-annee');closeModal('modal-config-admin')">🌟 Nouvelle année</button>
@@ -3939,7 +4479,7 @@
       <!-- Mini stats -->
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px">
         <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px;text-align:center">
-          <div style="font-family:'Cinzel',serif;font-size:20px;color:var(--gold-light);font-weight:700">342</div>
+          <div style="font-family:'Cinzel',serif;font-size:20px;color:var(--gold);font-weight:700">342</div>
           <div style="font-size:10px;color:var(--txt-muted)">Total</div>
         </div>
         <div style="background:var(--emerald-dim);border:1px solid rgba(5,150,105,0.2);border-radius:var(--radius-sm);padding:10px;text-align:center">
@@ -3983,7 +4523,7 @@
             </div>
             <div style="text-align:right">
               <span class="b bo" style="font-size:10px">En attente</span>
-              <div style="font-size:11px;color:var(--gold-light);margin-top:3px">11.2/20</div>
+              <div style="font-size:11px;color:var(--gold);margin-top:3px">11.2/20</div>
             </div>
           </div>
         </div>
@@ -4053,7 +4593,179 @@
   </div>
 
 
-  <!-- CONTENEUR DES TOASTS -->
+  <!-- Modale affectation catéchiste (Aumônier) -->
+  <div class="overlay" id="modal-affecter-catechiste" onclick="bgClose(event,this)">
+    <div class="modal">
+      <div class="mh"><div class="mh-title">Modifier l'Affectation</div><button class="close-btn" onclick="closeModal('modal-affecter-catechiste')">✕</button></div>
+      <div class="mb-body">
+        <div class="fg"><label class="fl">Catéchiste</label><select class="fc"><option>Koffi Jean</option><option>Bamba Kader</option><option>Diomandé Céline</option></select></div>
+        <div class="fg"><label class="fl">Nouvelle classe</label>
+          <select class="fc"><option>Ado-A</option><option>Ado-B</option><option>Jeunes-A</option><option>Enfants-A</option><option>Enfants-B</option><option>Adultes-A</option></select>
+        </div>
+        <div class="fg"><label class="fl">Date de prise d'effet</label><input class="fc" type="date"></div>
+        <div class="fg"><label class="fl">Motif</label><input class="fc" type="text" placeholder="Remplacement, réorganisation…"></div>
+        <div class="info-box warn" style="font-size:12px;margin-bottom:14px">⚠️ Le catéchiste actuellement affecté sera notifié du changement.</div>
+        <div style="display:flex;gap:9px">
+          <button class="btn btn-g" onclick="toast('✅','Affectation modifiée avec succès');closeModal('modal-affecter-catechiste')">✓ Confirmer</button>
+          <button class="btn btn-o" onclick="closeModal('modal-affecter-catechiste')">Annuler</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--
+  ══════════════════════════════════════════════════════════════════
+   ZONES D'IMPRESSION — Contenu affiché UNIQUEMENT lors du print PDF
+   Ces divs sont display:none en mode écran.
+   printDoc(zoneId) les affiche, lance window.print(), puis les cache.
+  ══════════════════════════════════════════════════════════════════
+  -->
+
+  <!-- ZONE 1 : Bulletin de notes individuel (Marie-Claire Kouassi) -->
+  <div class="print-zone" id="print-bulletin">
+    <div class="print-header">
+      <div style="font-size:28px">✝</div>
+      <div>
+        <h1 style="font-family:'Cinzel',serif;color:#4a2f1a">BULLETIN DE NOTES</h1>
+        <p>Paroisse Saint-Augustin · Année Pastorale 2024–2025 · 2ème Trimestre</p>
+      </div>
+    </div>
+    <table style="width:100%;margin-bottom:16px;border:1px solid #c8941a">
+      <tr><td style="padding:6px;width:50%;font-weight:bold">Nom &amp; Prénom</td><td style="padding:6px">Kouassi Marie-Claire</td><td style="padding:6px;width:25%;font-weight:bold">Classe</td><td style="padding:6px">Ado-B</td></tr>
+      <tr><td style="padding:6px;font-weight:bold">Section</td><td style="padding:6px">Adolescents</td><td style="padding:6px;font-weight:bold">Niveau</td><td style="padding:6px">2ème année</td></tr>
+      <tr><td style="padding:6px;font-weight:bold">Catéchiste</td><td style="padding:6px">M. Jean Koffi</td><td style="padding:6px;font-weight:bold">Date d'impression</td><td style="padding:6px" id="print-date-bulletin"></td></tr>
+    </table>
+    <table style="width:100%;margin-bottom:20px">
+      <thead><tr><th>Matière</th><th>Note T1 /20</th><th>Note T2 /20</th><th>Moyenne /20</th><th>Appréciation</th></tr></thead>
+      <tbody>
+        <tr><td>Écriture Sainte</td><td style="text-align:center">13</td><td style="text-align:center">15</td><td style="text-align:center;font-weight:bold">14.0</td><td>Bien</td></tr>
+        <tr><td>Liturgie</td><td style="text-align:center">15</td><td style="text-align:center">16</td><td style="text-align:center;font-weight:bold">15.5</td><td>Très Bien</td></tr>
+        <tr><td>Morale Chrétienne</td><td style="text-align:center">12</td><td style="text-align:center">14</td><td style="text-align:center;font-weight:bold">13.0</td><td>Assez Bien</td></tr>
+        <tr><td>Histoire de l'Église</td><td style="text-align:center">14</td><td style="text-align:center">15</td><td style="text-align:center;font-weight:bold">14.5</td><td>Bien</td></tr>
+        <tr style="background:#fdf3d7"><td><strong>MOYENNE GÉNÉRALE</strong></td><td></td><td></td><td style="text-align:center;font-weight:bold;font-size:14pt;color:#c8941a">14.5</td><td style="font-weight:bold;color:#2d6a4f">ADMISE</td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:30px;display:flex;justify-content:space-between">
+      <div style="text-align:center"><div style="border-top:1px solid #000;margin-top:40px;padding-top:6px;width:180px">Signature du Catéchiste</div></div>
+      <div style="text-align:center"><div style="border-top:1px solid #000;margin-top:40px;padding-top:6px;width:180px">Signature de l'Aumônier</div></div>
+      <div style="text-align:center"><div style="border-top:1px solid #000;margin-top:40px;padding-top:6px;width:180px">Cachet de la Paroisse</div></div>
+    </div>
+  </div>
+
+  <!-- ZONE 2 : Liste des catéchumènes -->
+  <div class="print-zone" id="print-liste-cats">
+    <div class="print-header">
+      <div style="font-size:28px">✝</div>
+      <div>
+        <h1 style="font-family:'Cinzel',serif;color:#4a2f1a">LISTE DES CATÉCHUMÈNES</h1>
+        <p>Paroisse Saint-Augustin · Année Pastorale 2024–2025 · Document officiel</p>
+      </div>
+    </div>
+    <table style="width:100%">
+      <thead><tr><th>#</th><th>Nom &amp; Prénom</th><th>Section</th><th>Niveau</th><th>Classe</th><th>Moyenne</th><th>Statut</th><th>Sacrement cible</th></tr></thead>
+      <tbody>
+        <tr><td>001</td><td>Kouassi Marie-Claire</td><td>Adolescents</td><td>2ème année</td><td>Ado-B</td><td style="text-align:center">14.5</td><td>Admise</td><td>Confirmation</td></tr>
+        <tr><td>002</td><td>Traoré Emmanuel</td><td>Jeunes</td><td>1ère année</td><td>Jeunes-A</td><td style="text-align:center">11.2</td><td>En attente</td><td>Baptême</td></tr>
+        <tr><td>003</td><td>Diallo Fatou</td><td>Enfants</td><td>3ème année</td><td>Enfants-C</td><td style="text-align:center">16.8</td><td>Admise</td><td>Confirmation</td></tr>
+        <tr><td>004</td><td>Coulibaly Jean-Baptiste</td><td>Adultes</td><td>1ère année</td><td>Adultes-A</td><td style="text-align:center">7.4</td><td>Recalé</td><td>Baptême</td></tr>
+        <tr><td>005</td><td>Bamba Awa</td><td>Adolescents</td><td>2ème année</td><td>Ado-A</td><td style="text-align:center">15.0</td><td>Admise</td><td>Confirmation</td></tr>
+        <tr><td colspan="8" style="text-align:center;font-style:italic;color:#8a7060">… 337 autres catéchumènes (liste complète disponible dans le système)</td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:20px;font-size:9pt;color:#8a7060;text-align:right" id="print-date-liste"></div>
+  </div>
+
+  <!-- ZONE 3 : Liste des candidats au Baptême -->
+  <div class="print-zone" id="print-bapteme">
+    <div class="print-header">
+      <div style="font-size:28px">✝</div>
+      <div>
+        <h1 style="font-family:'Cinzel',serif;color:#4a2f1a">LISTE DES CANDIDATS AU BAPTÊME</h1>
+        <p>Paroisse Saint-Augustin · Cérémonie du 18 Avril 2025 · Document certifié</p>
+      </div>
+    </div>
+    <table style="width:100%">
+      <thead><tr><th>#</th><th>Nom &amp; Prénom</th><th>Section</th><th>Classe</th><th>Moyenne</th><th>Parrain / Marraine</th></tr></thead>
+      <tbody>
+        <tr><td>001</td><td>Traoré Emmanuel</td><td>Jeunes</td><td>Jeunes-A</td><td style="text-align:center">11.2</td><td>M. Coulibaly René</td></tr>
+        <tr><td>002</td><td>Coulibaly Jean-Baptiste</td><td>Adultes</td><td>Adultes-A</td><td style="text-align:center">—</td><td>Mme Koné Adjoua</td></tr>
+        <tr><td>003</td><td>Yao Célestine</td><td>Jeunes</td><td>Jeunes-B</td><td style="text-align:center">13.5</td><td>M. Yao Kofi</td></tr>
+        <tr><td colspan="6" style="text-align:center;font-style:italic;color:#8a7060">… 64 autres candidats</td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:30px;display:flex;justify-content:space-between">
+      <div style="text-align:center"><div style="border-top:1px solid #000;margin-top:40px;padding-top:6px;width:200px">Signature de l'Aumônier</div></div>
+      <div style="text-align:center"><div style="border-top:1px solid #000;margin-top:40px;padding-top:6px;width:200px">Cachet &amp; Signature du Curé</div></div>
+    </div>
+  </div>
+
+  <!-- ZONE 4 : Liste candidats Confirmation -->
+  <div class="print-zone" id="print-confirmation">
+    <div class="print-header">
+      <div style="font-size:28px">🕊️</div>
+      <div>
+        <h1 style="font-family:'Cinzel',serif;color:#4a2f1a">LISTE DES CANDIDATS À LA CONFIRMATION</h1>
+        <p>Paroisse Saint-Augustin · Cérémonie du 25 Avril 2025 · Document certifié</p>
+      </div>
+    </div>
+    <table style="width:100%">
+      <thead><tr><th>#</th><th>Nom &amp; Prénom</th><th>Section</th><th>Classe</th><th>Moyenne</th><th>Années de formation</th></tr></thead>
+      <tbody>
+        <tr><td>001</td><td>Kouassi Marie-Claire</td><td>Adolescents</td><td>Ado-B</td><td style="text-align:center">14.5</td><td style="text-align:center">3 / 3 ans</td></tr>
+        <tr><td>002</td><td>Diallo Fatou</td><td>Enfants</td><td>Enfants-C</td><td style="text-align:center">16.8</td><td style="text-align:center">3 / 3 ans</td></tr>
+        <tr><td>003</td><td>Bamba Awa</td><td>Adolescents</td><td>Ado-A</td><td style="text-align:center">15.0</td><td style="text-align:center">3 / 3 ans</td></tr>
+        <tr><td colspan="6" style="text-align:center;font-style:italic;color:#8a7060">… 86 autres candidats</td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:30px;display:flex;justify-content:space-between">
+      <div style="text-align:center"><div style="border-top:1px solid #000;margin-top:40px;padding-top:6px;width:200px">Signature de l'Aumônier</div></div>
+      <div style="text-align:center"><div style="border-top:1px solid #000;margin-top:40px;padding-top:6px;width:200px">Cachet &amp; Signature du Curé</div></div>
+    </div>
+  </div>
+
+  <!-- ZONE 5 : Journal d'activité -->
+  <div class="print-zone" id="print-journal">
+    <div class="print-header">
+      <div style="font-size:28px">📜</div>
+      <div>
+        <h1 style="font-family:'Cinzel',serif;color:#4a2f1a">JOURNAL D'ACTIVITÉ</h1>
+        <p>Paroisse Saint-Augustin · Traçabilité des actions administratives</p>
+      </div>
+    </div>
+    <table style="width:100%">
+      <thead><tr><th>Date &amp; Heure</th><th>Utilisateur</th><th>Rôle</th><th>Action effectuée</th><th>Élément concerné</th></tr></thead>
+      <tbody>
+        <tr><td>20/03/2025 14:32</td><td>Père Kouassi</td><td>Admin/Curé</td><td>Validation réclamation</td><td>RC-2025-003 · Diallo Fatou</td></tr>
+        <tr><td>20/03/2025 11:15</td><td>Père Traoré</td><td>Aumônier</td><td>Transmission réclamation</td><td>RC-2025-004 · Kouassi M-C.</td></tr>
+        <tr><td>19/03/2025 16:45</td><td>Koffi Jean</td><td>Catéchiste</td><td>Saisie des notes</td><td>Ado-B · Liturgie · T2</td></tr>
+        <tr><td>18/03/2025 09:20</td><td>Jean-Paul Admin</td><td>Admin</td><td>Création compte</td><td>Bamba Awa (catéchumène)</td></tr>
+        <tr><td>17/03/2025 14:00</td><td>Père Kouassi</td><td>Admin/Curé</td><td>Rejet réclamation</td><td>RC-2025-002</td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:16px;font-size:9pt;color:#8a7060;text-align:right" id="print-date-journal"></div>
+  </div>
+
+  <!-- ZONE 6 : Fiche accès utilisateur -->
+  <div class="print-zone" id="print-fiche-acces">
+    <div class="print-header">
+      <div style="font-size:28px">👤</div>
+      <div>
+        <h1 style="font-family:'Cinzel',serif;color:#4a2f1a">FICHE D'ACCÈS SNGC</h1>
+        <p>Paroisse Saint-Augustin · Confidentiel — Remettre en main propre uniquement</p>
+      </div>
+    </div>
+    <table style="width:60%;margin:0 auto;border:2px solid #c8941a">
+      <tr><td style="padding:10px;font-weight:bold;background:#f0e8d8;width:40%">Nom &amp; Prénom</td><td style="padding:10px" id="print-acces-nom">—</td></tr>
+      <tr><td style="padding:10px;font-weight:bold;background:#f0e8d8">Rôle</td><td style="padding:10px" id="print-acces-role">—</td></tr>
+      <tr><td style="padding:10px;font-weight:bold;background:#f0e8d8">Identifiant</td><td style="padding:10px;font-family:monospace;font-size:14pt" id="print-acces-id">—</td></tr>
+      <tr><td style="padding:10px;font-weight:bold;background:#f0e8d8">Mot de passe</td><td style="padding:10px;font-family:monospace;font-size:14pt" id="print-acces-pw">—</td></tr>
+      <tr><td style="padding:10px;font-weight:bold;background:#f0e8d8">Code PIN 2FA</td><td style="padding:10px;font-size:12pt;color:#8a7060;font-style:italic">Remis séparément</td></tr>
+    </table>
+    <p style="text-align:center;margin-top:20px;font-size:9pt;color:#8b1a1a">⚠ Ne pas conserver ni photographier ce document. Le détruire après mémorisation.</p>
+    <div style="text-align:center;margin-top:20px"><div style="border-top:1px solid #000;margin:40px auto 0;padding-top:6px;width:220px">Cachet &amp; Signature de la Paroisse</div></div>
+  </div>
+
+
   <div class="tc" id="tc"></div>
 
 
@@ -4102,9 +4814,47 @@
         */
         secs: [
           {
-            lbl: 'Centre de Contrôle',
+            /* Vue générale : le seul écran de l'admin */
+            lbl: 'Vue Générale',
             items: [
-              { id: 'dashboard', ico: '✝', lbl: 'Tableau de Bord Général' }
+              { id: 'dashboard', ico: '✝', lbl: 'Tableau de Bord' }
+            ]
+          },
+          {
+            /* Modules de gestion : ouvrent des modales depuis la sidebar */
+            lbl: 'Gestion',
+            items: [
+              { id: 'drawer-cats-admin',  ico: '👥', lbl: 'Catéchumènes',    action: true },
+              { id: 'modal-notes-admin', ico: '📊', lbl: 'Notes & Classes', action: true },
+              { id: 'modal-recl-panel',  ico: '📋', lbl: 'Réclamations',    action: true, badge: '5' },
+              { id: 'modal-etats-admin', ico: '📄', lbl: 'États & Rapports',action: true }
+            ]
+          },
+          {
+            /* Pastoral & config */
+            lbl: 'Pastoral',
+            items: [
+              { id: 'drawer-cal',         ico: '📅', lbl: 'Calendrier',       action: true },
+              { id: 'modal-config-admin', ico: '⚙️', lbl: 'Configuration',    action: true },
+              { id: 'modal-logs',         ico: '📜', lbl: 'Journal d\'activité', action: true }
+            ]
+          },
+          {
+            /*
+              ACTIONS RAPIDES — Accès 1-clic aux opérations les plus fréquentes.
+              Chaque item ouvre directement sa modale depuis la sidebar.
+              'action: true' indique que c'est une modale (pas une navigation de page).
+            */
+            lbl: 'Actions Rapides',
+            items: [
+              { id: 'modal-nouveau-catechumene', ico: '➕', lbl: 'Inscrire un catéchumène',  action: true },
+              { id: 'modal-new-classe',          ico: '📚', lbl: 'Créer une classe',         action: true },
+              { id: 'modal-valider-recl',        ico: '✝',  lbl: 'Valider une réclamation',  action: true },
+              { id: 'modal-bulletins',           ico: '🖨️', lbl: 'Imprimer les bulletins',   action: true },
+              { id: 'modal-compte-cree',         ico: '👤', lbl: 'Créer un compte',          action: true },
+              { id: 'modal-new-event',           ico: '📅', lbl: 'Planifier un événement',   action: true },
+              { id: 'modal-cloture',             ico: '🔒', lbl: 'Clôturer l\'année',        action: true },
+              { id: 'modal-logs',                ico: '📜', lbl: 'Journal d\'activité',      action: true }
             ]
           }
         ]
@@ -4119,8 +4869,9 @@
           {
             lbl: 'Supervision',
             items: [
-              { id: 'dashboard',    ico: '🏠', lbl: 'Vue de Section' },
-              { id: 'catechumenes', ico: '👥', lbl: 'Catéchumènes' }
+              { id: 'dashboard',      ico: '🏠', lbl: 'Vue de Section' },
+              { id: 'catechumenes',   ico: '👥', lbl: 'Catéchumènes' },
+              { id: 'catechistes-au', ico: '⛪', lbl: 'Catéchistes & Affectations' }
             ]
           },
           {
@@ -4138,22 +4889,23 @@
       catechiste: {
         name:  'Jean Koffi',
         init:  'JK',
-        role:  'Catéchiste',
+        role:  'Catéchiste — Ado-B',
+        /* Le catéchiste ne voit QUE les infos de sa classe Ado-B */
         secs: [
           {
-            lbl: 'Ma Classe',
+            lbl: 'Ma Classe — Ado-B',
             items: [
               { id: 'dashboard',    ico: '🏠', lbl: 'Tableau de Bord' },
-              { id: 'notes',        ico: '📊', lbl: 'Saisie des Notes' },
-              { id: 'reclamations', ico: '📋', lbl: 'Réclamations', badge: '1' }
+              { id: 'catechumenes', ico: '👥', lbl: 'Mes Élèves (Ado-B)' },
+              { id: 'notes',        ico: '📊', lbl: 'Saisie des Notes' }
             ]
           },
           {
-            lbl: 'Consultation',
+            lbl: 'Suivi & Actions',
             items: [
-              { id: 'catechumenes', ico: '👥', lbl: 'Ma Classe' },
-              { id: 'etats',        ico: '📄', lbl: 'Reporting de Classe' },
-              { id: 'calendrier',   ico: '📅', lbl: 'Agenda' }
+              { id: 'reclamations', ico: '📋', lbl: 'Mes Réclamations', badge: '1' },
+              { id: 'etats',        ico: '📄', lbl: 'Résultats Ado-B' },
+              { id: 'calendrier',   ico: '📅', lbl: 'Mon Agenda' }
             ]
           }
         ]
@@ -4164,13 +4916,20 @@
         name:  'Marie-Claire K.',
         init:  'MK',
         role:  'Catéchumène',
+        /* Tout en consultation — sauf la demande de réclamation */
         secs: [
           {
             lbl: 'Mon Espace',
             items: [
-              { id: 'profil',     ico: '👤', lbl: 'Mon Profil & Dossier' },
-              { id: 'notes',      ico: '📊', lbl: 'Mon Suivi & Notes' },
-              { id: 'calendrier', ico: '📅', lbl: 'Mon Agenda' }
+              { id: 'profil',              ico: '👤', lbl: 'Mon Profil' },
+              { id: 'suivi-notes-eleve',   ico: '📊', lbl: 'Mon Suivi & Notes' },
+              { id: 'calendrier',          ico: '📅', lbl: 'Mon Agenda' }
+            ]
+          },
+          {
+            lbl: 'Demande',
+            items: [
+              { id: 'modal-reclamation-eleve', ico: '📋', lbl: 'Faire une Réclamation', action: true }
             ]
           }
         ]
@@ -4197,7 +4956,14 @@
       /* Boucle sur chaque section (ex: "Principal", "Gestion") */
       for (var i = 0; i < d.secs.length; i++) {
         var s = d.secs[i];
-        html += '<div class="nav-sec"><span class="nav-sec-lbl">' + s.lbl + '</span></div>';
+
+        /*
+          Si la section s'appelle "Actions Rapides", on ajoute la classe
+          spéciale "actions-sec" qui lui donne un filet doré au-dessus
+          et colore son label en or.
+        */
+        var secClass = (s.lbl === 'Actions Rapides') ? 'nav-sec actions-sec' : 'nav-sec';
+        html += '<div class="' + secClass + '"><span class="nav-sec-lbl">' + s.lbl + '</span></div>';
 
         /* Boucle sur chaque item de la section */
         for (var j = 0; j < s.items.length; j++) {
@@ -4206,13 +4972,31 @@
           /* L'item est "actif" si c'est la page courante */
           var ac = (it.id === curPage) ? 'active' : '';
 
+          /*
+            Items de la section "Actions Rapides" : classe supplémentaire
+            "action-item" pour le style italique et hover doré distinct.
+          */
+          var extraClass = (s.lbl === 'Actions Rapides') ? ' action-item' : '';
+
           /* Badge (ex: "5") si défini */
           var badgeHtml = it.badge
             ? '<span class="ni-badge">' + it.badge + '</span>'
             : '';
 
           /* Construction de l'item HTML */
-          html += '<div class="ni ' + ac + '" onclick="goTo(\'' + it.id + '\')">'
+          var clickFn;
+          if (it.action) {
+            if (it.id.indexOf('drawer-') === 0) {
+              clickFn = 'openDrawer(\'' + it.id + '\')';
+            } else {
+              clickFn = 'openModal(\'' + it.id + '\')';
+            }
+          } else if (it.id === 'catechistes-au') {
+            clickFn = 'goTo(\'catechistes-au\')';
+          } else {
+            clickFn = 'goTo(\'' + it.id + '\')';
+          }
+          html += '<div class="ni ' + ac + extraClass + '" onclick="' + clickFn + '">'
                 +   '<span class="ico">' + it.ico + '</span>'
                 +   '<span>' + it.lbl + '</span>'
                 +   badgeHtml
@@ -4227,6 +5011,44 @@
       document.getElementById('uName').textContent = d.name;
       document.getElementById('uRole').textContent = d.role;
       document.getElementById('uAv').textContent   = d.init;
+    }
+
+
+    /*
+    ╔══════════════════════════════════════════════════════════════╗
+    ║  3c. adaptRoleViews() — Adapte les vues selon le rôle       ║
+    ║  Catéchiste : uniquement sa classe Ado-B.                   ║
+    ║  Admin/Aumônier : vue globale complète.                     ║
+    ╚══════════════════════════════════════════════════════════════╝
+    */
+    function adaptRoleViews(role) {
+      var filters      = document.getElementById('cats-filters');
+      var adminActions = document.getElementById('cats-admin-actions');
+      var tableAdmin   = document.getElementById('cats-table-admin');
+      var tableCat     = document.getElementById('cats-table-catechiste');
+      var pageTitle    = document.getElementById('cats-page-title');
+      var pageSub      = document.getElementById('cats-page-sub');
+      var cardTitle    = document.getElementById('cats-card-title');
+
+      if (role === 'catechiste') {
+        /* Catéchiste : vue filtrée sur sa classe uniquement */
+        if (filters)      { filters.style.display     = 'none'; }
+        if (adminActions) { adminActions.style.display = 'none'; }
+        if (tableAdmin)   { tableAdmin.style.display   = 'none'; }
+        if (tableCat)     { tableCat.style.display     = 'block'; }
+        if (pageTitle)    { pageTitle.textContent      = 'Mes Élèves — Ado-B'; }
+        if (pageSub)      { pageSub.textContent        = '21 élèves · Adolescents · 2ème année'; }
+        if (cardTitle)    { cardTitle.textContent      = 'Classe Ado-B (ma classe)'; }
+      } else {
+        /* Admin / Aumônier : vue globale */
+        if (filters)      { filters.style.display     = 'flex'; }
+        if (adminActions) { adminActions.style.display = 'flex'; }
+        if (tableAdmin)   { tableAdmin.style.display   = 'block'; }
+        if (tableCat)     { tableCat.style.display     = 'none'; }
+        if (pageTitle)    { pageTitle.textContent      = 'Gestion des Catéchumènes'; }
+        if (pageSub)      { pageSub.textContent        = '342 inscrits · Suivi individuel et collectif'; }
+        if (cardTitle)    { cardTitle.textContent      = 'Liste Globale'; }
+      }
     }
 
 
@@ -4310,8 +5132,10 @@
         reclamations: 'Réclamations',
         calendrier:   'Calendrier Pastoral',
         etats:        'États & Rapports',
-        config:       'Configuration',
-        profil:       'Mon Dossier'
+        config:             'Configuration',
+        profil:             'Mon Profil',
+        'suivi-notes-eleve': 'Mon Suivi & Notes',
+        'catechistes-au':    'Catéchistes & Affectations'
       };
       document.getElementById('pgTitle').textContent = titles[pageId] || pageId;
 
@@ -4346,6 +5170,8 @@
       curPage = defaults[r] || 'dashboard';
 
       goTo(curPage);
+      /* Adapter les vues selon le rôle (ex: catéchiste voit seulement sa classe) */
+      adaptRoleViews(r);
       toast('🔄', 'Espace ' + navData[r].role + ' activé');
     }
 
@@ -4491,61 +5317,6 @@
 
     /*
     ╔══════════════════════════════════════════════════════════════╗
-    ║  10b. printPDF() — Impression en PDF                         ║
-    ║  Ouvre la boîte de dialogue d'impression du navigateur      ║
-    ║  avec des styles optimisés pour l'impression PDF.          ║
-    ╚══════════════════════════════════════════════════════════════╝
-    */
-    function printPDF(title) {
-      /* Définir le titre du document pour le PDF */
-      if (title) {
-        document.title = title + ' — SNGC Paroisse Laurent de yopougon kouté';
-      }
-      
-      /* Ouvrir la boîte de dialogue d'impression */
-      window.print();
-      
-      /* Restaurer le titre original après un délai */
-      setTimeout(function() {
-        document.title = 'SNGC — Système Numérique de Gestion de la Catéchèse';
-      }, 1000);
-    }
-
-    /*
-    ╔══════════════════════════════════════════════════════════════╗
-    ║  10c. printElement() — Impression d'un élément spécifique   ║
-    ║  Imprime uniquement le contenu d'une modale ou section      ║
-    ║  spécifique en PDF.                                         ║
-    ╚══════════════════════════════════════════════════════════════╝
-    */
-    function printElement(elementId, title) {
-      var element = document.getElementById(elementId);
-      if (!element) {
-        toast('❌', 'Élément non trouvé');
-        return;
-      }
-      
-      /* Ajouter une classe temporaire pour l'impression */
-      element.classList.add('print-target');
-      
-      /* Définir le titre */
-      if (title) {
-        document.title = title + ' — SNGC Proisse Saint-Lauren';
-      }
-      
-      /* pImprimer */
-      window.print();
-      
-      /* Nettoyer */
-      setTimeout(function() {
-        element.classList.remove('print-target');
-        document.title = 'SNGC — Système Numérique de Gestion de la Catéchèse';
-      }, 1000);
-    }
-
-
-    /*
-    ╔══════════════════════════════════════════════════════════════╗
     ║  11. onSearch() — Barre de recherche                        ║
     ╚══════════════════════════════════════════════════════════════╝
     */
@@ -4670,6 +5441,141 @@
 
     /*
     ╔══════════════════════════════════════════════════════════════╗
+    ║  IMPRESSION PDF — printDoc(zoneId, meta)                    ║
+    ╠══════════════════════════════════════════════════════════════╣
+    ║  FONCTIONNEMENT :                                            ║
+    ║  1. Récupère le HTML du document à imprimer                  ║
+    ║  2. Ouvre une nouvelle fenêtre propre (popup)                ║
+    ║  3. Injecte le document avec son CSS d'impression            ║
+    ║  4. Lance window.print() dans cette fenêtre                  ║
+    ║  5. La fenêtre se ferme automatiquement après impression     ║
+    ║                                                              ║
+    ║  Avantage vs visibility:hidden : la fenêtre popup est        ║
+    ║  totalement indépendante → aucun conflit avec l'appli.       ║
+    ╚══════════════════════════════════════════════════════════════╝
+    */
+    function printDoc(zoneId, meta) {
+
+      /* 1. Trouver la zone d'impression */
+      var zone = document.getElementById(zoneId);
+      if (!zone) {
+        toast('⚠️', 'Zone introuvable : ' + zoneId);
+        return;
+      }
+
+      /* 2. Injecter la date courante dans les champs de date */
+      var now     = new Date();
+      var jour    = String(now.getDate()).padStart(2, '0');
+      var mois    = ['janvier','février','mars','avril','mai','juin',
+                     'juillet','août','septembre','octobre','novembre','décembre'][now.getMonth()];
+      var annee   = now.getFullYear();
+      var heure   = String(now.getHours()).padStart(2,'0') + 'h' + String(now.getMinutes()).padStart(2,'0');
+      var dateStr = jour + ' ' + mois + ' ' + annee + ' à ' + heure;
+
+      /* Mettre à jour les champs de date dans le DOM avant de copier */
+      ['print-date-bulletin','print-date-liste','print-date-journal'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) { el.textContent = 'Imprimé le ' + dateStr; }
+      });
+
+      /* 3. Injecter les métadonnées si fournies (fiche accès) */
+      if (meta) {
+        var fields = {
+          'print-acces-nom':  meta.nom  || '—',
+          'print-acces-role': meta.role || '—',
+          'print-acces-id':   meta.id   || '—',
+          'print-acces-pw':   meta.pw   || '—'
+        };
+        Object.keys(fields).forEach(function(id) {
+          var el = document.getElementById(id);
+          if (el) { el.textContent = fields[id]; }
+        });
+      }
+
+      /* 4. Récupérer le HTML de la zone à imprimer */
+      var docContent = zone.innerHTML;
+
+      /* 5. CSS minimal pour la fenêtre d'impression */
+      var printCSS = [
+        'body { font-family: Georgia, serif; font-size: 11pt; color: #000; margin: 20mm; }',
+        '.print-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px;',
+        '  padding-bottom: 12px; border-bottom: 2px solid #c8941a; }',
+        '.print-header h1 { font-size: 16pt; color: #4a2f1a; margin: 0; }',
+        '.print-header p  { font-size: 10pt; color: #8a7060; margin: 0; }',
+        'table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }',
+        'th { background: #f0e8d8; color: #4a2f1a; border: 1px solid #c8941a;',
+        '     padding: 7px 10px; font-size: 9.5pt; text-align: left; }',
+        'td { border: 1px solid #ddd; padding: 6px 10px; font-size: 10pt; }',
+        'tr:nth-child(even) td { background: #fafaf8; }',
+        'button, .btn { display: none !important; }',
+        '* { -webkit-print-color-adjust: exact; print-color-adjust: exact; }',
+        '@page { size: A4; margin: 15mm; }'
+      ].join('\n');
+
+      /* 6. Ouvrir la fenêtre popup d'impression */
+      var pw = window.open('', '_blank',
+        'width=794,height=1123,toolbar=0,scrollbars=1,status=0'
+      );
+
+      if (!pw) {
+        /* Le popup a été bloqué → fallback : méthode inline */
+        toast('⚠️', 'Activez les popups pour ce site et réessayez.');
+        fallbackPrint(zone, printCSS);
+        return;
+      }
+
+      /* 7. Écrire le document dans la fenêtre popup */
+      pw.document.write(
+        '<!DOCTYPE html><html lang="fr"><head>'
+        + '<meta charset="UTF-8">'
+        + '<title>SNGC — Impression</title>'
+        + '<style>' + printCSS + '</style>'
+        + '</head><body>'
+        + docContent
+        + '<sc' + 'ript>'
+        + 'window.onload = function() {'
+        + '  window.print();'
+        + '  setTimeout(function(){ window.close(); }, 500);'
+        + '};'
+        + '<\/script>'
+        + '</body></html>'
+      );
+      pw.document.close();
+
+      toast('🖨️', 'Fenêtre d\'impression ouverte — choisissez "Enregistrer en PDF"');
+    }
+
+
+    /*
+      fallbackPrint — utilisé si le popup est bloqué.
+      Approche body.printing : ajoute une classe sur body, lance
+      window.print(), puis restaure. Compatible avec @media print.
+    */
+    function fallbackPrint(zone, css) {
+      /* Ajouter classe active sur la zone et printing sur body */
+      zone.classList.add('active-print');
+      document.body.classList.add('printing');
+
+      /* Petit délai pour que le CSS soit appliqué avant window.print() */
+      setTimeout(function() {
+        window.print();
+
+        /* Restaurer après l'impression (afterprint event ou délai) */
+        function restore() {
+          zone.classList.remove('active-print');
+          document.body.classList.remove('printing');
+          window.removeEventListener('afterprint', restore);
+        }
+        window.addEventListener('afterprint', restore);
+        /* Délai de sécurité si afterprint ne se déclenche pas */
+        setTimeout(restore, 2000);
+      }, 80);
+    }
+
+
+
+    /*
+    ╔══════════════════════════════════════════════════════════════╗
     ║  INITIALISATION — Code exécuté au chargement de la page     ║
     ╚══════════════════════════════════════════════════════════════╝
     */
@@ -4678,6 +5584,9 @@
 
     /* 2. Afficher le bon panneau de dashboard (admin par défaut) */
     renderDashboard('admin');
+
+    /* 3. Adapter les vues selon le rôle (admin par défaut = vue globale) */
+    adaptRoleViews('admin');
 
     /* 3. Lancer les animations du dashboard après chargement complet */
     window.addEventListener('load', function() {
