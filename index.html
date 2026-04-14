@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,76 +10,70 @@
   ╔══════════════════════════════════════════════════════════════════╗
   ║   SNGC — Page de Connexion & Authentification                   ║
   ╠══════════════════════════════════════════════════════════════════╣
-  ║   STRUCTURE :                                                    ║
-  ║   1. <style>   → CSS complet (variables, layout, animations)    ║
-  ║   2. <body>    → Fond animé + 3 écrans (login, 2FA, bienvenue) ║
-  ║   3. <script>  → Logique d'authentification simulée             ║
-  ╠══════════════════════════════════════════════════════════════════╣
   ║   FLUX D'AUTHENTIFICATION :                                      ║
   ║   Écran 1 : Saisie identifiant + mot de passe                   ║
-  ║   Écran 2 : Vérification du code PIN à 4 chiffres (2FA)        ║
-  ║   Écran 3 : Écran de bienvenue → redirection vers le dashboard  ║
+  ║   Écran 2 : Écran de bienvenue → redirection vers le dashboard  ║
   ║                                                                  ║
   ║   COMPTES DE TEST (simulés) :                                    ║
   ║   admin      / SNGC-2025       → Administrateur · Curé         ║
   ║   aumonier   / SNGC-2025       → Aumônier                      ║
   ║   catechiste / SNGC-2025       → Catéchiste                    ║
   ║   marie.k    / SNGC-2025       → Catéchumène                   ║
-  ║   Code PIN 2FA pour tous : 1234                                  ║
   ╚══════════════════════════════════════════════════════════════════╝
   -->
 
-  <!-- Polices identiques au dashboard -->
   <link
     href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap"
-    rel="stylesheet"
-  />
+    rel="stylesheet" />
 
   <style>
-    /* ================================================================
-       1. VARIABLES CSS — Identiques au dashboard pour cohérence visuelle
-    ================================================================ */
     :root {
-      /* Palette liturgique catholique — thème clair, reposant */
-      --bg:           #f8f2e8;   /* Fond : parchemin chaud */
-      --surface:      #ffffff;   /* Carte blanche */
-      --surface-2:    #f0e8d8;   /* Champs : crème */
-      --surface-3:    #e5dac5;   /* Focus : parchemin */
-      --gold:         #c8941a;   /* Or liturgique */
-      --gold-light:   #dba82a;   /* Or lumineux */
-      --gold-pale:    #fdf3d7;   /* Or très pâle */
-      --gold-dim:     rgba(200,148,26,0.12);
-      --crimson:      #8b1a1a;   /* Rouge cardinal */
-      --crimson-light:#b03030;
-      --crimson-dim:  rgba(139,26,26,0.12);
-      --emerald:      #2d6a4f;   /* Vert sacré */
-      --emerald-light:#40916c;
-      --purple:       #5c2d91;
+      --bg: #f8f2e8;
+      --surface: #ffffff;
+      --surface-2: #f0e8d8;
+      --surface-3: #e5dac5;
+      --gold: #c8941a;
+      --gold-light: #dba82a;
+      --gold-pale: #fdf3d7;
+      --gold-dim: rgba(200, 148, 26, 0.12);
+      --crimson: #8b1a1a;
+      --crimson-light: #b03030;
+      --crimson-dim: rgba(139, 26, 26, 0.12);
+      --emerald: #2d6a4f;
+      --emerald-light: #40916c;
+      --emerald-dim: rgba(45, 106, 79, 0.12);
+      --purple: #5c2d91;
       --purple-light: #7b4ab8;
-      --txt:          #3a2010;   /* Texte brun encre */
-      --txt-muted:    #8a7060;   /* Brun moyen */
-      --border:       rgba(200,148,26,0.22);
-      --border-light: rgba(58,32,16,0.10);
-      --radius:       10px;
-      --radius-sm:    7px;
-      --shadow:       0 8px 40px rgba(58,32,16,0.15);
-      --glow-gold:    0 0 16px rgba(200,148,26,0.20);
-      --sidebar-brown:#4a2f1a;   /* Brun sidebar */
+      --purple-dim: rgba(92, 45, 145, 0.12);
+      --txt: #3a2010;
+      --txt-muted: #8a7060;
+      --border: rgba(200, 148, 26, 0.22);
+      --border-light: rgba(58, 32, 16, 0.10);
+      --radius: 10px;
+      --radius-sm: 7px;
+      --shadow: 0 8px 40px rgba(58, 32, 16, 0.15);
+      --glow-gold: 0 0 16px rgba(200, 148, 26, 0.20);
+      --sidebar-brown: #4a2f1a;
     }
 
-    /* ================================================================
-       2. RESET & BASE
-    ================================================================ */
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { height: 100%; }
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      height: 100%;
+    }
 
     body {
       font-family: 'EB Garamond', serif;
       background: var(--bg);
-      /* Texture subtile parchemin */
       background-image:
-        radial-gradient(ellipse 70% 50% at 30% 40%, rgba(200,148,26,0.06) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 70% at 75% 65%, rgba(58,32,16,0.05) 0%, transparent 55%);
+        radial-gradient(ellipse 70% 50% at 30% 40%, rgba(200, 148, 26, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 70% at 75% 65%, rgba(58, 32, 16, 0.05) 0%, transparent 55%);
       color: var(--txt);
       min-height: 100vh;
       display: flex;
@@ -88,49 +83,51 @@
       position: relative;
     }
 
-    /* ================================================================
-       3. FOND ANIMÉ — Effet cathédrale / vitrail
-       Plusieurs couches d'animations pour créer une atmosphère profonde.
-    ================================================================ */
-
-    /* Couche 1 : Grands gradients radiaux animés (lumières célestes) */
     .bg-layer {
       position: fixed;
       inset: 0;
       z-index: 0;
-      /* Plusieurs orbes de couleur superposées */
       background:
-        radial-gradient(ellipse 60% 50% at 15% 30%, rgba(200,148,26,0.08) 0%, transparent 55%),
-        radial-gradient(ellipse 50% 60% at 80% 70%, rgba(58,32,16,0.06) 0%, transparent 50%);
+        radial-gradient(ellipse 60% 50% at 15% 30%, rgba(200, 148, 26, 0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 60% at 80% 70%, rgba(58, 32, 16, 0.06) 0%, transparent 50%);
       animation: bgShift 14s ease-in-out infinite alternate;
     }
+
     @keyframes bgShift {
-      0%   { opacity: 0.7; transform: scale(1) rotate(0deg); }
-      50%  { opacity: 1;   transform: scale(1.05) rotate(1deg); }
-      100% { opacity: 0.8; transform: scale(0.98) rotate(-1deg); }
+      0% {
+        opacity: 0.7;
+        transform: scale(1) rotate(0deg);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.05) rotate(1deg);
+      }
+
+      100% {
+        opacity: 0.8;
+        transform: scale(0.98) rotate(-1deg);
+      }
     }
 
-    /* Couche 2 : Grille géométrique (rosace de cathédrale) */
     .bg-grid {
       position: fixed;
       inset: 0;
       z-index: 0;
-      /* Grille en SVG data URI */
       background-image:
-        linear-gradient(rgba(200,148,26,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(200,148,26,0.05) 1px, transparent 1px);
+        linear-gradient(rgba(200, 148, 26, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200, 148, 26, 0.05) 1px, transparent 1px);
       background-size: 60px 60px;
       mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 75%);
     }
 
-    /* Couche 3 : Particules flottantes (poussière de lumière) */
     .particles {
       position: fixed;
       inset: 0;
       z-index: 0;
       pointer-events: none;
     }
-    /* Chaque particule est un pseudo-élément ou un span généré */
+
     .particle {
       position: absolute;
       border-radius: 50%;
@@ -138,15 +135,27 @@
       opacity: 0;
       animation: floatUp linear infinite;
     }
-    /* Animation : monte depuis le bas, s'efface */
+
     @keyframes floatUp {
-      0%   { opacity: 0;    transform: translateY(0)      scale(0); }
-      10%  { opacity: 0.6; }
-      90%  { opacity: 0.2; }
-      100% { opacity: 0;    transform: translateY(-120vh) scale(1.5); }
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(0);
+      }
+
+      10% {
+        opacity: 0.6;
+      }
+
+      90% {
+        opacity: 0.2;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-120vh) scale(1.5);
+      }
     }
 
-    /* Couche 4 : Grande croix centrale décorative (arrière-plan) */
     .bg-cross {
       position: fixed;
       top: 50%;
@@ -156,23 +165,27 @@
       height: 600px;
       z-index: 0;
       opacity: 0.06;
-      /* Croix faite en CSS */
       background:
-        /* Barre verticale */
-        linear-gradient(transparent 30%, rgba(200,148,26,1) 30%, rgba(200,148,26,1) 70%, transparent 70%) center / 6px 100%,
-        /* Barre horizontale */
-        linear-gradient(transparent 35%, rgba(200,148,26,1) 35%, rgba(200,148,26,1) 55%, transparent 55%) center / 100% 6px;
+        linear-gradient(transparent 30%, rgba(200, 148, 26, 1) 30%, rgba(200, 148, 26, 1) 70%, transparent 70%) center / 6px 100%,
+        linear-gradient(transparent 35%, rgba(200, 148, 26, 1) 35%, rgba(200, 148, 26, 1) 55%, transparent 55%) center / 100% 6px;
       background-repeat: no-repeat;
       animation: crossPulse 6s ease-in-out infinite;
     }
+
     @keyframes crossPulse {
-      0%, 100% { opacity: 0.025; transform: translate(-50%, -50%) scale(1); }
-      50%       { opacity: 0.045; transform: translate(-50%, -50%) scale(1.02); }
+
+      0%,
+      100% {
+        opacity: 0.025;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      50% {
+        opacity: 0.045;
+        transform: translate(-50%, -50%) scale(1.02);
+      }
     }
 
-    /* ================================================================
-       4. CARTE DE CONNEXION — Conteneur principal
-    ================================================================ */
     .login-wrap {
       position: relative;
       z-index: 10;
@@ -181,46 +194,46 @@
       padding: 24px 16px;
     }
 
-    /* La carte elle-même */
     .login-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow);
-      /* Filet doré sur le côté gauche, comme un livre liturgique */
       border-left: 3px solid var(--gold);
-      /* Animation d'entrée au chargement */
-      animation: cardEntrance 0.8s cubic-bezier(0.16,1,0.3,1) forwards;
-    }
-    @keyframes cardEntrance {
-      from { opacity: 0; transform: translateY(32px) scale(0.97); }
-      to   { opacity: 1; transform: none; }
+      animation: cardEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    /* En-tête de la carte (logo + titre) */
+    @keyframes cardEntrance {
+      from {
+        opacity: 0;
+        transform: translateY(32px) scale(0.97);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
     .login-header {
       padding: 36px 36px 28px;
       text-align: center;
-      /* Dégradé ornemental */
-      background: linear-gradient(180deg,
-        #4a2f1a 0%,
-        #4a2f1a 100%
-      );
+      background: linear-gradient(180deg, #4a2f1a 0%, #4a2f1a 100%);
       border-bottom: 1px solid var(--border);
       position: relative;
     }
 
-    /* Ligne décorative supérieure (filet doré) */
     .login-header::before {
       content: '';
       position: absolute;
-      top: 0; left: 10%; right: 10%;
+      top: 0;
+      left: 10%;
+      right: 10%;
       height: 2px;
       background: linear-gradient(to right, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
     }
 
-    /* Logo croix */
     .logo-cross {
       width: 56px;
       height: 56px;
@@ -231,13 +244,20 @@
       justify-content: center;
       font-size: 26px;
       margin: 0 auto 16px;
-      box-shadow: var(--glow-gold), 0 8px 24px rgba(0,0,0,0.4);
-      /* Légère rotation pour dynamisme */
+      box-shadow: var(--glow-gold), 0 8px 24px rgba(0, 0, 0, 0.4);
       animation: logoFloat 4s ease-in-out infinite;
     }
+
     @keyframes logoFloat {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-4px); }
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-4px);
+      }
     }
 
     .login-header h1 {
@@ -248,40 +268,46 @@
       letter-spacing: 3px;
       text-transform: uppercase;
     }
+
     .login-header .subtitle {
       font-size: 13px;
-      color: rgba(248,244,238,0.65);
+      color: rgba(248, 244, 238, 0.65);
       margin-top: 5px;
       font-style: italic;
     }
-    /* Petit ornement sous le titre */
+
     .header-orn {
       font-size: 11px;
-      color: rgba(200,148,26,0.7);
+      color: rgba(200, 148, 26, 0.7);
       letter-spacing: 8px;
       margin-top: 12px;
     }
 
-    /* ================================================================
-       5. CORPS DE LA CARTE — Formulaires
-    ================================================================ */
     .login-body {
       padding: 32px 36px 36px;
     }
 
-    /* ── Écrans multiples (login / 2FA / succès) ── */
-    /* Un seul écran visible à la fois */
     .screen {
       display: none;
-      animation: screenIn 0.35s cubic-bezier(0.16,1,0.3,1) forwards;
-    }
-    .screen.active { display: block; }
-    @keyframes screenIn {
-      from { opacity: 0; transform: translateX(20px); }
-      to   { opacity: 1; transform: none; }
+      animation: screenIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    /* ── Titre d'écran ── */
+    .screen.active {
+      display: block;
+    }
+
+    @keyframes screenIn {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
     .screen-title {
       font-family: 'Cinzel', serif;
       font-size: 15px;
@@ -290,6 +316,7 @@
       letter-spacing: 0.8px;
       margin-bottom: 6px;
     }
+
     .screen-desc {
       font-size: 13px;
       color: var(--txt-muted);
@@ -298,11 +325,11 @@
       line-height: 1.5;
     }
 
-    /* ── Champ de formulaire ── */
     .field {
       margin-bottom: 18px;
       position: relative;
     }
+
     .field label {
       display: block;
       font-family: 'Cinzel', serif;
@@ -313,10 +340,11 @@
       color: var(--txt-muted);
       margin-bottom: 8px;
     }
-    /* Conteneur du champ (avec icône) */
+
     .field-wrap {
       position: relative;
     }
+
     .field-ico {
       position: absolute;
       left: 14px;
@@ -327,14 +355,17 @@
       pointer-events: none;
       transition: color 0.2s;
     }
-    .field-wrap:focus-within .field-ico { color: var(--gold); }
+
+    .field-wrap:focus-within .field-ico {
+      color: var(--gold);
+    }
 
     input[type="text"],
     input[type="password"] {
       width: 100%;
       padding: 12px 14px 12px 44px;
       background: var(--surface-2);
-      border: 1px solid rgba(200,148,26,0.3);
+      border: 1px solid rgba(200, 148, 26, 0.3);
       border-radius: var(--radius-sm);
       color: var(--txt);
       font-family: 'EB Garamond', serif;
@@ -342,15 +373,19 @@
       outline: none;
       transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
     }
+
     input[type="text"]:focus,
     input[type="password"]:focus {
       border-color: var(--gold);
       background: var(--surface-3);
-      box-shadow: 0 0 0 3px rgba(200,148,26,0.10);
+      box-shadow: 0 0 0 3px rgba(200, 148, 26, 0.10);
     }
-    input::placeholder { color: var(--txt-muted); font-style: italic; }
 
-    /* Bouton œil (afficher/masquer mot de passe) */
+    input::placeholder {
+      color: var(--txt-muted);
+      font-style: italic;
+    }
+
     .toggle-pw {
       position: absolute;
       right: 12px;
@@ -365,13 +400,15 @@
       line-height: 1;
       transition: color 0.2s;
     }
-    .toggle-pw:hover { color: var(--gold); }
 
-    /* ── Message d'erreur ── */
+    .toggle-pw:hover {
+      color: var(--gold);
+    }
+
     .error-msg {
       display: none;
       background: var(--crimson-dim);
-      border: 1px solid rgba(153,27,27,0.35);
+      border: 1px solid rgba(153, 27, 27, 0.35);
       border-radius: var(--radius-sm);
       padding: 10px 14px;
       font-size: 13px;
@@ -379,17 +416,37 @@
       margin-bottom: 16px;
       animation: shake 0.4s ease;
     }
-    .error-msg.show { display: flex; align-items: center; gap: 8px; }
-    /* Animation tremblement sur erreur */
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      20%  { transform: translateX(-6px); }
-      40%  { transform: translateX(6px); }
-      60%  { transform: translateX(-4px); }
-      80%  { transform: translateX(4px); }
+
+    .error-msg.show {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    /* ── Bouton principal ── */
+    @keyframes shake {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      20% {
+        transform: translateX(-6px);
+      }
+
+      40% {
+        transform: translateX(6px);
+      }
+
+      60% {
+        transform: translateX(-4px);
+      }
+
+      80% {
+        transform: translateX(4px);
+      }
+    }
+
     .btn-login {
       width: 100%;
       padding: 14px;
@@ -406,8 +463,8 @@
       transition: all 0.25s ease;
       position: relative;
       overflow: hidden;
-      /* Effet de brillance au survol */
     }
+
     .btn-login::before {
       content: '';
       position: absolute;
@@ -415,24 +472,36 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
       transition: left 0.4s ease;
     }
-    .btn-login:hover::before { left: 100%; }
+
+    .btn-login:hover::before {
+      left: 100%;
+    }
+
     .btn-login:hover {
       transform: translateY(-2px);
-      box-shadow: var(--glow-gold), 0 8px 24px rgba(0,0,0,0.3);
+      box-shadow: var(--glow-gold), 0 8px 24px rgba(0, 0, 0, 0.3);
     }
-    .btn-login:active { transform: translateY(0); }
 
-    /* État chargement du bouton */
+    .btn-login:active {
+      transform: translateY(0);
+    }
+
     .btn-login.loading {
       pointer-events: none;
       opacity: 0.8;
     }
-    .btn-login .btn-text { transition: opacity 0.2s; }
-    .btn-login.loading .btn-text { opacity: 0; }
-    /* Spinner dans le bouton */
+
+    .btn-login .btn-text {
+      transition: opacity 0.2s;
+    }
+
+    .btn-login.loading .btn-text {
+      opacity: 0;
+    }
+
     .btn-spinner {
       position: absolute;
       inset: 0;
@@ -440,18 +509,26 @@
       align-items: center;
       justify-content: center;
     }
-    .btn-login.loading .btn-spinner { display: flex; }
+
+    .btn-login.loading .btn-spinner {
+      display: flex;
+    }
+
     .spinner-ring {
       width: 20px;
       height: 20px;
-      border: 2px solid rgba(26,10,46,0.3);
+      border: 2px solid rgba(26, 10, 46, 0.3);
       border-top-color: #1a0a2e;
       border-radius: 50%;
       animation: spin 0.7s linear infinite;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ── Bouton retour ── */
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
     .btn-back {
       background: none;
       border: none;
@@ -466,14 +543,17 @@
       transition: color 0.2s;
       margin-bottom: 16px;
     }
-    .btn-back:hover { color: var(--gold-light); }
 
-    /* ── Lien "mot de passe oublié" ── */
+    .btn-back:hover {
+      color: var(--gold-light);
+    }
+
     .forgot-link {
       text-align: right;
       margin-top: -10px;
       margin-bottom: 18px;
     }
+
     .forgot-link a {
       font-size: 12.5px;
       color: var(--txt-muted);
@@ -481,144 +561,42 @@
       font-style: italic;
       transition: color 0.2s;
     }
-    .forgot-link a:hover { color: var(--gold-light); }
 
-    /* ================================================================
-       6. CLAVIER PIN (2FA)
-       Clavier numérique virtuel pour entrer le code à 4 chiffres.
-    ================================================================ */
-
-    /* Affichage des 4 cases du code */
-    .pin-display {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      margin-bottom: 28px;
-    }
-    .pin-digit {
-      width: 54px;
-      height: 62px;
-      background: var(--surface-2);
-      border: 1px solid rgba(200,148,26,0.3);
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Cinzel', serif;
-      font-size: 26px;
-      font-weight: 700;
+    .forgot-link a:hover {
       color: var(--gold-light);
-      transition: all 0.2s;
-      position: relative;
     }
-    /* Case active (en cours de saisie) */
-    .pin-digit.active {
-      border-color: var(--gold);
-      background: var(--surface-3);
-      box-shadow: 0 0 0 3px rgba(212,175,55,0.1);
-    }
-    /* Case remplie */
-    .pin-digit.filled {
-      border-color: rgba(212,175,55,0.4);
-      background: var(--surface-3);
-    }
-    /* Curseur clignotant dans la case active vide */
-    .pin-digit.active.empty::after {
-      content: '';
-      position: absolute;
-      width: 2px;
-      height: 28px;
-      background: var(--gold);
-      animation: blink 1s step-end infinite;
-    }
-    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-    /* Pastille masquée (•) */
-    .pin-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--gold-light);
-      opacity: 0;
-      transform: scale(0);
-      transition: all 0.2s cubic-bezier(0.34,1.56,0.64,1);
-    }
-    .pin-digit.filled .pin-dot { opacity: 1; transform: scale(1); }
 
-    /* Grille du clavier numérique */
-    .pin-keyboard {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-    .pin-key {
-      padding: 14px;
-      background: var(--surface-2);
-      border: 1px solid rgba(58,32,16,0.12);
-      border-radius: var(--radius-sm);
-      color: var(--txt);
-      font-family: 'Cinzel', serif;
-      font-size: 18px;
-      font-weight: 600;
-      cursor: pointer;
-      text-align: center;
-      transition: all 0.15s ease;
-      user-select: none;
-      position: relative;
-      overflow: hidden;
-    }
-    .pin-key:hover {
-      background: var(--surface-3);
-      border-color: var(--gold);
-      color: var(--gold);
-      transform: translateY(-1px);
-    }
-    .pin-key:active { transform: scale(0.95); }
-    /* Ripple effect au clic */
-    .pin-key::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(212,175,55,0.1);
-      opacity: 0;
-      transition: opacity 0.15s;
-    }
-    .pin-key:active::after { opacity: 1; }
-    /* Touche effacement */
-    .pin-key.delete {
-      color: var(--crimson-light);
-      font-size: 20px;
-    }
-    .pin-key.delete:hover { border-color: rgba(153,27,27,0.4); background: var(--crimson-dim); }
-    /* Touche vide (placeholder pour la grille) */
-    .pin-key.empty-key { background: transparent; border: none; cursor: default; }
-    .pin-key.empty-key:hover { background: transparent; transform: none; }
-
-    /* ================================================================
-       7. ÉCRAN DE BIENVENUE (après connexion réussie)
-    ================================================================ */
     .welcome-screen {
       text-align: center;
       padding: 12px 0 8px;
     }
-    /* Icône animée de succès */
+
     .success-ico {
       width: 72px;
       height: 72px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--emerald), rgba(5,150,105,0.6));
+      background: linear-gradient(135deg, var(--emerald), rgba(5, 150, 105, 0.6));
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 32px;
       margin: 0 auto 20px;
-      box-shadow: 0 0 32px rgba(5,150,105,0.3);
-      /* Apparition avec rebond */
-      animation: popIn 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards;
+      box-shadow: 0 0 32px rgba(5, 150, 105, 0.3);
+      animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     }
+
     @keyframes popIn {
-      from { opacity: 0; transform: scale(0); }
-      to   { opacity: 1; transform: scale(1); }
+      from {
+        opacity: 0;
+        transform: scale(0);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
+
     .welcome-title {
       font-family: 'Cinzel', serif;
       font-size: 18px;
@@ -626,9 +604,9 @@
       color: var(--gold-pale);
       letter-spacing: 1px;
       margin-bottom: 8px;
-      /* Apparition décalée */
       animation: fadeSlide 0.4s ease 0.3s both;
     }
+
     .welcome-role {
       font-size: 13.5px;
       color: var(--txt-muted);
@@ -636,33 +614,44 @@
       margin-bottom: 6px;
       animation: fadeSlide 0.4s ease 0.4s both;
     }
+
     .welcome-parish {
       font-size: 12px;
       color: var(--txt-muted);
       animation: fadeSlide 0.4s ease 0.45s both;
     }
+
     @keyframes fadeSlide {
-      from { opacity: 0; transform: translateY(10px); }
-      to   { opacity: 1; transform: none; }
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
     }
 
-    /* Barre de progression de redirection */
     .redirect-bar-wrap {
       margin: 24px 0 16px;
       animation: fadeSlide 0.4s ease 0.5s both;
     }
+
     .redirect-label {
       font-size: 12px;
       color: var(--txt-muted);
       margin-bottom: 8px;
     }
+
     .redirect-bar-bg {
       width: 100%;
       height: 4px;
-      background: rgba(255,255,255,0.06);
+      background: rgba(255, 255, 255, 0.06);
       border-radius: 20px;
       overflow: hidden;
     }
+
     .redirect-bar-fill {
       height: 100%;
       background: linear-gradient(90deg, var(--gold), var(--gold-light));
@@ -671,7 +660,6 @@
       transition: width 0.1s linear;
     }
 
-    /* Badge de rôle affiché à la connexion */
     .role-badge {
       display: inline-flex;
       align-items: center;
@@ -685,14 +673,31 @@
       margin-top: 12px;
       animation: fadeSlide 0.4s ease 0.5s both;
     }
-    .role-badge.admin     { background: var(--gold-dim);    color: var(--gold-light);    border: 1px solid rgba(212,175,55,0.35); }
-    .role-badge.aumonier  { background: var(--purple-dim);  color: var(--purple-light);  border: 1px solid rgba(124,58,237,0.35); }
-    .role-badge.catechiste{ background: var(--emerald-dim); color: var(--emerald-light); border: 1px solid rgba(5,150,105,0.35); }
-    .role-badge.catechumene{ background: rgba(74,159,212,0.12); color: #7ec8ef; border: 1px solid rgba(29,78,216,0.3); }
 
-    /* ================================================================
-       8. PIED DE PAGE DE LA CARTE
-    ================================================================ */
+    .role-badge.admin {
+      background: var(--gold-dim);
+      color: var(--gold-light);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+    }
+
+    .role-badge.aumonier {
+      background: var(--purple-dim);
+      color: var(--purple-light);
+      border: 1px solid rgba(124, 58, 237, 0.35);
+    }
+
+    .role-badge.catechiste {
+      background: var(--emerald-dim);
+      color: var(--emerald-light);
+      border: 1px solid rgba(5, 150, 105, 0.35);
+    }
+
+    .role-badge.catechumene {
+      background: rgba(74, 159, 212, 0.12);
+      color: #7ec8ef;
+      border: 1px solid rgba(29, 78, 216, 0.3);
+    }
+
     .login-footer {
       padding: 14px 36px 18px;
       border-top: 1px solid var(--border);
@@ -700,14 +705,15 @@
       align-items: center;
       justify-content: space-between;
       gap: 10px;
+      background: var(--surface-2);
     }
+
     .login-footer p {
       font-size: 11.5px;
       color: var(--txt-muted);
       font-style: italic;
     }
-    .login-footer { background: var(--surface-2); }
-    /* Indicateur de sécurité (cadenas) */
+
     .security-badge {
       display: flex;
       align-items: center;
@@ -715,6 +721,7 @@
       font-size: 11px;
       color: var(--emerald-light);
     }
+
     .security-dot {
       width: 6px;
       height: 6px;
@@ -723,22 +730,28 @@
       box-shadow: 0 0 6px var(--emerald-light);
       animation: pulse 2s infinite;
     }
+
     @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: 0.5; }
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.5;
+      }
     }
 
-    /* ================================================================
-       9. COMPTES DE TEST (aide visible sous la carte)
-    ================================================================ */
     .test-accounts {
       margin-top: 16px;
-      background: rgba(255,255,255,0.7);
+      background: rgba(255, 255, 255, 0.7);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
       padding: 14px 16px;
-      animation: cardEntrance 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s both;
+      animation: cardEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
     }
+
     .test-accounts-title {
       font-family: 'Cinzel', serif;
       font-size: 9px;
@@ -747,6 +760,7 @@
       color: var(--txt-muted);
       margin-bottom: 10px;
     }
+
     .test-row {
       display: flex;
       align-items: center;
@@ -757,32 +771,68 @@
       transition: background 0.15s;
       font-size: 13px;
     }
-    .test-row:hover { background: var(--gold-pale); }
-    .test-row .tr-user { color: var(--gold); font-weight: 500; min-width: 100px; font-family: monospace; font-size: 12px; }
-    .test-row .tr-role { color: var(--txt-muted); flex: 1; font-style: italic; }
-    .test-row .tr-fill { font-size: 11px; color: var(--txt-muted); opacity: 0; transition: opacity 0.2s; }
-    .test-row:hover .tr-fill { opacity: 1; color: var(--gold-light); }
 
-    /* ================================================================
-       10. RESPONSIVE
-    ================================================================ */
-    /* ── Tablette ── */
-    @media (max-width: 600px) {
-      .login-wrap { padding: 12px; }
-      .login-card { border-radius: var(--radius); }
-      .login-header { padding: 28px 24px 22px; }
-      .login-body   { padding: 24px 24px 28px; }
-      .login-footer { padding: 12px 24px 16px; flex-direction: column; align-items: flex-start; gap: 5px; }
+    .test-row:hover {
+      background: var(--gold-pale);
     }
 
-    /* ── Smartphone ── */
+    .test-row .tr-user {
+      color: var(--gold);
+      font-weight: 500;
+      min-width: 100px;
+      font-family: monospace;
+      font-size: 12px;
+    }
+
+    .test-row .tr-role {
+      color: var(--txt-muted);
+      flex: 1;
+      font-style: italic;
+    }
+
+    .test-row .tr-fill {
+      font-size: 11px;
+      color: var(--txt-muted);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .test-row:hover .tr-fill {
+      opacity: 1;
+      color: var(--gold-light);
+    }
+
+    @media (max-width: 600px) {
+      .login-wrap {
+        padding: 12px;
+      }
+
+      .login-header {
+        padding: 28px 24px 22px;
+      }
+
+      .login-body {
+        padding: 24px 24px 28px;
+      }
+
+      .login-footer {
+        padding: 12px 24px 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+      }
+    }
+
     @media (max-width: 480px) {
-      /* Carte occupe tout l'écran en bas */
-      body { align-items: flex-end; }
+      body {
+        align-items: flex-end;
+      }
+
       .login-wrap {
         padding: 0;
         max-width: 100%;
       }
+
       .login-card {
         border-radius: 16px 16px 0 0;
         border-bottom: none;
@@ -790,63 +840,89 @@
         border-right: none;
         border-top: 3px solid var(--gold);
       }
-      .login-header { padding: 24px 20px 18px; }
-      .logo-cross   { width: 44px; height: 44px; font-size: 20px; margin-bottom: 12px; }
-      .login-header h1 { font-size: 18px; letter-spacing: 2px; }
-      .login-header .subtitle { font-size: 12px; }
-      .login-body   { padding: 20px 20px 24px; }
-      .login-footer { padding: 10px 20px 14px; flex-direction: row; justify-content: space-between; }
 
-      /* PIN keyboard : touches plus grandes pour les doigts */
-      .pin-key {
-        padding: 14px 10px;
-        font-size: 18px;
-        min-height: 52px;
+      .login-header {
+        padding: 24px 20px 18px;
       }
-      .pin-keyboard { gap: 8px; }
 
-      /* PIN display : cases plus larges */
-      .pin-digit { width: 58px; height: 64px; font-size: 24px; }
-      .pin-display { gap: 10px; }
+      .logo-cross {
+        width: 44px;
+        height: 44px;
+        font-size: 20px;
+        margin-bottom: 12px;
+      }
 
-      /* Champs de saisie plus grands pour le toucher */
+      .login-header h1 {
+        font-size: 18px;
+        letter-spacing: 2px;
+      }
+
+      .login-header .subtitle {
+        font-size: 12px;
+      }
+
+      .login-body {
+        padding: 20px 20px 24px;
+      }
+
+      .login-footer {
+        padding: 10px 20px 14px;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
       input[type='text'],
-      input[type='password'] { padding: 14px 14px 14px 46px; font-size: 16px; }
+      input[type='password'] {
+        padding: 14px 14px 14px 46px;
+        font-size: 16px;
+      }
 
-      /* Bouton connexion plus grand */
-      .btn-login { padding: 16px; font-size: 12px; }
+      .btn-login {
+        padding: 16px;
+        font-size: 12px;
+      }
 
-      /* Comptes de test masqués sur très petit écran */
-      .test-accounts { display: none; }
+      .test-accounts {
+        display: none;
+      }
     }
 
-    /* ── Touch : cibles minimum 44px ── */
     @media (hover: none) and (pointer: coarse) {
-      .pin-key  { min-height: 52px; }
-      .btn-login { min-height: 48px; }
-      .btn-back  { min-height: 40px; }
-      .forgot-link a { padding: 8px 0; display: inline-block; }
+      .btn-login {
+        min-height: 48px;
+      }
+
+      .btn-back {
+        min-height: 40px;
+      }
+
+      .forgot-link a {
+        padding: 8px 0;
+        display: inline-block;
+      }
     }
 
-    
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
 
-    /* Scrollbar */
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.2); border-radius: 10px; }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(212, 175, 55, 0.2);
+      border-radius: 10px;
+    }
   </style>
 </head>
+
 <body>
 
   <!-- ══ FOND ANIMÉ ══ -->
   <div class="bg-layer"></div>
   <div class="bg-grid"></div>
   <div class="bg-cross"></div>
-
-  <!--
-    Particules générées par JS.
-    Le conteneur est vide ici, les <span> sont créés dynamiquement.
-  -->
   <div class="particles" id="particles"></div>
 
 
@@ -863,7 +939,7 @@
         <div class="header-orn">✦ &nbsp; Paroisse Saint-Augustin &nbsp; ✦</div>
       </div>
 
-      <!-- CORPS : 3 ÉCRANS -->
+      <!-- CORPS -->
       <div class="login-body">
 
         <!--
@@ -876,55 +952,39 @@
           <div class="screen-title">Connexion</div>
           <p class="screen-desc">Entrez vos identifiants fournis par l'administrateur de la paroisse.</p>
 
-          <!-- Message d'erreur (caché par défaut) -->
           <div class="error-msg" id="err-login">
             <span>⚠️</span>
             <span id="err-login-text">Identifiant ou mot de passe incorrect.</span>
           </div>
 
-          <!-- Champ identifiant -->
           <div class="field">
             <label for="username">Identifiant</label>
             <div class="field-wrap">
               <span class="field-ico">👤</span>
-              <input
-                type="text"
-                id="username"
-                placeholder="ex: jean.koffi"
-                autocomplete="username"
-                onkeydown="if(event.key==='Enter') tryLogin()"
-              />
+              <input type="text" id="username" placeholder="ex: jean.koffi" autocomplete="username" />
             </div>
           </div>
 
-          <!-- Champ mot de passe -->
           <div class="field">
             <label for="password">Mot de passe</label>
             <div class="field-wrap">
               <span class="field-ico">🔑</span>
-              <input
-                type="password"
-                id="password"
-                placeholder="Votre mot de passe"
-                autocomplete="current-password"
-                onkeydown="if(event.key==='Enter') tryLogin()"
-              />
-              <!-- Bouton œil pour afficher/masquer -->
+              <input type="password" id="password" placeholder="Votre mot de passe" autocomplete="current-password" />
               <button class="toggle-pw" onclick="togglePw()" tabindex="-1" title="Afficher/masquer">
                 <span id="eye-ico">👁️</span>
               </button>
             </div>
           </div>
 
-          <!-- Lien mot de passe oublié -->
           <div class="forgot-link">
             <a href="#" onclick="showForgot(); return false;">Mot de passe oublié ?</a>
           </div>
 
-          <!-- Bouton connexion -->
           <button class="btn-login" id="btn-login" onclick="tryLogin()">
             <span class="btn-text">Se connecter</span>
-            <div class="btn-spinner"><div class="spinner-ring"></div></div>
+            <div class="btn-spinner">
+              <div class="spinner-ring"></div>
+            </div>
           </button>
 
         </div><!-- /screen-login -->
@@ -932,90 +992,20 @@
 
         <!--
           ══════════════════════════════════════════
-          ÉCRAN 2 : CODE PIN 2FA (vérification)
-          ══════════════════════════════════════════
-        -->
-        <div class="screen" id="screen-2fa">
-
-          <!-- Bouton retour -->
-          <button class="btn-back" onclick="goToScreen('screen-login')">
-            ← Retour
-          </button>
-
-          <div class="screen-title">Vérification en deux étapes</div>
-          <p class="screen-desc" id="desc-2fa">
-            Un code PIN à 4 chiffres vous a été communiqué.<br>Saisissez-le ci-dessous.
-          </p>
-
-          <!-- Message d'erreur 2FA -->
-          <div class="error-msg" id="err-2fa">
-            <span>⚠️</span>
-            <span>Code PIN incorrect. Veuillez réessayer.</span>
-          </div>
-
-          <!--
-            Affichage des 4 cases du code PIN.
-            Chaque case a un .pin-dot caché qui s'affiche quand rempli.
-          -->
-          <div class="pin-display">
-            <div class="pin-digit active empty" id="pin-0"><div class="pin-dot"></div></div>
-            <div class="pin-digit"              id="pin-1"><div class="pin-dot"></div></div>
-            <div class="pin-digit"              id="pin-2"><div class="pin-dot"></div></div>
-            <div class="pin-digit"              id="pin-3"><div class="pin-dot"></div></div>
-          </div>
-
-          <!--
-            Clavier numérique virtuel.
-            Disposition : 1-2-3 / 4-5-6 / 7-8-9 / ← 0 →
-            onclick="pressKey(N)" pour les chiffres
-            onclick="deleteKey()" pour effacer
-          -->
-          <div class="pin-keyboard">
-            <div class="pin-key" onclick="pressKey(1)">1</div>
-            <div class="pin-key" onclick="pressKey(2)">2</div>
-            <div class="pin-key" onclick="pressKey(3)">3</div>
-            <div class="pin-key" onclick="pressKey(4)">4</div>
-            <div class="pin-key" onclick="pressKey(5)">5</div>
-            <div class="pin-key" onclick="pressKey(6)">6</div>
-            <div class="pin-key" onclick="pressKey(7)">7</div>
-            <div class="pin-key" onclick="pressKey(8)">8</div>
-            <div class="pin-key" onclick="pressKey(9)">9</div>
-            <!-- Ligne du bas : vide / 0 / effacer -->
-            <div class="pin-key empty-key"></div>
-            <div class="pin-key" onclick="pressKey(0)">0</div>
-            <div class="pin-key delete" onclick="deleteKey()" title="Effacer">⌫</div>
-          </div>
-
-          <!-- Lien renvoi du code -->
-          <div style="text-align:center;margin-top:16px">
-            <a href="#" style="font-size:12px;color:var(--txt-muted);font-style:italic;text-decoration:none"
-               onclick="resendCode(); return false;">
-              Renvoyer le code
-            </a>
-          </div>
-
-        </div><!-- /screen-2fa -->
-
-
-        <!--
-          ══════════════════════════════════════════
-          ÉCRAN 3 : BIENVENUE (connexion réussie)
+          ÉCRAN 2 : BIENVENUE (connexion réussie)
           ══════════════════════════════════════════
         -->
         <div class="screen" id="screen-success">
           <div class="welcome-screen">
 
-            <!-- Icône de succès -->
             <div class="success-ico">✓</div>
 
             <div class="welcome-title" id="welcome-name">Bienvenue !</div>
             <p class="welcome-role" id="welcome-role">Chargement...</p>
             <p class="welcome-parish">Paroisse Saint-Augustin · Année 2024–2025</p>
 
-            <!-- Badge du rôle -->
             <div id="welcome-badge"></div>
 
-            <!-- Barre de progression de redirection -->
             <div class="redirect-bar-wrap">
               <p class="redirect-label">Redirection vers votre espace en cours…</p>
               <div class="redirect-bar-bg">
@@ -1029,7 +1019,7 @@
 
         <!--
           ══════════════════════════════════════════
-          ÉCRAN 4 : MOT DE PASSE OUBLIÉ
+          ÉCRAN 3 : MOT DE PASSE OUBLIÉ
           ══════════════════════════════════════════
         -->
         <div class="screen" id="screen-forgot">
@@ -1042,12 +1032,15 @@
             Contactez-le directement pour récupérer vos identifiants.
           </p>
 
-          <!-- Info contact -->
-          <div style="background:var(--gold-pale);border:1px solid rgba(200,148,26,0.25);border-radius:var(--radius-sm);padding:16px;margin-bottom:20px">
-            <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold-light);letter-spacing:1px;margin-bottom:10px">CONTACT ADMINISTRATEUR</div>
+          <div
+            style="background:var(--gold-pale);border:1px solid rgba(200,148,26,0.25);border-radius:var(--radius-sm);padding:16px;margin-bottom:20px">
+            <div
+              style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold-light);letter-spacing:1px;margin-bottom:10px">
+              CONTACT ADMINISTRATEUR</div>
             <div style="font-size:13.5px;margin-bottom:6px">👤 Jean-Paul Admin</div>
             <div style="font-size:13px;color:var(--txt-muted)">📞 Secrétariat paroissial · Salle St-Augustin</div>
-            <div style="font-size:12px;color:var(--txt-muted);margin-top:4px;font-style:italic">Horaires : Lun–Sam · 08h00–17h00</div>
+            <div style="font-size:12px;color:var(--txt-muted);margin-top:4px;font-style:italic">Horaires : Lun–Sam ·
+              08h00–17h00</div>
           </div>
 
           <p style="font-size:12.5px;color:var(--txt-muted);font-style:italic;text-align:center">
@@ -1070,7 +1063,7 @@
     </div><!-- /login-card -->
 
 
-    <!-- COMPTES DE TEST — Aide pour les démonstrations -->
+    <!-- COMPTES DE TEST -->
     <div class="test-accounts">
       <div class="test-accounts-title">✦ &nbsp; Comptes de démonstration (cliquer pour remplir)</div>
 
@@ -1094,145 +1087,87 @@
         <span class="tr-role">Catéchumène — Kouassi M-C.</span>
         <span class="tr-fill">↑ Utiliser</span>
       </div>
-
-      <div style="margin-top:8px;padding-top:8px;border-top:1px solid var(--border-light);font-size:11px;color:var(--txt-muted);text-align:center;font-style:italic">
-        Code PIN 2FA pour tous les comptes : <strong style="color:var(--gold-light);font-family:monospace">1234</strong>
-      </div>
     </div><!-- /test-accounts -->
 
   </div><!-- /login-wrap -->
 
 
-  <!-- ════════════════════════════════════════════════════════════
-       JAVASCRIPT — Logique complète d'authentification
-  ════════════════════════════════════════════════════════════════ -->
   <script>
 
-    /*
-    ╔══════════════════════════════════════════════════════════════╗
-    ║  BASE DE DONNÉES UTILISATEURS (simulée)                     ║
-    ║  En production, cette vérification se fait côté serveur.    ║
-    ║  Ici c'est une simulation locale pour la démonstration.     ║
-    ╚══════════════════════════════════════════════════════════════╝
-    */
     var USERS = {
       'admin': {
         password: 'SNGC-2025',
-        name:     'Jean-Paul Admin',
-        role:     'Administrateur · Curé',
-        roleKey:  'admin',
-        roleIco:  '✝'
+        name: 'Jean-Paul Admin',
+        role: 'Administrateur · Curé',
+        roleKey: 'admin',
+        roleIco: '✝'
       },
       'aumonier': {
         password: 'SNGC-2025',
-        name:     'Père Traoré',
-        role:     'Aumônier',
-        roleKey:  'aumonier',
-        roleIco:  '⛪'
+        name: 'Père Traoré',
+        role: 'Aumônier',
+        roleKey: 'aumonier',
+        roleIco: '⛪'
       },
       'catechiste': {
         password: 'SNGC-2025',
-        name:     'Jean Koffi',
-        role:     'Catéchiste',
-        roleKey:  'catechiste',
-        roleIco:  '📚'
+        name: 'Jean Koffi',
+        role: 'Catéchiste',
+        roleKey: 'catechiste',
+        roleIco: '📚'
       },
       'marie.k': {
         password: 'SNGC-2025',
-        name:     'Marie-Claire Kouassi',
-        role:     'Catéchumène',
-        roleKey:  'catechumene',
-        roleIco:  '🕊️'
+        name: 'Marie-Claire Kouassi',
+        role: 'Catéchumène',
+        roleKey: 'catechumene',
+        roleIco: '🕊️'
       }
     };
 
-    /* Code PIN 2FA commun (en production : unique par utilisateur, envoyé par SMS) */
-    var PIN_CODE = '1234';
-
-    /* Utilisateur actuellement en cours de connexion */
     var pendingUser = null;
-
-    /* Code PIN saisi par l'utilisateur (tableau de chiffres) */
-    var pinInput = [];
-
-    /* Nombre maximum de tentatives de connexion avant blocage */
     var MAX_ATTEMPTS = 3;
     var loginAttempts = 0;
 
-
-    /*
-    ╔══════════════════════════════════════════════════════════════╗
-    ║  1. NAVIGATION ENTRE ÉCRANS                                 ║
-    ║  goToScreen(id) : cache l'écran actuel, affiche le suivant  ║
-    ╚══════════════════════════════════════════════════════════════╝
-    */
+    /* Navigation entre écrans */
     function goToScreen(screenId) {
-      /* Cacher tous les écrans */
       var screens = document.querySelectorAll('.screen');
       for (var i = 0; i < screens.length; i++) {
         screens[i].classList.remove('active');
       }
-      /* Afficher l'écran demandé */
       var target = document.getElementById(screenId);
       if (target) { target.classList.add('active'); }
     }
 
-
-    /*
-    ╔══════════════════════════════════════════════════════════════╗
-    ║  2. TENTATIVE DE CONNEXION (Écran 1 → Écran 2)             ║
-    ║  Vérifie identifiant + mot de passe dans la base simulée.   ║
-    ╚══════════════════════════════════════════════════════════════╝
-    */
+    /* Connexion */
     function tryLogin() {
-      /* Récupérer les valeurs saisies */
       var username = document.getElementById('username').value.trim().toLowerCase();
       var password = document.getElementById('password').value;
 
-      /* Cacher l'erreur précédente */
       hideError('err-login');
 
-      /* Validation basique : champs non vides */
       if (!username || !password) {
         showError('err-login', 'Veuillez remplir tous les champs.');
         return;
       }
 
-      /* Vérifier si le compte est bloqué */
       if (loginAttempts >= MAX_ATTEMPTS) {
         showError('err-login', 'Compte temporairement bloqué. Contactez l\'administrateur.');
         return;
       }
 
-      /* Activer l'état "chargement" sur le bouton */
       setLoading(true);
 
-      /*
-        Simulation d'une requête réseau (délai de 1.2 seconde).
-        En production : fetch('/api/auth/login', { method: 'POST', body: ... })
-      */
-      setTimeout(function() {
+      setTimeout(function () {
         setLoading(false);
 
-        /* Chercher l'utilisateur dans la base */
         var user = USERS[username];
 
         if (user && user.password === password) {
-          /* ✅ Identifiants corrects → passer au 2FA */
-          loginAttempts = 0;  /* Réinitialiser le compteur */
-          pendingUser = user; /* Sauvegarder l'utilisateur pour l'écran suivant */
-
-          /* Personnaliser la description de l'écran 2FA */
-          document.getElementById('desc-2fa').innerHTML =
-            'Bonjour <strong>' + user.name + '</strong>,<br>'
-            + 'entrez votre code PIN à 4 chiffres.';
-
-          /* Réinitialiser et afficher l'écran 2FA */
-          resetPin();
-          goToScreen('screen-2fa');
-
+          loginAttempts = 0;
+          pendingUser = user;
+          showSuccessScreen();
         } else {
-          /* ❌ Identifiants incorrects */
           loginAttempts++;
           var remaining = MAX_ATTEMPTS - loginAttempts;
 
@@ -1245,10 +1180,9 @@
             showError('err-login', 'Compte bloqué. Contactez l\'administrateur.');
           }
 
-          /* Secouer le champ mot de passe pour indiquer l'erreur */
           var pwField = document.getElementById('password');
           pwField.style.borderColor = 'var(--crimson-light)';
-          setTimeout(function() {
+          setTimeout(function () {
             pwField.style.borderColor = '';
             pwField.value = '';
           }, 1500);
@@ -1256,157 +1190,38 @@
       }, 1200);
     }
 
-
-    /*
-    ╔══════════════════════════════════════════════════════════════╗
-    ║  3. GESTION DU CLAVIER PIN                                  ║
-    ║  pressKey(n) : ajoute un chiffre                            ║
-    ║  deleteKey() : efface le dernier chiffre                    ║
-    ║  resetPin()  : remet à zéro les 4 cases                     ║
-    ╚══════════════════════════════════════════════════════════════╝
-    */
-    function pressKey(n) {
-      /* On n'accepte plus de chiffres si 4 déjà saisis */
-      if (pinInput.length >= 4) { return; }
-
-      /* Ajouter le chiffre */
-      pinInput.push(n);
-
-      /* Mettre à jour l'affichage des cases */
-      updatePinDisplay();
-
-      /* Si 4 chiffres saisis, vérifier automatiquement */
-      if (pinInput.length === 4) {
-        setTimeout(checkPin, 300);  /* Petit délai pour que l'utilisateur voie le 4ème chiffre */
-      }
-    }
-
-    function deleteKey() {
-      if (pinInput.length === 0) { return; }
-      pinInput.pop();
-      updatePinDisplay();
-      /* Cacher l'erreur si l'utilisateur commence à corriger */
-      hideError('err-2fa');
-    }
-
-    function resetPin() {
-      pinInput = [];
-      updatePinDisplay();
-      hideError('err-2fa');
-    }
-
-    /*
-      updatePinDisplay() : synchronise les 4 cases visuelles avec pinInput.
-      - Case remplie : affiche le point (•), classe .filled
-      - Case active (cursor) : première case vide, classe .active .empty
-      - Case vide : aucune classe spéciale
-    */
-    function updatePinDisplay() {
-      for (var i = 0; i < 4; i++) {
-        var cell = document.getElementById('pin-' + i);
-        var dot  = cell.querySelector('.pin-dot');
-
-        /* Réinitialiser les classes */
-        cell.classList.remove('active', 'empty', 'filled');
-
-        if (i < pinInput.length) {
-          /* Case remplie : afficher le point */
-          cell.classList.add('filled');
-          /* (On n'affiche pas le chiffre pour la sécurité) */
-        } else if (i === pinInput.length) {
-          /* Case active (la prochaine à remplir) */
-          cell.classList.add('active', 'empty');
-        }
-        /* Sinon : case vide en attente */
-      }
-    }
-
-
-    /*
-    ╔══════════════════════════════════════════════════════════════╗
-    ║  4. VÉRIFICATION DU CODE PIN (Écran 2 → Écran 3)           ║
-    ╚══════════════════════════════════════════════════════════════╝
-    */
-    function checkPin() {
-      /* Reconstituer le code depuis le tableau */
-      var enteredPin = pinInput.join('');
-
-      if (enteredPin === PIN_CODE) {
-        /* ✅ PIN correct → Afficher l'écran de bienvenue */
-        showSuccessScreen();
-
-      } else {
-        /* ❌ PIN incorrect → Secouer les cases et réinitialiser */
-        showError('err-2fa', null);
-
-        /* Animation de secousse sur toutes les cases */
-        for (var i = 0; i < 4; i++) {
-          var cell = document.getElementById('pin-' + i);
-          cell.style.borderColor = 'var(--crimson-light)';
-          cell.style.background  = 'var(--crimson-dim)';
-        }
-
-        /* Réinitialiser après 1.5 secondes */
-        setTimeout(function() {
-          resetPin();
-          for (var j = 0; j < 4; j++) {
-            var c = document.getElementById('pin-' + j);
-            c.style.borderColor = '';
-            c.style.background  = '';
-          }
-        }, 1200);
-      }
-    }
-
-
-    /*
-    ╔══════════════════════════════════════════════════════════════╗
-    ║  5. ÉCRAN DE BIENVENUE + REDIRECTION                        ║
-    ╚══════════════════════════════════════════════════════════════╝
-    */
+    /* Écran de bienvenue */
     function showSuccessScreen() {
       if (!pendingUser) { return; }
 
-      /* Personnaliser l'écran de bienvenue */
       document.getElementById('welcome-name').textContent =
         'Bienvenue, ' + pendingUser.name.split(' ')[0] + ' !';
       document.getElementById('welcome-role').textContent =
         pendingUser.roleIco + '  ' + pendingUser.role;
 
-      /* Créer le badge de rôle */
       var badge = document.getElementById('welcome-badge');
       badge.innerHTML = '<div class="role-badge ' + pendingUser.roleKey + '">'
         + '<span>' + pendingUser.roleIco + '</span>'
         + '<span>' + pendingUser.role + '</span>'
         + '</div>';
 
-      /* Afficher l'écran succès */
       goToScreen('screen-success');
-
-      /* Lancer la barre de progression de redirection (3 secondes) */
       startRedirectBar(3000);
     }
 
-    /*
-      startRedirectBar(duration) :
-      Anime la barre de progression sur 'duration' millisecondes,
-      puis redirige vers le dashboard.
-    */
+    /* Barre de redirection */
     function startRedirectBar(duration) {
-      var bar       = document.getElementById('redirect-bar');
+      var bar = document.getElementById('redirect-bar');
       var startTime = null;
 
       function step(timestamp) {
         if (!startTime) { startTime = timestamp; }
-
-        /* Progression linéaire : 0% → 100% sur 'duration' ms */
         var progress = Math.min((timestamp - startTime) / duration * 100, 100);
         bar.style.width = progress + '%';
 
         if (progress < 100) {
           requestAnimationFrame(step);
         } else {
-          /* 🚀 Redirection vers le dashboard */
           redirectToDashboard();
         }
       }
@@ -1414,51 +1229,21 @@
       requestAnimationFrame(step);
     }
 
-    /*
-      redirectToDashboard() :
-      En production : window.location.href = '/dashboard'
-      En démo : ouvre le dashboard dans le même onglet avec le rôle pré-sélectionné.
-      On utilise sessionStorage pour transmettre le rôle au dashboard.
-    */
+    /* Redirection */
     function redirectToDashboard() {
       if (!pendingUser) { return; }
 
-      /*
-        Stocke le rôle pour que le dashboard puisse le lire.
-        sessionStorage est disponible uniquement pendant la session du navigateur.
-      */
       try {
         sessionStorage.setItem('sngc_role', pendingUser.roleKey);
         sessionStorage.setItem('sngc_user', pendingUser.name);
-      } catch(e) {
-        /* sessionStorage non disponible → pas bloquant */
-      }
+      } catch (e) { }
 
-      /*
-        En vrai : window.location.href = 'sngc-template.html';
-        Pour la démo, on affiche juste un message et on simule l'ouverture.
-      */
-      var badge = document.getElementById('welcome-badge');
-      badge.innerHTML = '<div style="margin-top:10px;font-size:12px;color:var(--emerald-light);font-style:italic">'
-        + '✓ Redirection vers votre espace...'
-        + '</div>';
-
-      /* Simuler l'ouverture du dashboard après 0.5s */
-      setTimeout(function() {
-        /* En démo, ouvrir le dashboard dans un nouvel onglet */
+      setTimeout(function () {
         window.location.href = 'template.html';
-        /* Ou en production : window.location.href = 'sngc-template.html'; */
       }, 500);
     }
 
-
-    /*
-    ╔══════════════════════════════════════════════════════════════╗
-    ║  6. FONCTIONS UTILITAIRES                                   ║
-    ╚══════════════════════════════════════════════════════════════╝
-    */
-
-    /* Afficher un message d'erreur */
+    /* Utilitaires */
     function showError(id, msg) {
       var el = document.getElementById(id);
       if (!el) { return; }
@@ -1469,13 +1254,11 @@
       el.classList.add('show');
     }
 
-    /* Cacher un message d'erreur */
     function hideError(id) {
       var el = document.getElementById(id);
       if (el) { el.classList.remove('show'); }
     }
 
-    /* Activer/désactiver l'état chargement du bouton de connexion */
     function setLoading(loading) {
       var btn = document.getElementById('btn-login');
       if (loading) {
@@ -1485,88 +1268,57 @@
       }
     }
 
-    /* Afficher/masquer le mot de passe */
     var pwVisible = false;
     function togglePw() {
       pwVisible = !pwVisible;
       var input = document.getElementById('password');
-      var ico   = document.getElementById('eye-ico');
-      input.type    = pwVisible ? 'text'      : 'password';
+      var ico = document.getElementById('eye-ico');
+      input.type = pwVisible ? 'text' : 'password';
       ico.textContent = pwVisible ? '🙈' : '👁️';
     }
 
-    /* Afficher l'écran mot de passe oublié */
     function showForgot() {
       goToScreen('screen-forgot');
     }
 
-    /* Remplir les champs depuis les comptes de test */
     function fillCredentials(user, pass) {
       document.getElementById('username').value = user;
       document.getElementById('password').value = pass;
       hideError('err-login');
-      /* Focus sur le bouton pour un clic rapide */
       document.getElementById('btn-login').focus();
     }
 
-    /* Renvoyer le code (simulation) */
-    function resendCode() {
-      /* En production : appel API pour renvoyer le SMS */
-      resetPin();
-      var desc = document.getElementById('desc-2fa');
-      desc.innerHTML = '<span style="color:var(--emerald-light)">✓ Code renvoyé avec succès.</span><br>'
-        + 'Saisissez le nouveau code PIN.';
-    }
-
-    /* Support clavier physique pour le PIN */
-    document.addEventListener('keydown', function(e) {
-      var screen2fa = document.getElementById('screen-2fa');
-      if (!screen2fa.classList.contains('active')) { return; }
-
-      /* Chiffres 0-9 */
-      if (e.key >= '0' && e.key <= '9') {
-        pressKey(parseInt(e.key));
-      }
-      /* Retour arrière */
-      if (e.key === 'Backspace') {
-        deleteKey();
+    /* Clavier : Entrée pour valider */
+    document.getElementById('username').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        document.getElementById('password').focus();
       }
     });
+    document.getElementById('password').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { tryLogin(); }
+    });
 
-
-    /*
-    ╔══════════════════════════════════════════════════════════════╗
-    ║  7. PARTICULES FLOTTANTES                                   ║
-    ║  Génère des points lumineux qui montent en fondu.           ║
-    ╚══════════════════════════════════════════════════════════════╝
-    */
+    /* Particules flottantes */
     function createParticles() {
       var container = document.getElementById('particles');
-      var count = 18; /* Nombre de particules */
+      var count = 18;
 
       for (var i = 0; i < count; i++) {
         var p = document.createElement('span');
         p.className = 'particle';
 
-        /* Taille aléatoire entre 2px et 5px */
         var size = Math.random() * 3 + 2;
-        p.style.width  = size + 'px';
+        p.style.width = size + 'px';
         p.style.height = size + 'px';
-
-        /* Position horizontale aléatoire */
         p.style.left = Math.random() * 100 + '%';
-
-        /* Point de départ vertical aléatoire */
         p.style.bottom = Math.random() * 20 + '%';
 
-        /* Durée et délai aléatoires pour un effet naturel */
-        var duration = Math.random() * 12 + 10; /* 10 à 22 secondes */
-        var delay    = Math.random() * 8;         /* 0 à 8 secondes de délai */
+        var duration = Math.random() * 12 + 10;
+        var delay = Math.random() * 8;
 
         p.style.animationDuration = duration + 's';
-        p.style.animationDelay    = delay + 's';
+        p.style.animationDelay = delay + 's';
 
-        /* Couleur : alternance or/violet */
         p.style.background = i % 3 === 0
           ? 'rgba(200,148,26,0.6)'
           : i % 3 === 1
@@ -1577,20 +1329,10 @@
       }
     }
 
-    /* Lancer les particules */
     createParticles();
-
-    /* Support clavier Entrée sur l'écran de connexion */
-    document.getElementById('password').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') { tryLogin(); }
-    });
-    document.getElementById('username').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') {
-        document.getElementById('password').focus();
-      }
-    });
 
   </script>
 
 </body>
+
 </html>
